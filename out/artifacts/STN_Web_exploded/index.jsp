@@ -11,6 +11,6 @@
     <title>STN Prima versiune</title>
 </head>
 <body>
-
+Bun venit!
 </body>
 </html>
