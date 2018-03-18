@@ -1,6 +1,5 @@
 package com.stn.servlets;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,19 +7,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "/ServletDemo")
+import com.stn.db.*;
+
+@WebServlet("/ServletDemo")
 public class ServletDemo extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        // getprintwrtier
+
         PrintWriter out = response.getWriter();
-        //generate html
+
         out.println("<html><body>");
-        out.println("Works");
+        DB test = new DB();
+        test.query("SELECT * FROM users");
+        while(test.next())
+        {
+            String username = test.getString(2);
+            String password = test.getString(3);
+            Integer join_date = test.getInt(4);
+            out.println(username+" | "+password+" "+" | "+join_date+"<br/>");
+        }
         out.println("</body></html>");
+        test.close();
     }
 }
