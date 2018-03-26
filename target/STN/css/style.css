@@ -1,0 +1,63 @@
+body{
+    font-family:"Tahoma", "Arial", "Helvetica", "Sans-Serif";
+    color: white;
+    font-size: 8pt;
+    background-color: #1d1d1d;
+}
+
+input, textarea, select {
+    font-family: "Tahoma", "Arial", "Helvetica", "Sans-Serif";
+    font-size: 8pt;
+    padding: 1px;
+}
+
+input[type=text],input[type=password] {
+    height: 8pt ;
+}
+
+img.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+}
+
+table.login{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #62635f;
+    margin-right: auto ;
+    margin-left: auto ;
+    margin-top: 30pt;
+}
+
+td {
+    padding : 3pt;
+}
+
+td.left { text-align: left; }
+td.center { text-align: center; }
+td.right { text-align: right; }
+
+p {
+    text-align: center;
+}
+
+a.ui:link {
+    color: white;
+    text-decoration: none;
+}
+
+a.ui:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a.ui:hover {
+    color: #b3b3b3;
+    text-decoration: underline;
+}
+
+a.ui:active {
+    color: white;
+}

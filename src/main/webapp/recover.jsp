@@ -3,13 +3,10 @@
 <html>
 <head>
     <%@ include file="structure/meta.jsp" %>
-    <title>Home</title>
+    <title>Recover</title>
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<%
-    response.sendRedirect("/login.jsp");
-%>
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>
