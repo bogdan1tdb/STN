@@ -7,8 +7,8 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<form action="login.jsp" method="post">
-<table class="login">
+<form action="LoginProcess" method="get">
+<table class="black">
     <tr>
     <td style="padding-top: 30pt; padding-left: 30pt;">User:</td>
     <td class="left" style="padding-top: 30pt; padding-right: 30pt;"><input type="text" name="user" value="" size="35"></td>
@@ -25,15 +25,23 @@
     </tr>
 
     <tr>
-        <td colspan="2" class="center" style="padding-bottom: 30pt;"><br/>You have 0 from 10 attemtps left for the login session</td>
+        <td colspan="2" class="center"><input class="login" type="submit" name="Login" value="Login"></td>
     </tr>
 
     <tr>
-        <td colspan="2" class="right"><a class="ui" href="recover.jsp">Recover password</a></td>
+        <td colspan="2" class="center" style="padding-bottom: 25pt;">
+            <br/>You have 0 from 10 attemtps left for the login session.<br/>10 failed logins in a row will result in banning your current IP.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="left"><a class="ui" href="register.jsp">Register( <b style="color: green; display: inline">OPEN</b> )</a></td>
+        <td class="right">
+            <a class="ui" href="apply.jsp">Apply for membership</a>&nbsp;&nbsp;&nbsp;<a class="ui" href="recover.jsp">Recover password</a>
+        </td>
     </tr>
 </table>
 </form>
-
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

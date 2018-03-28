@@ -15,6 +15,10 @@ input[type=text],input[type=password] {
     height: 8pt ;
 }
 
+.login {
+    width: 40pt;
+}
+
 img.logo {
     display: block;
     margin-left: auto;
@@ -22,7 +26,7 @@ img.logo {
     max-width: 60%;
 }
 
-table.login{
+table.black{
     border-style: solid;
     border-width: 1px;
     border-color: #62635f;
