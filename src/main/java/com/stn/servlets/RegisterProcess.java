@@ -42,33 +42,33 @@ public class RegisterProcess extends HttpServlet {
         else if(!password1.equals(password2)) {
             error = "The passwords are not matching!";
             url = "register.jsp";
-        }
+        } else {
+            PreparedStatement preparedStatement = null;
+            Connection connection = null;
+            DBConnection db = new DBConnection();
+            String query = "INSERT INTO users(Username, Password, Email) VALUES (?,?,?)";
 
-        PreparedStatement preparedStatement = null;
-        Connection connection = null;
-        DBConnection db = new DBConnection();
-        String query = "INSERT INTO users(Username, Password, Email) VALUES (?,?,?)";
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(db.getHost(),db.getUser(),db.getPassword());
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,user);
-            preparedStatement.setString(2,password1);
-            preparedStatement.setString(3,email);
-            preparedStatement.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            out.println(e);
-            return ;
-        } finally {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, user);
+                preparedStatement.setString(2, password1);
+                preparedStatement.setString(3, email);
+                preparedStatement.executeUpdate();
+            } catch (ClassNotFoundException | SQLException e) {
+                out.println(e);
+                return;
+            } finally {
                 try {
-                    if(preparedStatement != null)
+                    if (preparedStatement != null)
                         preparedStatement.close();
-                    if(connection != null)
+                    if (connection != null)
                         connection.close();
                 } catch (SQLException e) {
                     out.println(e);
                 }
+            }
         }
 
         request.setAttribute("error", error);
