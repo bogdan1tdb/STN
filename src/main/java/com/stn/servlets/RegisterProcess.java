@@ -4,6 +4,7 @@ import com.stn.utils.DBConnection;
 import com.stn.utils.PasswordHelper;
 import com.stn.utils.Validator;
 
+import javax.print.DocFlavor;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,11 +34,15 @@ public class RegisterProcess extends HttpServlet {
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         String email = request.getParameter("email");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String terms = request.getParameter("terms");
+        String faq= request.getParameter("faq");
 
         String encryptedPassword = "";
         byte[] salt = new byte[16];
 
-        if(Validator.isEmpty(user, password1, password2, email)) {
+        if(Validator.isEmpty(user, password1, password2, email, firstName, lastName)) {
             error = "You must fill all the requiered fields!";
             url = "register.jsp";
         }
@@ -48,11 +53,15 @@ public class RegisterProcess extends HttpServlet {
         else if(!password1.equals(password2)) {
             error = "The passwords are not matching!";
             url = "register.jsp";
+        }
+        else if(terms == null || faq == null ) {
+            error = "You must agree to the conditions!";
+            url = "register.jsp";
         } else {
             PreparedStatement preparedStatement = null;
             Connection connection = null;
             DBConnection db = new DBConnection();
-            String query = "INSERT INTO users(Username, Password, Salt, Email) VALUES (?,?,?,?)";
+            String query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
 
             PasswordHelper passwordHelper = new PasswordHelper();
             try {
@@ -71,6 +80,8 @@ public class RegisterProcess extends HttpServlet {
                 preparedStatement.setString(2, encryptedPassword);
                 preparedStatement.setBytes(3, salt);
                 preparedStatement.setString(4, email);
+                preparedStatement.setString(5, firstName);
+                preparedStatement.setString(6, lastName);
                 preparedStatement.executeUpdate();
             } catch (ClassNotFoundException | SQLException e) {
                 out.println(e);

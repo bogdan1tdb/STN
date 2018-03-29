@@ -14,6 +14,14 @@
         <td colspan="2" class="center" style="padding-top: 12pt">All fields are required!</td>
     </tr>
     <tr>
+        <td class="right" style="padding-left: 30pt; padding-top: 8pt">First Name:</td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="firstname" value="" size="35"></td>
+    </tr>
+    <tr>
+        <td class="right" style="padding-left: 30pt; padding-top: 8pt">Last Name:</td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="lastname" value="" size="35"></td>
+    </tr>
+    <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">User:</td>
         <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="user" value="" size="35"></td>
     </tr>
