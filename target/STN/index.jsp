@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-    response.sendRedirect("/login.jsp");
+    response.sendRedirect("login.jsp");
 %>
 <%@ include file="structure/footer.jsp" %>
 </body>
