@@ -36,8 +36,7 @@
         </td>
     </tr>
     <tr>
-        <td class="center" colspan="2"><b style="color: red; display: inline">${error}
-        </b></td>
+        <td class="center" colspan="2"><b style="color: red; display: inline">${error}</b></td>
     </tr>
     <tr>
         <td colspan="2" class="center" style="padding-top: 20pt"><input name="Register" type="submit" id="Send" value="Register">

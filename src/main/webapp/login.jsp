@@ -7,7 +7,7 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<form action="LoginProcess" method="get">
+<form action="LoginProcess" method="post">
 <table class="black">
     <tr>
     <td style="padding-top: 30pt; padding-left: 30pt;">User:</td>
@@ -16,7 +16,7 @@
 
     <tr>
         <td style="padding-left: 30pt;">Password:</td>
-        <td class="left" style="padding-right: 30pt;"><input type="password" name="parola" value="" size="35"></td>
+        <td class="left" style="padding-right: 30pt;"><input type="password" name="password" value="" size="35"></td>
     </tr>
 
     <tr>
@@ -26,6 +26,10 @@
 
     <tr>
         <td colspan="2" class="center"><input class="login" type="submit" name="Login" value="Login"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2" class="center"><b style="color: red; display: inline">${error}</b></td>
     </tr>
 
     <tr>
