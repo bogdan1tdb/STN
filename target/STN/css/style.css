@@ -32,11 +32,11 @@ table.black{
     border-color: #62635f;
     margin-right: auto ;
     margin-left: auto ;
-    margin-top: 30pt;
 }
 
 td {
-    padding : 3pt;
+    padding-left : 3pt;
+    padding-right : 3pt;
 }
 
 td.left { text-align: left; }
@@ -64,4 +64,51 @@ a.ui:hover {
 
 a.ui:active {
     color: white;
+}
+
+.menu{
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    padding-top:12pt;
+}
+.menu li{
+    display:inline;
+    padding-left:20pt;
+    padding-right:20pt;
+}
+.menu a{
+    display:inline-block;
+}
+
+a.ui3:link {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: none;
+}
+
+a.ui3:visited {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: none;
+}
+
+a.ui3:hover {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #999999;
+    text-decoration: none;
+}
+
+a.ui3:active {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    text-decoration: none;
 }

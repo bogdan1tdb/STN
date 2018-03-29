@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="LoginProcess" method="post">
-<table class="black">
+<table class="black" style="margin-top: 30pt;">
     <tr>
     <td style="padding-top: 30pt; padding-left: 30pt;">User:</td>
     <td class="left" style="padding-top: 30pt; padding-right: 30pt;"><input type="text" name="user" value="" size="35"></td>

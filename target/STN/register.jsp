@@ -9,7 +9,7 @@
 <body>
 
 <form name="register" action="RegisterProcess" method="post">
-<table class="black">
+<table class="black" style="margin-top: 30pt;">
     <tr>
         <td colspan="2" class="center" style="padding-top: 12pt">All fields are required!</td>
     </tr>
@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <td class="center" colspan="2" style="padding-top: 12pt">
-            <input type="checkbox" name="terms" value="1">I have read the site terms of use and rules page.<br>
+            <input type="checkbox" name="terms" value="1">I have read the site <a class="ui" href="terms.jsp"><b>Terms of service</b></a> and rules page.<br>
             <input type="checkbox" name="faq" value="1">I agree to read the FAQ before asking questions.
         </td>
     </tr>
