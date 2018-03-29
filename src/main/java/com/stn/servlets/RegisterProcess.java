@@ -19,12 +19,10 @@ import java.sql.SQLException;
 @WebServlet("/RegisterProcess")
 public class RegisterProcess extends HttpServlet {
 
-    private String url;
-    private String error = "";
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        url = "index.jsp";
+        String error ="";
+        String url = "index.jsp";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
@@ -59,10 +57,7 @@ public class RegisterProcess extends HttpServlet {
             preparedStatement.setString(2,password1);
             preparedStatement.setString(3,email);
             preparedStatement.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            out.println(e);
-            return ;
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             out.println(e);
             return ;
         } finally {
@@ -75,6 +70,7 @@ public class RegisterProcess extends HttpServlet {
                     out.println(e);
                 }
         }
+
         request.setAttribute("error", error);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
