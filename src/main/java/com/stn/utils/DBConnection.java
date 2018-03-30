@@ -8,10 +8,10 @@ public class DBConnection {
     private String dbPort;
 
     public DBConnection() {
-        this.dbHost = "johnny.heliohost.org";
-        this.dbName = "mad_stn";
-        this.dbUser = "mad_stnuser";
-        this.dbPassword = "super767&&";
+        this.dbHost = "mysql";
+        this.dbName = "stn_db";
+        this.dbUser = "user_stn";
+        this.dbPassword = "stnbaca123*";
         this.dbPort = "3306";
     }
 

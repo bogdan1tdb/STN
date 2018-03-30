@@ -14,10 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Arrays;
 
 @WebServlet("/RegisterProcess")
@@ -41,6 +38,7 @@ public class RegisterProcess extends HttpServlet {
 
         String encryptedPassword = "";
         byte[] salt = new byte[16];
+        Boolean queryResult = false;
 
         if(Validator.isEmpty(user, password1, password2, email, firstName, lastName)) {
             error = "You must fill all the requiered fields!";
@@ -61,28 +59,20 @@ public class RegisterProcess extends HttpServlet {
             PreparedStatement preparedStatement = null;
             Connection connection = null;
             DBConnection db = new DBConnection();
-            String query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
+            ResultSet rs = null;
+            String query = "SELECT 1 FROM users WHERE Username = ? OR Email = ?";
 
-            PasswordHelper passwordHelper = new PasswordHelper();
-            try {
-                passwordHelper.generateSalt();
-                salt = passwordHelper.getSalt();
-                encryptedPassword = passwordHelper.getPassword(password1);
-            } catch (NoSuchAlgorithmException e) {
-                out.println(e);
-            }
-
+            //Verificare daca username-ul sau email-ul se gaseste deja in baza de date
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, user);
-                preparedStatement.setString(2, encryptedPassword);
-                preparedStatement.setBytes(3, salt);
-                preparedStatement.setString(4, email);
-                preparedStatement.setString(5, firstName);
-                preparedStatement.setString(6, lastName);
-                preparedStatement.executeUpdate();
+                preparedStatement.setString(2, email);
+                rs = preparedStatement.executeQuery();
+                if (rs.next()) {
+                    queryResult = true;
+                }
             } catch (ClassNotFoundException | SQLException e) {
                 out.println(e);
                 return;
@@ -92,9 +82,55 @@ public class RegisterProcess extends HttpServlet {
                         preparedStatement.close();
                     if (connection != null)
                         connection.close();
+                    if (rs != null)
+                        rs.close();
                 } catch (SQLException e) {
                     out.println(e);
                 }
+            }
+
+            if(!queryResult) {
+                //Introducere utilizator in baza de date
+                query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
+
+                PasswordHelper passwordHelper = new PasswordHelper();
+                try {
+                    passwordHelper.generateSalt();
+                    salt = passwordHelper.getSalt();
+                    encryptedPassword = passwordHelper.getPassword(password1);
+                } catch (NoSuchAlgorithmException e) {
+                    out.println(e);
+                }
+
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
+                    preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, user);
+                    preparedStatement.setString(2, encryptedPassword);
+                    preparedStatement.setBytes(3, salt);
+                    preparedStatement.setString(4, email);
+                    preparedStatement.setString(5, firstName);
+                    preparedStatement.setString(6, lastName);
+                    preparedStatement.executeUpdate();
+                } catch (ClassNotFoundException | SQLException e) {
+                    out.println(e);
+                    return;
+                } finally {
+                    try {
+                        if (preparedStatement != null)
+                            preparedStatement.close();
+                        if (connection != null)
+                            connection.close();
+                    } catch (SQLException e) {
+                        out.println(e);
+                    }
+                }
+            }
+            else
+            {
+                error = "Username or email already exists!";
+                url = "register.jsp";
             }
         }
 
