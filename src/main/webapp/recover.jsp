@@ -3,10 +3,36 @@
 <html>
 <head>
     <%@ include file="structure/meta.jsp" %>
-    <title>Recover</title>
+    <title>Recover Password</title>
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
+<form action="RecoverProcess" method="post">
+    <table class="black" style="margin-top: 2%">
+        <tr>
+            <td><br/></td>
+        </tr>
+        <tr>
+            <td class="center">
+                Va rugam sa introduceti adresa de email care corespunde contului dumneavoastra.<br/>
+                Veti primi pe email-ul solicitat un link cu un cod unic.<br/>
+                Completati formularul primit pentru a va reseta cu succes parola!<br/>
+            </td>
+        </tr>
+        <tr>
+            <td class="center" style="padding-top: 10pt"><input type="text" name="email" value="" size="35"></td>
+        </tr>
+        <tr>
+            <td class="center">${error}</td>
+        </tr>
+        <tr>
+            <td class="center" style="padding-top: 8pt"><input name="recover" type="submit" id="Recover" value="Recover">
+        </tr>
+        <tr>
+            <td><br/></td>
+        </tr>
+    </table>
+</form>
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

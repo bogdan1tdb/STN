@@ -13,6 +13,12 @@ public class DBConnection {
         this.dbUser = "user_stn";
         this.dbPassword = "stnbaca123*";
         this.dbPort = "3306";
+
+       /* this.dbHost = "johnny.heliohost.org";
+        this.dbName = "mad_stn";
+        this.dbUser = "mad_stnuser";
+        this.dbPassword = "super767&&";
+        this.dbPort = "3306"; */
     }
 
     public String getHost() {

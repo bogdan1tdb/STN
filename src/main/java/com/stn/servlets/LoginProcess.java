@@ -25,7 +25,6 @@ public class LoginProcess extends HttpServlet {
         String url = "index.jsp";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
 
         String user = request.getParameter("user");
         String password = request.getParameter("password");

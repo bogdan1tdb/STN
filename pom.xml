@@ -4,7 +4,7 @@
   <groupId>com.baca.stn</groupId>
   <artifactId>STN</artifactId>
   <packaging>war</packaging>
-  <version>0.0.5</version>
+  <version>0.0.7</version>
   <name>STN Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -40,8 +40,8 @@
           <version>5.1.46</version>
       </dependency>
       <dependency>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>javax.mail</artifactId>
+          <groupId>javax.mail</groupId>
+          <artifactId>javax.mail-api</artifactId>
           <version>1.6.1</version>
       </dependency>
       <dependency>

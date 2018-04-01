@@ -129,7 +129,7 @@ public class RegisterProcess extends HttpServlet {
             }
             else
             {
-                error = "Username or email already exists!";
+                error = "Username or email already in use!";
                 url = "register.jsp";
             }
         }
