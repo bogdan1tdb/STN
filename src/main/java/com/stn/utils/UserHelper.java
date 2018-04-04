@@ -16,7 +16,7 @@ public class UserHelper {
         Connection connection = null;
         DBConnection db = new DBConnection();
 
-        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+        java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) + 3*3600*1000 );
         String query = "UPDATE users SET LastSeen = ? WHERE Username = ?";
 
         try {
