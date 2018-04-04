@@ -2,6 +2,7 @@ package com.stn.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
+//Se utilizeaza pentru a afla ip-ul utilizatorului care acceseaza site-ul
 public class IPHelper {
 
     private static final String[] IP_HEADER_CANDIDATES = {

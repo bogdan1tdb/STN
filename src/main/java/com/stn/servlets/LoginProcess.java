@@ -20,6 +20,7 @@ import java.sql.*;
 @WebServlet("/LoginProcess")
 public class LoginProcess extends HttpServlet {
 
+    //actualizare numar de incercari pentru login
     private void updateAttempts(String ip) {
 
         PreparedStatement preparedStatement = null;
@@ -33,11 +34,11 @@ public class LoginProcess extends HttpServlet {
             connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, ip);
-            affected = preparedStatement.executeUpdate();
-            if(affected == 0)
+            affected = preparedStatement.executeUpdate(); //affected = numarul de randuri care au fost actualizate
+            if(affected == 0) //daca nu exista deja ip-ul baza de date,il introducem noi
             {
                 long day = 24 * 60 * 60 * 1000;
-                java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime() + day);
+                java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime() + day); //ziua urmatoare din momentul in care am initializat date
                 query  = "INSERT INTO failed_logins (Ip,Attempts,ExpireDate) VALUES (?,?,?)";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, ip);
@@ -71,21 +72,21 @@ public class LoginProcess extends HttpServlet {
         String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
-        String dbPassword = "";
-        String encryptedPassword = "";
-        byte[] salt = null;
+        String dbPassword = ""; // parola din baza de date
+        String encryptedPassword = ""; // parola pe care o introducem si pe care o vom cripta
+        byte[] salt = null; //salt pentru parola
 
         if(user.isEmpty() || password.isEmpty()) {
             error = "Fill all the requiered spaces!";
             url = "login.jsp";
-        } else if(LoginHelper.getAttempts(request) > 9) {
+        } else if(LoginHelper.getAttempts(request) > 9) { // se verifica cate incercari pentru login mai avem
             error = "You are out of login attempts!";
             url = "login.jsp";
         } else {
             PreparedStatement preparedStatement = null;
             Connection connection = null;
             DBConnection db = new DBConnection();
-            String query = "SELECT Password, Salt FROM users WHERE Username = ?";
+            String query = "SELECT Password, Salt FROM users WHERE Username = ?"; // query care selecteaza parola pentru un user
             PasswordHelper passwordHelper = new PasswordHelper();
             ResultSet rs = null;
 
@@ -95,15 +96,15 @@ public class LoginProcess extends HttpServlet {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1,user);
                 rs = preparedStatement.executeQuery();
-                if (rs.next()) {
-                    dbPassword = rs.getString(1);
-                    salt = rs.getBytes(2);
+                if (rs.next()) { //daca am gasit user-ul in baza de date verificam si parola acum
+                    dbPassword = rs.getString(1); // parola (criptata) din baza de date
+                    salt = rs.getBytes(2); // salt-ul din baza de date
                     passwordHelper.setSalt(salt);
-                    encryptedPassword = passwordHelper.getPassword(password);
-                    if(encryptedPassword.equals(dbPassword)) {
-                        session.invalidate();
+                    encryptedPassword = passwordHelper.getPassword(password); // criptam parola pe care am introdus-o
+                    if(encryptedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
+                        session.invalidate(); // stergem sesiunea curenta
                         session=request.getSession(true);
-                        session.setAttribute("user", user);
+                        session.setAttribute("user", user); // setam sesiune pe user-ul curent
                     } else {
                         error = "Invalid username or password!";
                         url = "login.jsp";
@@ -132,6 +133,7 @@ public class LoginProcess extends HttpServlet {
             }
         }
 
+        //Redirectionare catre o anumita pagina (este data de string-ul url)
        request.setAttribute("error", error);
        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
        dispatcher.forward(request, response);

@@ -6,7 +6,7 @@ public class DBConnection {
     private String dbUser;
     private String dbPassword;
     private String dbPort;
-
+    //Se utilizeaza pentru construirea unui query
     public DBConnection() {
         this.dbHost = "mysql";
         this.dbName = "stn_db";

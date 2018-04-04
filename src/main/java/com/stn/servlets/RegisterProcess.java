@@ -24,7 +24,7 @@ public class RegisterProcess extends HttpServlet {
         String url = "index.jsp";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        //Setam toti parametrii pe care ii primim din form
         String user = request.getParameter("user");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
@@ -42,7 +42,7 @@ public class RegisterProcess extends HttpServlet {
             error = "You must fill all the requiered fields!";
             url = "register.jsp";
         }
-        else if(!Validator.isEmail(email)) {
+        else if(!Validator.isEmail(email)) { //verificare email daca este valid
             error = "Invalid email addres!";
             url = "register.jsp";
         }
@@ -50,7 +50,7 @@ public class RegisterProcess extends HttpServlet {
             error = "The passwords are not matching!";
             url = "register.jsp";
         }
-        else if(terms == null || faq == null ) {
+        else if(terms == null || faq == null ) { // verificare daca au fost bifate casutele cu terms si faq
             error = "You must agree to the conditions!";
             url = "register.jsp";
         } else {
@@ -87,7 +87,7 @@ public class RegisterProcess extends HttpServlet {
                 }
             }
 
-            if(!queryResult) {
+            if(!queryResult) { //daca nu avem rezultate,inseamna ca user-ul sau parola nu exista in baza de date
                 //Introducere utilizator in baza de date
                 query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
 
@@ -132,6 +132,7 @@ public class RegisterProcess extends HttpServlet {
             }
         }
 
+        //Redirectionare catre o anumita pagina (este data de string-ul url)
         request.setAttribute("error", error);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);

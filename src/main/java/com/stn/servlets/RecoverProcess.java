@@ -18,6 +18,7 @@ import java.sql.*;
 @WebServlet("/RecoverProcess")
 public class RecoverProcess extends HttpServlet {
 
+    // WIP! Nu trimite nimic,doar verifica daca avem un email valid
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String error ="";

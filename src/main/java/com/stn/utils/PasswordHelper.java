@@ -4,6 +4,47 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+//Clasa pentru hashingul datelor
+/*
+
+Cum se utilizeaza :
+
+! Nu se face hashing pana nu avem un salt setat !
+
+1. Se seteaza salt-ul (sau se genereaza)
+
+PasswordHelper passwordHelper = new PasswordHelper();
+passwordHelper.generateSalt();
+
+sau
+
+PasswordHelper passwordHelper = new PasswordHelper();
+passwordHelper.setSalt(salt); // salt-ul trebuie luat de undeva (baza de date,etc.)
+
+2. Se face hashing la cuvant (word)
+
+String hashedWord = passwordHelper.getPassword(word); // word -> cuvatul pe care vrem sa facem hashing (String)
+
+3. Se salveaza salt-ul undeva (In caz ca stim deja salt-ul,nu mai trebuie salvat)
+
+String hashedWordSalt = passwordHelper.getSalt();
+
+// Este foarte important sa stim salt-ul,acesta trebuie sa fie unic pentru fiecare cuvant
+// Procedeul nu este reversibil (chiar daca stim salt-ul)
+// Pentru a verifica daca doua hashuri sunt egale se repeta pasii de mai sus,doar ca la primul pas nu se genereaza un salt
+// ci se seteaza ca fiind saltul de la cuvantul deja criptat
+
+Ex (continuare)
+
+PasswordHelper passwordHelper = new PasswordHelper();
+passwordHelper.setSalt(hashedWordSalt);
+String hashedWord = passwordHelper.getPassword(word2);
+
+//Si verificam cu
+
+word.equals(word2);
+
+ */
 public class PasswordHelper {
 
     private byte[] salt;
