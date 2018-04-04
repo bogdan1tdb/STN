@@ -4,6 +4,7 @@ import com.stn.utils.DBConnection;
 import com.stn.utils.IPHelper;
 import com.stn.utils.PasswordHelper;
 
+import javax.print.DocFlavor;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,18 +49,19 @@ public class LoginProcess extends HttpServlet {
         PreparedStatement preparedStatement = null;
         Connection connection = null;
         DBConnection db = new DBConnection();
-        String query = "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=? " +
-                       "IF (SQL%ROWCOUNT = 0) " +
-                       "INSERT INTO failed_logins(Ip,Attempts,Expire_date) VALUES (?,?,?)";
+        String query  = "IF EXISTS (SELECT * FROM failed_logins WHERE Ip = ?) " +
+                        "  THEN UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip = ?" +
+                        "ELSE " +
+                        "  INSERT INTO failed_logins (Ip,Attempts,Expire_date) VALUES(?,?,?)";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, ip);
             preparedStatement.setString(2, ip);
-            preparedStatement.setInt(3, 0);
-            preparedStatement.setString(4, "0");
-            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(3, 1);
+            preparedStatement.setInt(4, 0);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -145,8 +147,8 @@ public class LoginProcess extends HttpServlet {
             }
         }
 
-        request.setAttribute("error", error);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+       // request.setAttribute("error", error);
+       // RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+       // dispatcher.forward(request, response);
     }
 }
