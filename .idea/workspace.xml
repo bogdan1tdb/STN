@@ -47,7 +47,7 @@
       <file leaf-file-name="IPServllet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/IPServllet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-62">
+            <state relative-caret-position="68">
               <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
             </state>
           </provider>
@@ -482,12 +482,12 @@
       <workItem from="1522587901583" duration="39000" />
       <workItem from="1522603594424" duration="249000" />
       <workItem from="1522641062670" duration="22000" />
-      <workItem from="1522832638826" duration="4241000" />
+      <workItem from="1522832638826" duration="4588000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66681000" />
+    <option name="totallyTimeSpent" value="67028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -514,8 +514,8 @@
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496875" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.51968503" visible="true" weight="0.18020834" />
-      <window_info active="true" id="Web" order="6" sideWeight="0.48031497" side_tool="true" visible="true" weight="0.18020834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.51968503" visible="true" weight="0.18020834" />
+      <window_info id="Web" order="6" sideWeight="0.48031497" side_tool="true" visible="true" weight="0.18020834" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -848,7 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/IPServllet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
+        <state relative-caret-position="68">
           <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
