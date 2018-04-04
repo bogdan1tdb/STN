@@ -147,8 +147,8 @@ public class LoginProcess extends HttpServlet {
             }
         }
 
-       // request.setAttribute("error", error);
-       // RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-       // dispatcher.forward(request, response);
+       request.setAttribute("error", error);
+       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+       dispatcher.forward(request, response);
     }
 }
