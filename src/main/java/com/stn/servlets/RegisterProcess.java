@@ -89,8 +89,7 @@ public class RegisterProcess extends HttpServlet {
 
             if(!queryResult) {
                 //Introducere utilizator in baza de date
-                java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-                query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName, JoinDate) VALUES (?,?,?,?,?,?,?)";
+                query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
 
                 PasswordHelper passwordHelper = new PasswordHelper();
                 try {
@@ -111,7 +110,6 @@ public class RegisterProcess extends HttpServlet {
                     preparedStatement.setString(4, email);
                     preparedStatement.setString(5, firstName);
                     preparedStatement.setString(6, lastName);
-                    preparedStatement.setTimestamp(7, date);
                     preparedStatement.executeUpdate();
                 } catch (ClassNotFoundException | SQLException e) {
                     out.println(e);

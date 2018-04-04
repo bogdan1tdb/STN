@@ -8,6 +8,10 @@
     Date date = new Date();
 %>
 
+<jsp:useBean id="t" class="com.stn.utils.UserHelper"/>
+
+${t.updateLastSeen(pageContext.request)}
+
 <table class="black" style="margin-top: 15pt; width: 38%;">
     <tr>
         <td class="left">Welcome, <%=session.getAttribute("user") %>!</td>
