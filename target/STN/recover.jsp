@@ -16,7 +16,7 @@
             <td class="center">
                 Va rugam sa introduceti adresa de email care corespunde contului dumneavoastra.<br/>
                 Veti primi pe email-ul solicitat un link cu un cod unic.<br/>
-                Completati formularul primit pentru a va reseta cu succes parola!<br/>
+                Completati formularul primit pentru a va reseta parola!<br/>
             </td>
         </tr>
         <tr>

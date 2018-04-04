@@ -1,6 +1,7 @@
 package com.stn.servlets;
 
 import com.stn.utils.DBConnection;
+import com.stn.utils.IPHelper;
 import com.stn.utils.PasswordHelper;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,39 @@ import java.util.Arrays;
 
 @WebServlet("/LoginProcess")
 public class LoginProcess extends HttpServlet {
+
+    private void updateAttempts(String ip) {
+
+        PreparedStatement preparedStatement = null;
+        Connection connection = null;
+        DBConnection db = new DBConnection();
+        String query = "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=? " +
+                       "IF (SQL%ROWCOUNT = 0) " +
+                       "INSERT INTO failed_logins(Ip,Attempts,Expire_date) VALUES (?,?,?)";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
+            preparedStatement.setString(1, ip);
+            preparedStatement.setString(2, ip);
+            preparedStatement.setInt(3, 0);
+            preparedStatement.setString(4, "0");
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return;
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -63,10 +97,12 @@ public class LoginProcess extends HttpServlet {
                     } else {
                         error = "Invalid username or password!";
                         url = "login.jsp";
+                        this.updateAttempts(IPHelper.getClientIpAddress(request));
                     }
                 } else {
                     error = "Invalid username or password!";
                     url = "login.jsp";
+                    this.updateAttempts(IPHelper.getClientIpAddress(request));
                 }
 
             } catch (ClassNotFoundException | SQLException | NoSuchAlgorithmException e) {
