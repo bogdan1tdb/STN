@@ -7,6 +7,7 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
+<jsp:useBean id="t" class="com.stn.utils.LoginHelper"/>
 <form action="LoginProcess" method="post">
 <table class="black" style="margin-top: 30pt;">
     <tr>
@@ -34,7 +35,7 @@
 
     <tr>
         <td colspan="2" class="center" style="padding-bottom: 25pt;">
-            <br/>You have 0 from 10 attemtps left for the login session.<br/>10 failed logins in a row will result in banning your current IP.
+            <br/>You have ${t.getAttempts(pageContext.request)} from 10 attemtps left for the login session.<br/>10 failed logins in a row will result in banning your current IP.
         </td>
     </tr>
 

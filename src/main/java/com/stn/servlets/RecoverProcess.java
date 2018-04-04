@@ -45,7 +45,6 @@ public class RecoverProcess extends HttpServlet {
                 preparedStatement.setString(1,email);
                 rs = preparedStatement.executeQuery();
                 if (rs.next()) {
-
                 }
                 error = "A validation email has been sent to your email address!";
             } catch (ClassNotFoundException | SQLException e) {
