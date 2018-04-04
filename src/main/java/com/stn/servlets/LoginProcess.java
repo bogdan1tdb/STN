@@ -49,20 +49,20 @@ public class LoginProcess extends HttpServlet {
         PreparedStatement preparedStatement = null;
         Connection connection = null;
         DBConnection db = new DBConnection();
-        String query  = "IF EXISTS (SELECT * FROM failed_logins WHERE Ip = ?) " +
-                        "  THEN UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip = ?" +
-                        "ELSE " +
-                        "  INSERT INTO failed_logins (Ip,Attempts,Expire_date) VALUES(?,?,?)";
+        String query  = "INSERT INTO failed_logins (Ip,Attempts,Expire_date)" +
+                        "SELECT ?,?,? FROM DUAL" +
+                        "WHERE NOT EXISTS(SELECT * FROM failed_logins WHERE Ip=?);" +
+                        "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=?;";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, ip);
-            preparedStatement.setString(2, ip);
-            preparedStatement.setString(3, ip);
-            preparedStatement.setInt(4, 1);
-            preparedStatement.setInt(5, 0);
+            preparedStatement.setInt(2, 0);
+            preparedStatement.setInt(3, 0);
+            preparedStatement.setString(4, ip);
+            preparedStatement.setString(5, ip);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

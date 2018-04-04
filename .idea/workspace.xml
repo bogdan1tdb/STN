@@ -35,8 +35,8 @@
       <file leaf-file-name="LoginProcess.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="64" column="43" lean-forward="true" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+            <state relative-caret-position="527">
+              <caret line="64" column="47" lean-forward="true" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,34 +47,16 @@
       <file leaf-file-name="DBConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="57">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
               <folding>
-                <element signature="e#614#615#0" expanded="true" />
-                <element signature="e#681#682#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#776#777#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#773#774#0" expanded="true" />
+                <element signature="e#806#807#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterProcess.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="113" column="61" lean-forward="true" selection-start-line="112" selection-start-column="62" selection-end-line="113" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PasswordHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/PasswordHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="46" lean-forward="true" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -508,15 +490,15 @@
       <workItem from="1522587901583" duration="39000" />
       <workItem from="1522603594424" duration="249000" />
       <workItem from="1522641062670" duration="22000" />
-      <workItem from="1522832638826" duration="7963000" />
+      <workItem from="1522832638826" duration="9852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70403000" />
+    <option name="totallyTimeSpent" value="72292000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -538,9 +520,9 @@
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496875" visible="true" weight="0.32946146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496875" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.51968503" visible="true" weight="0.18020834" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.51968503" visible="true" weight="0.18020834" />
       <window_info id="Web" order="6" sideWeight="0.48031497" side_tool="true" visible="true" weight="0.18020834" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
@@ -840,6 +822,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="113" column="61" lean-forward="true" selection-start-line="112" selection-start-column="62" selection-end-line="113" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/PasswordHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -849,30 +838,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        <state relative-caret-position="57">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding>
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#776#777#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="113" column="61" lean-forward="true" selection-start-line="112" selection-start-column="62" selection-end-line="113" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="64" column="43" lean-forward="true" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+        <state relative-caret-position="527">
+          <caret line="64" column="47" lean-forward="true" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
