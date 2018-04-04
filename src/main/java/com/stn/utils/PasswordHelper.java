@@ -32,17 +32,16 @@ String hashedWordSalt = passwordHelper.getSalt();
 // Este foarte important sa stim salt-ul,acesta trebuie sa fie unic pentru fiecare cuvant
 // Procedeul nu este reversibil (chiar daca stim salt-ul)
 // Pentru a verifica daca doua hashuri sunt egale se repeta pasii de mai sus,doar ca la primul pas nu se genereaza un salt
-// ci se seteaza ca fiind saltul de la cuvantul deja criptat
+// ci se seteaza ca fiind saltul de la cuvantul deja hashuit
 
 Ex (continuare)
 
-PasswordHelper passwordHelper = new PasswordHelper();
 passwordHelper.setSalt(hashedWordSalt);
-String hashedWord = passwordHelper.getPassword(word2);
+String hashedWord2 = passwordHelper.getPassword(word2);
 
 //Si verificam cu
 
-word.equals(word2);
+hashedWord.equals(hashedWord2);
 
  */
 public class PasswordHelper {
