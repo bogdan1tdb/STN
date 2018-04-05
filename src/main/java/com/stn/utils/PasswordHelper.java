@@ -27,7 +27,7 @@ String hashedWord = passwordHelper.getPassword(word); // word -> cuvatul pe care
 
 3. Se salveaza salt-ul undeva (In caz ca stim deja salt-ul,nu mai trebuie salvat)
 
-String hashedWordSalt = passwordHelper.getSalt();
+byte[] hashedWordSalt = passwordHelper.getSalt();
 
 // Este foarte important sa stim salt-ul,acesta trebuie sa fie unic pentru fiecare cuvant
 // Procedeul nu este reversibil (chiar daca stim salt-ul)
