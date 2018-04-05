@@ -10,6 +10,9 @@ import java.sql.*;
 
 public class SecurityHelper extends DBConnection{
 
+
+    private String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private SecureRandom rnd = new SecureRandom();
     private byte[] salt;
 
     private static final String[] IP_HEADER_CANDIDATES = {
@@ -25,8 +28,8 @@ public class SecurityHelper extends DBConnection{
             "HTTP_VIA",
             "REMOTE_ADDR" };
 
-    public String getPassword(String passwordToHash) {
-        String generatedPassword = null;
+    public String getHash(String passwordToHash) {
+        String generatedHash= null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-1");
             md.update(salt);
@@ -35,13 +38,20 @@ public class SecurityHelper extends DBConnection{
             for (byte aByte : bytes) {
                 sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
-            generatedPassword = sb.toString();
+            generatedHash = sb.toString();
         }
         catch (NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
-        return generatedPassword;
+        return generatedHash;
+    }
+
+    public String generateRandomString( int len ){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
     }
 
     public void generateSalt() throws NoSuchAlgorithmException {

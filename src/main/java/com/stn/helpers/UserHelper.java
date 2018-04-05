@@ -62,7 +62,7 @@ public class UserHelper extends DBConnection{
                 dbPassword = resultSet.getString(1); // parola (criptata) din baza de date
                 dbSalt = resultSet.getBytes(2); // salt-ul din baza de date
                 securityHelper.setSalt(dbSalt);
-                hashedPassword = securityHelper.getPassword(password); // criptam parola pe care am introdus-o
+                hashedPassword = securityHelper.getHash(password); // criptam parola pe care am introdus-o
                 if (hashedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
                     result = true;
                 }
@@ -104,6 +104,40 @@ public class UserHelper extends DBConnection{
         return available;
     }
 
+    public boolean checkEmail(String email) throws ClassNotFoundException, SQLException {
+        Boolean found = false;
+        query = "SELECT 1 FROM users WHERE Email = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                found = true;
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+        return found;
+    }
+
+    public static void LogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        String url = "index.jsp";
+        session.invalidate();
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request,response);
+    }
+
     public static void updateLastSeen(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String username = (String)session.getAttribute("user");
@@ -136,15 +170,4 @@ public class UserHelper extends DBConnection{
             }
         }
     }
-
-    public static void LogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-
-        String url = "index.jsp";
-        session.invalidate();
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request,response);
-    }
-
 }

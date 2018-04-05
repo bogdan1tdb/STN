@@ -1,8 +1,12 @@
 package com.stn.servlets;
 
-import com.stn.utils.DBConnection;
+import com.stn.helpers.RecoverHelper;
+import com.stn.helpers.SecurityHelper;
+import com.stn.helpers.UserHelper;
+import com.stn.utils.Tools;
 import com.stn.utils.Validator;
 
+import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 @WebServlet("/RecoverProcess")
 public class RecoverProcess extends HttpServlet {
 
-    // WIP! Nu trimite nimic,doar verifica daca avem un email valid
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String error ="";
@@ -25,41 +29,37 @@ public class RecoverProcess extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String email = request.getParameter("email");
+        String token;
+        String hashedToken;
+        String body;
+        String ip;
 
         if(email.isEmpty() ) {
             error = "Please insert an email address!";
         } else if(!Validator.isEmail(email)){
             error = "Invalid email addres!";
         } else {
-            PreparedStatement preparedStatement = null;
-            Connection connection = null;
-            DBConnection db = new DBConnection();
-            String query = "SELECT 1 FROM users WHERE Email = ?";
-            ResultSet rs = null;
+            UserHelper userHelper = new UserHelper();
+            Tools tools = new Tools();
+            SecurityHelper securityHelper = new SecurityHelper();
+            RecoverHelper recoverHelper = new RecoverHelper();
 
+            //WIP
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1,email);
-                rs = preparedStatement.executeQuery();
-                if (rs.next()) {
+                if(userHelper.checkEmail(email)) {
+                    token = securityHelper.generateRandomString(7);
+                    ip = securityHelper.getClientIpAddress(request);
+                    securityHelper.generateSalt();
+                    hashedToken = securityHelper.getHash(token);
+                    body = "Your reset link : <br/> " + request.getServerName() + "/reset.jsp?token=" + hashedToken + " <br/>" +
+                    "The request was made from this ip : " + ip;
+                    tools.sendEmail(email,"Password reset",body);
+                    recoverHelper.insertToken(email,hashedToken);
                 }
                 error = "A validation email has been sent to your email address!";
-            } catch (ClassNotFoundException | SQLException e) {
+            } catch (ClassNotFoundException | SQLException | MessagingException | NoSuchAlgorithmException e) {
                 out.println(e);
                 return;
-            } finally {
-                try {
-                    if (preparedStatement != null)
-                        preparedStatement.close();
-                    if (connection != null)
-                        connection.close();
-                    if (rs != null)
-                        rs.close();
-                } catch (SQLException e) {
-                    out.println(e);
-                }
             }
         }
 

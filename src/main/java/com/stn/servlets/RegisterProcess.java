@@ -65,7 +65,7 @@ public class RegisterProcess extends HttpServlet {
 
                     securityHelper.generateSalt();
                     salt = securityHelper.getSalt();
-                    hashedPassword = securityHelper.getPassword(password1);
+                    hashedPassword = securityHelper.getHash(password1);
 
                     userHelper.addUser(username,hashedPassword,salt,email,firstName,lastName);
 
