@@ -1,10 +1,7 @@
 package com.stn.servlets;
 
+import com.stn.helpers.SecurityHelper;
 import com.stn.helpers.UserHelper;
-import com.stn.utils.DBConnection;
-import com.stn.utils.IPHelper;
-import com.stn.utils.LoginHelper;
-import com.stn.utils.PasswordHelper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,47 +18,6 @@ import java.sql.*;
 @WebServlet("/LoginProcess")
 public class LoginProcess extends HttpServlet {
 
-    //actualizare numar de incercari pentru login
-    private void updateAttempts(String ip) {
-
-        PreparedStatement preparedStatement = null;
-        Connection connection = null;
-        DBConnection db = new DBConnection();
-        String query  = "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=?;";
-        Integer affected;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ip);
-            affected = preparedStatement.executeUpdate(); //affected = numarul de randuri care au fost actualizate
-            if(affected == 0) //daca nu exista deja ip-ul baza de date,il introducem noi
-            {
-                long day = 24 * 60 * 60 * 1000;
-                java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime() + day); //ziua urmatoare din momentul in care am initializat date
-                query  = "INSERT INTO failed_logins (Ip,Attempts,ExpireDate) VALUES (?,?,?)";
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, ip);
-                preparedStatement.setInt(2, 1);
-                preparedStatement.setTimestamp(3, date);
-                preparedStatement.executeUpdate();
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            return;
-        } finally {
-            try {
-                if (preparedStatement != null)
-                    preparedStatement.close();
-                if (connection != null)
-                    connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String error ="";
@@ -74,10 +30,13 @@ public class LoginProcess extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        SecurityHelper securityHelper = new SecurityHelper();
+        String ip = securityHelper.getClientIpAddress(request);
+
         if(username.isEmpty() || password.isEmpty()) {
             error = "Fill all the requiered spaces!";
             url = "login.jsp";
-        } else if(LoginHelper.getAttempts(request) > 9) { // se verifica cate incercari pentru login mai avem
+        } else if(securityHelper.getAttempts(request) > 9) { // se verifica cate incercari pentru login mai avem
             error = "You are out of login attempts!";
             url = "login.jsp";
         } else {
@@ -90,7 +49,7 @@ public class LoginProcess extends HttpServlet {
                 } else {
                     error = "Invalid username or password!";
                     url = "login.jsp";
-                    this.updateAttempts(IPHelper.getClientIpAddress(request));
+                    securityHelper.updateAttempts(ip);
                 }
             } catch (ClassNotFoundException | SQLException | NoSuchAlgorithmException e) {
                 out.println(e);

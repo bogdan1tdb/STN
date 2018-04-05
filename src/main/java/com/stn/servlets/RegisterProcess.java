@@ -1,7 +1,7 @@
 package com.stn.servlets;
 
 import com.stn.helpers.UserHelper;
-import com.stn.utils.PasswordHelper;
+import com.stn.helpers.SecurityHelper;
 import com.stn.utils.Validator;
 
 import javax.servlet.RequestDispatcher;
@@ -61,11 +61,11 @@ public class RegisterProcess extends HttpServlet {
                 if(userHelper.checkAvailability(username, email)) { //daca nu avem rezultate,inseamna ca user-ul sau parola nu exista in baza de date
                    //Introducere utilizator in baza de date
 
-                    PasswordHelper passwordHelper = new PasswordHelper();
+                    SecurityHelper securityHelper = new SecurityHelper();
 
-                    passwordHelper.generateSalt();
-                    salt = passwordHelper.getSalt();
-                    hashedPassword = passwordHelper.getPassword(password1);
+                    securityHelper.generateSalt();
+                    salt = securityHelper.getSalt();
+                    hashedPassword = securityHelper.getPassword(password1);
 
                     userHelper.addUser(username,hashedPassword,salt,email,firstName,lastName);
 

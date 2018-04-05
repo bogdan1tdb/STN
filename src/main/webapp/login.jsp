@@ -7,7 +7,7 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<jsp:useBean id="t" class="com.stn.utils.LoginHelper"/>
+<jsp:useBean id="t" class="com.stn.helpers.SecurityHelper"/>
 <form action="LoginProcess" method="post">
 <table class="black" style="margin-top: 30pt;">
     <tr>

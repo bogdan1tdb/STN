@@ -1,8 +1,6 @@
 package com.stn.helpers;
 
 import com.stn.utils.DBConnection;
-import com.stn.utils.IPHelper;
-import com.stn.utils.PasswordHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,7 +40,7 @@ public class UserHelper extends DBConnection{
     }
 
     public boolean authenticateUser(String username, String password) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException {
-        PasswordHelper passwordHelper = new PasswordHelper();
+        SecurityHelper securityHelper = new SecurityHelper();
         String dbPassword = ""; // parola din baza de date
         byte[] dbSalt; //salt pentru parola
         String hashedPassword = ""; // parola pe care o introducem si pe care o vom cripta
@@ -58,8 +56,8 @@ public class UserHelper extends DBConnection{
             if (resultSet.next()) { //daca am gasit user-ul in baza de date verificam si parola acum
                 dbPassword = resultSet.getString(1); // parola (criptata) din baza de date
                 dbSalt = resultSet.getBytes(2); // salt-ul din baza de date
-                passwordHelper.setSalt(dbSalt);
-                hashedPassword = passwordHelper.getPassword(password); // criptam parola pe care am introdus-o
+                securityHelper.setSalt(dbSalt);
+                hashedPassword = securityHelper.getPassword(password); // criptam parola pe care am introdus-o
                 if (hashedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
                     result = true;
                 }
