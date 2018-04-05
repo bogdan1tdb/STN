@@ -43,3 +43,34 @@ CREATE TABLE `users` (
   `JoinDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `LastSeen` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `failed_logins`
+--
+ALTER TABLE `failed_logins`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`Id`);
+  
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `failed_logins`
+--
+ALTER TABLE `failed_logins`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
