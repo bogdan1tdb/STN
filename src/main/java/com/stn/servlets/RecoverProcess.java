@@ -51,7 +51,7 @@ public class RecoverProcess extends HttpServlet {
                     ip = securityHelper.getClientIpAddress(request);
                     securityHelper.generateSalt();
                     hashedToken = securityHelper.getHash(token);
-                    body = "Your reset link : <br/> " + request.getServerName() + "/reset.jsp?token=" + hashedToken + " <br/>" +
+                    body = "Your reset link : <br/> " + request.getScheme() + "://" + request.getServerName() + "/reset.jsp?token=" + hashedToken + " <br/>" +
                     "The request was made from this ip : " + ip;
                     tools.sendEmail(email,"Password reset",body);
                     recoverHelper.insertToken(email,hashedToken);
