@@ -10,14 +10,7 @@
 
 <%@ include file="structure/statusbar.jsp" %>
 
-<%
-    String url = "index.jsp";
-    session.invalidate();
-
-    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-    dispatcher.forward(request, response);
-%>
-
+${user.LogOut(pageContext.request,pageContext.response)}
 
 <%@ include file="structure/footer.jsp" %>
 </body>

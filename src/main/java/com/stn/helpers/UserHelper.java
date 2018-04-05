@@ -2,8 +2,13 @@ package com.stn.helpers;
 
 import com.stn.utils.DBConnection;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -131,4 +136,15 @@ public class UserHelper extends DBConnection{
             }
         }
     }
+
+    public static void LogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        String url = "index.jsp";
+        session.invalidate();
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request,response);
+    }
+
 }
