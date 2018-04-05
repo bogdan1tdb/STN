@@ -138,20 +138,16 @@ public class UserHelper extends DBConnection{
         dispatcher.forward(request,response);
     }
 
-    public static void updateLastSeen(HttpServletRequest request) {
+    public void updateLastSeen(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String username = (String)session.getAttribute("user");
 
-        PreparedStatement preparedStatement = null;
-        Connection connection = null;
-        DBConnection db = new DBConnection();
-
         java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) + 3*3600*1000 );
-        String query = "UPDATE users SET LastSeen = ? WHERE Username = ?";
+        query = "UPDATE users SET LastSeen = ? WHERE Username = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setTimestamp(1, date);
             preparedStatement.setString(2, username);
@@ -168,6 +164,27 @@ public class UserHelper extends DBConnection{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void updatePassword(String email, String password, byte[] salt) throws ClassNotFoundException, SQLException {
+        query = "UPDATE users SET Password = ? , Salt = ? WHERE Email = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, password);
+            preparedStatement.setBytes(2, salt);
+            preparedStatement.setString(3, email);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
         }
     }
 }

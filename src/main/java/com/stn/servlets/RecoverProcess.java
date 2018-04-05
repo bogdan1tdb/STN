@@ -44,7 +44,6 @@ public class RecoverProcess extends HttpServlet {
             SecurityHelper securityHelper = new SecurityHelper();
             RecoverHelper recoverHelper = new RecoverHelper();
 
-            //WIP
             try {
                 if(userHelper.checkEmail(email)) {
                     token = securityHelper.generateRandomString(7);
@@ -53,8 +52,8 @@ public class RecoverProcess extends HttpServlet {
                     hashedToken = securityHelper.getHash(token);
                     body = "Your reset link : <br/> " + request.getScheme() + "://" + request.getServerName() + "/reset.jsp?token=" + hashedToken + " <br/>" +
                     "The request was made from this ip : " + ip;
-                    tools.sendEmail(email,"Password reset",body);
                     recoverHelper.insertToken(email,hashedToken);
+                    tools.sendEmail(email,"Password reset",body);
                 }
                 error = "A validation email has been sent to your email address!";
             } catch (ClassNotFoundException | SQLException | MessagingException | NoSuchAlgorithmException e) {
