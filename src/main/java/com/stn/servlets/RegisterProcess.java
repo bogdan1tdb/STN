@@ -1,6 +1,6 @@
 package com.stn.servlets;
 
-import com.stn.utils.DBConnection;
+import com.stn.helpers.UserHelper;
 import com.stn.utils.PasswordHelper;
 import com.stn.utils.Validator;
 
@@ -25,7 +25,7 @@ public class RegisterProcess extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         //Setam toti parametrii pe care ii primim din form
-        String user = request.getParameter("user");
+        String username = request.getParameter("user");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         String email = request.getParameter("email");
@@ -34,11 +34,10 @@ public class RegisterProcess extends HttpServlet {
         String terms = request.getParameter("terms");
         String faq= request.getParameter("faq");
 
-        String encryptedPassword = "";
-        byte[] salt = new byte[16];
-        Boolean queryResult = false;
+        String hashedPassword = "";
+        byte[] salt;
 
-        if(Validator.isEmpty(user, password1, password2, email, firstName, lastName)) {
+        if(Validator.isEmpty(username, password1, password2, email, firstName, lastName)) {
             error = "You must fill all the requiered fields!";
             url = "register.jsp";
         }
@@ -54,81 +53,31 @@ public class RegisterProcess extends HttpServlet {
             error = "You must agree to the conditions!";
             url = "register.jsp";
         } else {
-            PreparedStatement preparedStatement = null;
-            Connection connection = null;
-            DBConnection db = new DBConnection();
-            ResultSet rs = null;
-            String query = "SELECT 1 FROM users WHERE Username = ? OR Email = ?";
-
             //Verificare daca username-ul sau email-ul se gaseste deja in baza de date
+
+            UserHelper userHelper = new UserHelper();
+
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, user);
-                preparedStatement.setString(2, email);
-                rs = preparedStatement.executeQuery();
-                if (rs.next()) {
-                    queryResult = true;
-                }
-            } catch (ClassNotFoundException | SQLException e) {
-                out.println(e);
-                return;
-            } finally {
-                try {
-                    if (preparedStatement != null)
-                        preparedStatement.close();
-                    if (connection != null)
-                        connection.close();
-                    if (rs != null)
-                        rs.close();
-                } catch (SQLException e) {
-                    out.println(e);
-                }
-            }
+                if(userHelper.checkAvailability(username, email)) { //daca nu avem rezultate,inseamna ca user-ul sau parola nu exista in baza de date
+                   //Introducere utilizator in baza de date
 
-            if(!queryResult) { //daca nu avem rezultate,inseamna ca user-ul sau parola nu exista in baza de date
-                //Introducere utilizator in baza de date
-                query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
+                    PasswordHelper passwordHelper = new PasswordHelper();
 
-                PasswordHelper passwordHelper = new PasswordHelper();
-                try {
                     passwordHelper.generateSalt();
                     salt = passwordHelper.getSalt();
-                    encryptedPassword = passwordHelper.getPassword(password1);
-                } catch (NoSuchAlgorithmException e) {
-                    out.println(e);
-                }
+                    hashedPassword = passwordHelper.getPassword(password1);
 
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
-                    preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, user);
-                    preparedStatement.setString(2, encryptedPassword);
-                    preparedStatement.setBytes(3, salt);
-                    preparedStatement.setString(4, email);
-                    preparedStatement.setString(5, firstName);
-                    preparedStatement.setString(6, lastName);
-                    preparedStatement.executeUpdate();
-                } catch (ClassNotFoundException | SQLException e) {
-                    out.println(e);
-                    return;
-                } finally {
-                    try {
-                        if (preparedStatement != null)
-                            preparedStatement.close();
-                        if (connection != null)
-                            connection.close();
-                    } catch (SQLException e) {
-                        out.println(e);
-                    }
+                    userHelper.addUser(username,hashedPassword,salt,email,firstName,lastName);
+
                 }
-            }
-            else
-            {
-                error = "Username or email already in use!";
-                url = "register.jsp";
+                else
+                {
+                    error = "Username or email already in use!";
+                    url = "register.jsp";
+                }
+            } catch (ClassNotFoundException | SQLException | NoSuchAlgorithmException e) {
+                out.println(e);
+                return;
             }
         }
 

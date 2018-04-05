@@ -1,7 +1,6 @@
 package com.stn.servlets;
 
 import com.stn.utils.DBConnection;
-import com.stn.utils.PasswordHelper;
 import com.stn.utils.Validator;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 @WebServlet("/RecoverProcess")

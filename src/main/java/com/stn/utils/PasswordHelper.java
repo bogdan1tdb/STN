@@ -48,7 +48,7 @@ public class PasswordHelper {
 
     private byte[] salt;
 
-    public String getPassword(String passwordToHash) throws NoSuchAlgorithmException
+    public String getPassword(String passwordToHash)
     {
         String generatedPassword = null;
         try {

@@ -1,5 +1,6 @@
 package com.stn.servlets;
 
+import com.stn.helpers.UserHelper;
 import com.stn.utils.DBConnection;
 import com.stn.utils.IPHelper;
 import com.stn.utils.LoginHelper;
@@ -68,68 +69,32 @@ public class LoginProcess extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String user = request.getParameter("user");
+        String username = request.getParameter("user");
         String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
-        String dbPassword = ""; // parola din baza de date
-        String encryptedPassword = ""; // parola pe care o introducem si pe care o vom cripta
-        byte[] salt = null; //salt pentru parola
 
-        if(user.isEmpty() || password.isEmpty()) {
+        if(username.isEmpty() || password.isEmpty()) {
             error = "Fill all the requiered spaces!";
             url = "login.jsp";
         } else if(LoginHelper.getAttempts(request) > 9) { // se verifica cate incercari pentru login mai avem
             error = "You are out of login attempts!";
             url = "login.jsp";
         } else {
-            PreparedStatement preparedStatement = null;
-            Connection connection = null;
-            DBConnection db = new DBConnection();
-            String query = "SELECT Password, Salt FROM users WHERE Username = ?"; // query care selecteaza parola pentru un user
-            PasswordHelper passwordHelper = new PasswordHelper();
-            ResultSet rs = null;
-
+            UserHelper userHelper = new UserHelper();
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(db.getHost(), db.getUser(), db.getPassword());
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1,user);
-                rs = preparedStatement.executeQuery();
-                if (rs.next()) { //daca am gasit user-ul in baza de date verificam si parola acum
-                    dbPassword = rs.getString(1); // parola (criptata) din baza de date
-                    salt = rs.getBytes(2); // salt-ul din baza de date
-                    passwordHelper.setSalt(salt);
-                    encryptedPassword = passwordHelper.getPassword(password); // criptam parola pe care am introdus-o
-                    if(encryptedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
-                        session.invalidate(); // stergem sesiunea curenta
-                        session=request.getSession(true);
-                        session.setAttribute("user", user); // setam sesiune pe user-ul curent
-                    } else {
-                        error = "Invalid username or password!";
-                        url = "login.jsp";
-                        this.updateAttempts(IPHelper.getClientIpAddress(request));
-                    }
+                if(userHelper.authenticateUser(username, password)) {
+                    session.invalidate(); // stergem sesiunea curenta
+                    session=request.getSession(true);
+                    session.setAttribute("user", username); // setam sesiune pe user-ul curent
                 } else {
                     error = "Invalid username or password!";
                     url = "login.jsp";
                     this.updateAttempts(IPHelper.getClientIpAddress(request));
                 }
-
             } catch (ClassNotFoundException | SQLException | NoSuchAlgorithmException e) {
                 out.println(e);
                 return;
-            } finally {
-                try {
-                    if (preparedStatement != null)
-                        preparedStatement.close();
-                    if (connection != null)
-                        connection.close();
-                    if (rs != null)
-                        rs.close();
-                } catch (SQLException e) {
-                    out.println(e);
-                }
             }
         }
 

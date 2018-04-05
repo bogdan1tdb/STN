@@ -7,12 +7,12 @@
           <element id="module-output" name="STN" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.1" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" />
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
-          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.6.1" />
-          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: org.apache.maven.plugins:maven-war-plugin:3.2.0" />
           <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-api:3.0" />
           <element id="library" level="project" name="Maven: org.apache.maven:maven-model:3.0" />

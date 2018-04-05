@@ -8,7 +8,7 @@
     Date date = new Date();
 %>
 
-<jsp:useBean id="t" class="com.stn.utils.UserHelper"/>
+<jsp:useBean id="t" class="com.stn.helpers.UserHelper"/>
 
 ${t.updateLastSeen(pageContext.request)}
 
