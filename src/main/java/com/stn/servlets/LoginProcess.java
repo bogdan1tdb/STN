@@ -3,7 +3,6 @@ package com.stn.servlets;
 import com.stn.helpers.SecurityHelper;
 import com.stn.helpers.UserHelper;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,8 +57,7 @@ public class LoginProcess extends HttpServlet {
         }
 
         //Redirectionare catre o anumita pagina (este data de string-ul url)
-       request.setAttribute("error", error);
-       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-       dispatcher.forward(request, response);
+        session.setAttribute("error", error);
+        response.sendRedirect(url);
     }
 }

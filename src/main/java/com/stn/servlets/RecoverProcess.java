@@ -7,12 +7,12 @@ import com.stn.utils.Tools;
 import com.stn.utils.Validator;
 
 import javax.mail.MessagingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
@@ -22,6 +22,8 @@ import java.sql.*;
 public class RecoverProcess extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
 
         String error ="";
         String url = "recover.jsp";
@@ -66,13 +68,12 @@ public class RecoverProcess extends HttpServlet {
         }
 
         if(error.equals("A validation email has been sent to your email address!")) {
-            request.setAttribute("error","<b style='color: green; display: inline'>"+error+"</b>");
+            session.setAttribute("error","<b style='color: green; display: inline'>"+error+"</b>");
         }
         else {
-            request.setAttribute("error","<b style='color: red; display: inline'>"+error+"</b>");
+            session.setAttribute("error","<b style='color: red; display: inline'>"+error+"</b>");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
 
+        response.sendRedirect(url);
     }
 }

@@ -41,7 +41,7 @@
                 <td style="padding-right: 30pt; padding-top: 8pt"><input type="password" name="password2" value="" size="35"></td>
             </tr>
             <tr>
-                <td class="center" colspan="2"><b style="color: red; display: inline">${error}</b></td>
+                <td class="center" colspan="2"><b style="color: red; display: inline">${sessionScope.error}</b></td>
             </tr>
             <tr>
                 <td colspan="2" class="center" style="padding-top: 20pt"><input name="ResetPassword" type="submit" value="Reset Password">
@@ -54,6 +54,8 @@
         </table>
     </form>
 </c:if>
+
+<c:remove var="error" scope="session" />
 
 <%@ include file="structure/footer.jsp" %>
 

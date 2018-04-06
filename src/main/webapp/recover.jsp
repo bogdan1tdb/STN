@@ -23,7 +23,7 @@
             <td class="center" style="padding-top: 10pt"><input type="text" name="email" value="" size="35"></td>
         </tr>
         <tr>
-            <td class="center">${error}</td>
+            <td class="center">${sessionScope.error}</td>
         </tr>
         <tr>
             <td class="center" style="padding-top: 8pt"><input name="recover" type="submit" id="Recover" value="Recover">
@@ -33,6 +33,9 @@
         </tr>
     </table>
 </form>
+
+<c:remove var="error" scope="session" />
+
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

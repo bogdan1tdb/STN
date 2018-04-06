@@ -30,7 +30,7 @@
     </tr>
 
     <tr>
-        <td colspan="2" class="center"><b style="color: red; display: inline">${error}</b></td>
+        <td colspan="2" class="center"><b style="color: red; display: inline">${sessionScope.error}</b></td>
     </tr>
 
     <tr>
@@ -47,6 +47,9 @@
     </tr>
 </table>
 </form>
+
+<c:remove var="error" scope="session" />
+
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>
