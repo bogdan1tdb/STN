@@ -4,15 +4,12 @@ import com.stn.utils.DBConnection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UserHelper extends DBConnection{
@@ -188,12 +185,13 @@ public class UserHelper extends DBConnection{
         }
     }
 
-    public boolean verifyAuthentication(HttpServletRequest request) {
-        HttpSession session = request.getSession(true);
-        if(request.getSession(false).getAttribute("user") != null) {
-            return true;
-        } else {
-            return  false;
+    public void verifyAuthentication(HttpServletRequest request,HttpServletResponse response) {
+        if(request.getSession().getAttribute("user") == null) {
+            try {
+                response.sendRedirect("login.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -3,24 +3,20 @@
 <jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
 <jsp:useBean id="tool" class="com.stn.utils.Tools"/>
 
-
-<c:if test="${user.verifyAuthentication(pageContext.request) == false}">
-    <c:redirect url = "login.jsp"/>
-</c:if>
+${user.verifyAuthentication(pageContext.request,pageContext.response)}
 ${user.updateLastSeen(pageContext.request)}
 
 <table class="black" style="margin-top: 15pt; width: 38%;">
     <tr>
-        <td class="left">Welcome, ${sessionScope.user}!</td>
-        <td class="right">Userclass: WIP
-            &nbsp&nbsp&nbsp <p style="color: #387FA8; display : inline">Invites:</p>
-            <a class="ui" href="index.jsp">0</a>
+        <td class="left">Welcome, <b>${sessionScope.user}</b>!</td>
+        <td class="right">
+            <p style="color: #387FA8; display : inline">Invites:</p> <a class="ui" href="index.jsp">0</a>
         </td>
     </tr>
     <tr>
         <td class="left"></td>
         <td class="right"><i class="material-icons" style="font-size: 10px">schedule&nbsp</i> ${tool.getDate()} &nbsp&nbsp
-            <a class="ui" href="index.jsp">[Settings]</a>&nbsp&nbsp
+            <a class="ui" href="#">[Settings]</a>&nbsp&nbsp
             <a class="ui" href="logout.jsp">[Logout]</a></td>
     </tr>
 </table>
