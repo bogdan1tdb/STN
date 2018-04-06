@@ -10,7 +10,6 @@ import java.sql.*;
 
 public class SecurityHelper extends DBConnection{
 
-
     private String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private SecureRandom rnd = new SecureRandom();
     private byte[] salt;
@@ -47,9 +46,9 @@ public class SecurityHelper extends DBConnection{
         return generatedHash;
     }
 
-    public String generateRandomString( int len ){
-        StringBuilder sb = new StringBuilder( len );
-        for( int i = 0; i < len; i++ )
+    public String generateRandomString(int len){
+        StringBuilder sb = new StringBuilder(len);
+        for(int i = 0; i < len; i++ )
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }

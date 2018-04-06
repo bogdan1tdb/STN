@@ -33,6 +33,7 @@ public class RecoverProcess extends HttpServlet {
         String hashedToken;
         String body;
         String ip;
+        String resetUrl;
 
         if(email.isEmpty() ) {
             error = "Please insert an email address!";
@@ -50,8 +51,10 @@ public class RecoverProcess extends HttpServlet {
                     ip = securityHelper.getClientIpAddress(request);
                     securityHelper.generateSalt();
                     hashedToken = securityHelper.getHash(token);
-                    body = "Your reset link : <br/> " + request.getScheme() + "://" + request.getServerName() + "/reset.jsp?token=" + hashedToken + " <br/>" +
-                    "The request was made from this ip : " + ip;
+                    resetUrl = request.getScheme() + "://" + request.getServerName() + "/reset.jsp?token=" + hashedToken;
+                    body = "Your reset link : <br/> " + "<a href='" + resetUrl + "'>" + resetUrl + "</a>" + " <br/>" +
+                    "The request was made from following IP : " + ip + "<br/>" +
+                    "If this wasn't you,report this message to the website administrator!";
                     recoverHelper.insertToken(email,hashedToken);
                     tools.sendEmail(email,"Password reset",body);
                 }

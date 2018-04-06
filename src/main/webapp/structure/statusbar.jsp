@@ -3,6 +3,10 @@
 <jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
 <jsp:useBean id="tool" class="com.stn.utils.Tools"/>
 
+
+<c:if test="${user.verifyAuthentication(pageContext.request) == false}">
+    <c:redirect url = "login.jsp"/>
+</c:if>
 ${user.updateLastSeen(pageContext.request)}
 
 <table class="black" style="margin-top: 15pt; width: 38%;">
@@ -23,27 +27,27 @@ ${user.updateLastSeen(pageContext.request)}
 
 <ul class="menu">
     <li>
-        <a class="ui3" href="../index.php">Home</a>
+        <a class="ui3" href="#">Home</a>
     </li>
     <li>
-        <a class="ui3" href="../browse.php">Files</a>
+        <a class="ui3" href="#">Files</a>
     </li>
     <li>
-        <a class="ui3" href="../add.php">Add</a>
+        <a class="ui3" href="#">Add</a>
     </li>
     <li>
-        <a class="ui3" href="../requests.php">Requests</a>
+        <a class="ui3" href="#">Requests</a>
     </li>
     <li>
-        <a class="ui3" href="../forums.php">Forums</a>
+        <a class="ui3" href="#">Forums</a>
     </li>
     <li>
-        <a class="ui3" href="../chat.php">IRC</a>
+        <a class="ui3" href="#">IRC</a>
     </li>
     <li>
-        <a class="ui3" href="../top10.php">Top 10</a>
+        <a class="ui3" href="#">Top 10</a>
     </li>
     <li>
-        <a class="ui3" href="../wiki.php">Wiki</a>
+        <a class="ui3" href="#">Wiki</a>
     </li>
 </ul>

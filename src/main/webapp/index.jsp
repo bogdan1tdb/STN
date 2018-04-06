@@ -7,9 +7,7 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<%
-    response.sendRedirect("home.jsp");
-%>
+<c:redirect url = "home.jsp"/>
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

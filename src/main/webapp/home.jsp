@@ -7,11 +7,6 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<%
-    if(session.getAttribute("user") == null) {
-        response.sendRedirect("login.jsp");
-    }
-%>
 <%@ include file="structure/statusbar.jsp" %>
 
 

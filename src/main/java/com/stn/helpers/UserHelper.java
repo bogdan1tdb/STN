@@ -187,4 +187,14 @@ public class UserHelper extends DBConnection{
                 resultSet.close();
         }
     }
+
+    public boolean verifyAuthentication(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        if(request.getSession(false).getAttribute("user") != null) {
+            return true;
+        } else {
+            return  false;
+        }
+    }
+
 }

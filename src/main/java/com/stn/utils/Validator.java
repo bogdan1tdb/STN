@@ -21,4 +21,12 @@ public class Validator {
         }
         return false;
     }
+
+    public static boolean between (String word, int min, int max) {
+        if(word.length() < min || word.length() > max) {
+            return false;
+        } else {
+            return  true;
+        }
+    }
 }
