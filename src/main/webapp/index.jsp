@@ -3,11 +3,13 @@
 <html>
 <head>
     <%@ include file="structure/meta.jsp" %>
-    <title>Index</title>
+    <title>Home</title>
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<c:redirect url = "home.jsp"/>
+<%@ include file="structure/statusbar.jsp" %>
+
+
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>
