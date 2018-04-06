@@ -51,7 +51,7 @@ public class RecoverProcess extends HttpServlet {
                     ip = securityHelper.getClientIpAddress(request);
                     securityHelper.generateSalt();
                     hashedToken = securityHelper.getHash(token);
-                    resetUrl = request.getScheme() + "://" + request.getServerName() + "/reset.jsp?token=" + hashedToken;
+                    resetUrl = request.getScheme() + "://" + request.getServerName() + request.getContextPath() + "/reset.jsp?token=" + hashedToken;
                     body = "Your reset link : <br/> " + "<a href='" + resetUrl + "'>" + resetUrl + "</a>" + " <br/>" +
                     "The request was made from following IP : " + ip + "<br/>" +
                     "If this wasn't you,report this message to the website administrator!";
