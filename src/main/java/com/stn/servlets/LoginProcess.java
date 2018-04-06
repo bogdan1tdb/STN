@@ -26,6 +26,7 @@ public class LoginProcess extends HttpServlet {
 
         String username = request.getParameter("user");
         String password = request.getParameter("password");
+        String rememberMe = request.getParameter("remember_me");
 
         HttpSession session = request.getSession();
 
@@ -45,6 +46,9 @@ public class LoginProcess extends HttpServlet {
                     session.invalidate(); // stergem sesiunea curenta
                     session=request.getSession(true);
                     session.setAttribute("user", username); // setam sesiune pe user-ul curent
+                    if(rememberMe != null) {
+                        session.setMaxInactiveInterval(-1);
+                    }
                 } else {
                     error = "Invalid username or password!";
                     url = "login.jsp";
