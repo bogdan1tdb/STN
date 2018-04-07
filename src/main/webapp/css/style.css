@@ -43,6 +43,11 @@ td.left { text-align: left; }
 td.center { text-align: center; }
 td.right { text-align: right; }
 
+td.row {
+    padding: 5pt;
+    background-color: #1d1d1d;
+}
+
 p {
     text-align: center;
 }
@@ -82,7 +87,7 @@ a.ui:active {
     display:inline-block;
 }
 
-a.ui3:link {
+a.ui2:link {
     font-size: 9pt;
     font-weight: bold;
     font-variant: small-caps;
@@ -90,7 +95,7 @@ a.ui3:link {
     text-decoration: none;
 }
 
-a.ui3:visited {
+a.ui2:visited {
     font-size: 9pt;
     font-weight: bold;
     font-variant: small-caps;
@@ -98,7 +103,7 @@ a.ui3:visited {
     text-decoration: none;
 }
 
-a.ui3:hover {
+a.ui2:hover {
     font-size: 9pt;
     font-weight: bold;
     font-variant: small-caps;
@@ -106,9 +111,40 @@ a.ui3:hover {
     text-decoration: none;
 }
 
-a.ui3:active {
+a.ui2:active {
     font-size: 9pt;
     font-weight: bold;
     font-variant: small-caps;
     text-decoration: none;
+}
+
+a.ui3:link {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: line-through;
+}
+
+a.ui3:visited {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: line-through;
+}
+
+a.ui3:hover {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #999999;
+    text-decoration: line-through;
+}
+
+a.ui3:active {
+    font-size: 9pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    text-decoration: line-through;
 }

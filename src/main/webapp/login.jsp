@@ -22,7 +22,7 @@
 
     <tr>
         <td></td>
-        <td class="left"><input name="remember_me" type="checkbox" value="1">Remember Me</td>
+        <td class="left"><input name="remember_me" type="checkbox" value="1">Remember Me (soon)</td>
     </tr>
 
     <tr>

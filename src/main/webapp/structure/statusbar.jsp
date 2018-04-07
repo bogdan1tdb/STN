@@ -23,7 +23,7 @@ ${user.updateLastSeen(pageContext.request)}
 
 <ul class="menu">
     <li>
-        <a class="ui3" href="#">Home</a>
+        <a class="ui2" href="index.jsp">Home</a>
     </li>
     <li>
         <a class="ui3" href="#">Files</a>
@@ -44,6 +44,6 @@ ${user.updateLastSeen(pageContext.request)}
         <a class="ui3" href="#">Top 10</a>
     </li>
     <li>
-        <a class="ui3" href="#">Wiki</a>
+        <a class="ui2" href="wiki.jsp">Wiki</a>
     </li>
 </ul>
