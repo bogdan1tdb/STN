@@ -46,8 +46,6 @@ CREATE TABLE `password_reset` (
   `ExpireDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
 -- Table structure for table `users`
 --
