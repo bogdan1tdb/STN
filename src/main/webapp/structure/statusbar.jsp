@@ -6,7 +6,7 @@
 ${user.verifyAuthentication(pageContext.request,pageContext.response)}
 ${user.updateLastSeen(pageContext.request)}
 
-<table class="black" style="margin-top: 15pt; width: 38%;">
+<table class="black" style="margin-top: 10pt; width: 37.5vw;">
     <tr>
         <td class="left">Welcome, <b>${sessionScope.user}</b>!</td>
         <td class="right">
@@ -21,29 +21,15 @@ ${user.updateLastSeen(pageContext.request)}
     </tr>
 </table>
 
-<ul class="menu">
-    <li>
-        <a class="ui2" href="index.jsp">Home</a>
-    </li>
-    <li>
+
+<table class="menu">
+    <tr>
+     <td class="center"><a class="ui2" href="index.jsp">Home</a>
         <a class="ui3" href="#">Files</a>
-    </li>
-    <li>
         <a class="ui3" href="#">Add</a>
-    </li>
-    <li>
         <a class="ui3" href="#">Requests</a>
-    </li>
-    <li>
         <a class="ui3" href="#">Forums</a>
-    </li>
-    <li>
-        <a class="ui3" href="#">IRC</a>
-    </li>
-    <li>
         <a class="ui3" href="#">Top 10</a>
-    </li>
-    <li>
-        <a class="ui2" href="wiki.jsp">Wiki</a>
-    </li>
-</ul>
+        <a class="ui2" href="wiki.jsp">Wiki</a></td>
+    </tr>
+</table>
