@@ -6,7 +6,7 @@
 ${user.verifyAuthentication(pageContext.request,pageContext.response)}
 ${user.updateLastSeen(pageContext.request)}
 
-<table class="black" style="margin-top: 10pt; width: 37.5vw;">
+<table class="black" style="margin-top: 10pt; width: 550pt">
     <tr>
         <td class="left">Welcome, <b>${sessionScope.user}</b>!</td>
         <td class="right">
@@ -29,6 +29,7 @@ ${user.updateLastSeen(pageContext.request)}
         <a class="ui3" href="#">Add</a>
         <a class="ui3" href="#">Requests</a>
         <a class="ui3" href="#">Forums</a>
+        <a class="ui3" href="#">IRC</a>
         <a class="ui3" href="#">Top 10</a>
         <a class="ui2" href="wiki.jsp">Wiki</a></td>
     </tr>
