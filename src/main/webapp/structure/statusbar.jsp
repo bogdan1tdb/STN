@@ -6,7 +6,7 @@
 ${user.verifyAuthentication(pageContext.request,pageContext.response)}
 ${user.updateLastSeen(pageContext.request)}
 
-<table class="black" style="margin-top: 5pt; width: 550pt">
+<table class="black" style="margin-top: 5pt; width: 570pt">
     <tr>
         <td class="left">Welcome, <b>${sessionScope.user}</b>!</td>
         <td class="right">

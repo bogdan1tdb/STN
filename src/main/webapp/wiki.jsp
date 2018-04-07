@@ -10,7 +10,7 @@
 <%@ include file="structure/statusbar.jsp" %>
 
 
-<table class="black" style="margin-top: 8pt; width: 550pt">
+<table class="black" style="margin-top: 8pt; width: 570pt">
     <tr>
         <td><br/>
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 75%; text-align: left; border: solid 1px #62635f'>
