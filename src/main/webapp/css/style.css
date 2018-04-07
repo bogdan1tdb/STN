@@ -35,7 +35,7 @@ table.black {
 }
 
 table.menu {
-    margin-top: 10pt;
+    margin-top: 5pt;
     width: 550pt;
     margin-right: auto ;
     margin-left: auto ;
@@ -104,7 +104,7 @@ a.ui2:hover {
     font-weight: bold;
     font-variant: small-caps;
     color: #999999;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a.ui2:active {
