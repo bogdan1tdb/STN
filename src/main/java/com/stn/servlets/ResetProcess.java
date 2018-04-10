@@ -18,6 +18,11 @@ import java.sql.SQLException;
 
 @WebServlet("/ResetProcess")
 public class ResetProcess extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("reset.jsp");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();

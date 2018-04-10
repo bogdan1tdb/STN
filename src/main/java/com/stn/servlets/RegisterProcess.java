@@ -18,6 +18,10 @@ import java.sql.*;
 @WebServlet("/RegisterProcess")
 public class RegisterProcess extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("register.jsp");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();

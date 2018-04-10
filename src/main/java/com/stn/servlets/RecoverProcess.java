@@ -21,6 +21,10 @@ import java.sql.*;
 @WebServlet("/RecoverProcess")
 public class RecoverProcess extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("recover.jsp");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();

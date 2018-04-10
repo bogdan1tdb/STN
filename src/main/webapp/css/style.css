@@ -79,8 +79,8 @@ a.ui:active {
 }
 
 table.menu a {
-    padding-left: 20pt;
-    padding-right: 20pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
 }
 
 a.ui2:link {
