@@ -3,14 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 05, 2018 at 11:49 AM
--- Server version: 5.7.19
+-- Generation Time: Apr 11, 2018 at 10:19 AM
+-- Server version: 5.7.20
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+03:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,6 +35,8 @@ CREATE TABLE `failed_logins` (
   `ExpireDate` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `password_reset`
 --
@@ -45,6 +47,8 @@ CREATE TABLE `password_reset` (
   `Email` varchar(30) NOT NULL,
   `ExpireDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -59,7 +63,8 @@ CREATE TABLE `users` (
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `JoinDate` datetime DEFAULT CURRENT_TIMESTAMP,
-  `LastSeen` datetime DEFAULT CURRENT_TIMESTAMP
+  `LastSeen` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Class` int(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
