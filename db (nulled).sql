@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 11, 2018 at 10:19 AM
+-- Generation Time: Apr 11, 2018 at 01:22 PM
 -- Server version: 5.7.20
 -- PHP Version: 7.1.8
 
@@ -64,7 +64,9 @@ CREATE TABLE `users` (
   `LastName` varchar(30) NOT NULL,
   `JoinDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `LastSeen` datetime DEFAULT CURRENT_TIMESTAMP,
-  `Class` int(2) NOT NULL DEFAULT '1'
+  `Class` int(2) NOT NULL DEFAULT '1',
+  `LoginToken` varchar(28) NOT NULL,
+  `Ip` varchar(18) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
