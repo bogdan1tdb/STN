@@ -7,6 +7,8 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
+<%@ include file="structure/beans.jsp" %>
+${user.verifyAuthentication(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
 

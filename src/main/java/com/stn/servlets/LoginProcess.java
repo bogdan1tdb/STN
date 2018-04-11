@@ -31,6 +31,7 @@ public class LoginProcess extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("password");
         String rememberMe = request.getParameter("remember_me");
+        int userId ;
 
         HttpSession session = request.getSession();
 
@@ -46,10 +47,10 @@ public class LoginProcess extends HttpServlet {
         } else {
             UserHelper userHelper = new UserHelper();
             try {
-                if(userHelper.authenticateUser(username, password)) {
+                if( ( userId = userHelper.authenticateUser(username, password) ) > 0 ) {
                     session.invalidate(); // stergem sesiunea curenta
                     session=request.getSession(true);
-                    session.setAttribute("user", username); // setam sesiune pe user-ul curent
+                    session.setAttribute("userId", userId); // setam sesiune pe user-ul curent
                     if(rememberMe != null) {
                         session.setMaxInactiveInterval(-1);
                     }

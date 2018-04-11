@@ -7,7 +7,8 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-<%@ include file="structure/footer.jsp" %>
+<jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
+${user.verifyAuthentication(pageContext.request,pageContext.response)}
 
 <table class="black" style="margin-top: 30pt;">
     <tr>
@@ -17,6 +18,7 @@
         </td>
     </tr>
 </table>
+<%@ include file="structure/footer.jsp" %>
 
 </body>
 </html>

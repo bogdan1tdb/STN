@@ -7,8 +7,11 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
-
+<jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
 <jsp:useBean id="recover" class="com.stn.helpers.RecoverHelper"/>
+
+${user.verifyAuthentication(pageContext.request,pageContext.response)}
+
 
 <c:set var="test" value="${recover.checkToken(param.token)}" />
 

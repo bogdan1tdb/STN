@@ -7,6 +7,8 @@
     <%@ include file="structure/header.jsp" %>
 </head>
 <body>
+<%@ include file="structure/beans.jsp" %>
+${user.verifyAuthentication(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
 
@@ -14,7 +16,7 @@
     <tr>
         <td><br/>
 
-            <fieldset style='background-color: #2c2c2c; margin:auto; width: 85%; text-align: left; border: solid 1px #62635f'>
+            <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
                 <legend><b>Reguli generale</b></legend><br/>
                 <ul>
                     <li>Respecta toti studentii si userii acestei comunitati.</li>
@@ -24,49 +26,84 @@
                     <li>Utilizarea comunitatii in alt scop poate duce la banarea tuturor utilizatorilor din acea grupa/serie/etc.</li>
                     <li>Insistam ca datele personale sa fie cele reale (acestea vor putea fi vazute decat de administratori).</li>
                 </ul>
-            </fieldset><br/>
+            </fieldset><br/><br/>
 
-            <fieldset style='background-color: #2c2c2c; margin:auto; width: 85%; text-align: left; border: solid 1px #62635f'>
+            <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
+                <legend><b>Informatii utilizator</b></legend><br/>
+                <b>Care sunt clasele de utilizatori?</b><br/><br/>
+                <table style="border-spacing: 2pt">
+                    <tr>
+                        <td style="background-color: #353535"><b>Student</b></td>
+                        <td>Clasa pe care o primeste un student in momentul in care se inregistreaza.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #b52db5">Sef de grupa</b></td>
+                        <td>Clasa rezervata sefului de grupa.Maxim 2/grupa.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #089f00">VIP</b></td>
+                        <td>Studenti care au obtinuit rezultate de exceptie la olimpiade/concursuri/etc.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #ffa00b">Guest of Honour</b></td>
+                        <td>Persoane care au contribuit la dezvoltarea site-ului.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #5d56ef">Moderator</b></td>
+                        <td>Persoane care se ocupa intretinerea comunitatii.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #ff0026">Administrator</b></td>
+                        <td>Persoane care se ocupa cu administrarea site-ului.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b style="color: #A83838">Owner</b></td>
+                        <td>Fondatorii comunitatii.</td>
+                    </tr>
+                </table>
+            </fieldset><br/><br/>
+
+            <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
                 <legend><b>STN Features</b></legend>
                     <br/><br/>
                 <table class="black" border="1" align='center' style="border-collapse: collapse;">
                     <tbody>
                     <tr>
-                        <td class="row"><b>Feature</b></td>
+                        <td class="row2"><b>Feature</b></td>
                         <td class="row"><b>Status</b></td>
                     </tr>
                     <tr>
-                        <td class="row">Login</td>
-                        <td class="row" style="color: green">Enabled</td>
+                        <td class="row2">Login</td>
+                        <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
-                        <td class="row">Register</td>
-                        <td class="row" style="color: green">Enabled</td>
+                        <td class="row2">Register</td>
+                        <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
-                        <td class="row">Recover Password</td>
-                        <td class="row" style="color: green">Enabled</td>
+                        <td class="row2">Recover Password</td>
+                        <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
-                        <td class="row">Remember Me</td>
-                        <td class="row" style="color: yellow">WIP</td>
+                        <td class="row2">Remember Me</td>
+                        <td class="row" style="color: #ffff33">WIP</td>
                     </tr>
                     <tr>
-                        <td class="row">School Module</td>
-                        <td class="row" style="color: red">TBD</td>
+                        <td class="row2">School Module</td>
+                        <td class="row" style="color: #ff0026">TBD</td>
                     </tr>
                     <tr>
-                        <td class="row">Forum</td>
-                        <td class="row" style="color: red">TBD</td>
+                        <td class="row2">Forum</td>
+                        <td class="row" style="color: #ff0026">TBD</td>
                     </tr>
                     <tr>
-                        <td class="row">Userdetails</td>
-                        <td class="row" style="color: red">TBD</td>
+                        <td class="row2">Profile Settings</td>
+                        <td class="row" style="color: #ff0026">TBD</td>
                     </tr>
                     </tbody>
                 </table>
                 <br/>
-                <p>Site version : 0.0.97</p>
+                <p>Site version : 0.0.98</p>
                 <br/>
             </fieldset><br/>
 

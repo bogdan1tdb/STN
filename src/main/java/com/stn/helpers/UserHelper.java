@@ -1,9 +1,8 @@
 package com.stn.helpers;
 
+import com.stn.pojo.User;
 import com.stn.utils.DBConnection;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +12,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UserHelper extends DBConnection{
+
+    private static final String[] guestAcces = {
+            "apply.jsp",
+            "login.jsp",
+            "recover.jsp",
+            "register.jsp",
+            "reset.jsp",
+            "terms.jsp" };
+
+    private static final String[] userAcces = {
+            "index.jsp",
+            "wiki.jsp",
+            ""};
 
     public UserHelper() {
         super();
@@ -41,13 +53,13 @@ public class UserHelper extends DBConnection{
 
     }
 
-    public boolean authenticateUser(String username, String password) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException {
+    public int authenticateUser(String username, String password) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException {
         SecurityHelper securityHelper = new SecurityHelper();
         String dbPassword = ""; // parola din baza de date
         byte[] dbSalt; //salt pentru parola
         String hashedPassword = ""; // parola pe care o introducem si pe care o vom cripta
-        Boolean result = false ;
-        query = "SELECT Password, Salt FROM users WHERE Username = ?";
+        int id = -1 ;
+        query = "SELECT Id, Password, Salt FROM users WHERE Username = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -56,12 +68,12 @@ public class UserHelper extends DBConnection{
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) { //daca am gasit user-ul in baza de date verificam si parola acum
-                dbPassword = resultSet.getString(1); // parola (criptata) din baza de date
-                dbSalt = resultSet.getBytes(2); // salt-ul din baza de date
+                dbPassword = resultSet.getString(2); // parola (criptata) din baza de date
+                dbSalt = resultSet.getBytes(3); // salt-ul din baza de date
                 securityHelper.setSalt(dbSalt);
                 hashedPassword = securityHelper.getHash(password); // criptam parola pe care am introdus-o
                 if (hashedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
-                    result = true;
+                    id = resultSet.getInt(1);
                 }
             }
         } finally {
@@ -73,7 +85,7 @@ public class UserHelper extends DBConnection{
                 resultSet.close();
         }
 
-        return result;
+        return id;
     }
 
     public boolean checkAvailability(String username, String email) throws ClassNotFoundException, SQLException {
@@ -125,14 +137,61 @@ public class UserHelper extends DBConnection{
         return found;
     }
 
-    public static void LogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+    public static String classColor(int userClass) {
+        String color = "";
+        switch (userClass) {
+            case 1: color = "white";
+                break;
+            case 2: color = "#b52db5";
+                break;
+            case 3: color = "#089f00";
+                break;
+            case 4: color = "#ffa00b";
+                break;
+            case 5: color = "#5d56ef";
+                break;
+            case 6: color = "#ff0026";
+                break;
+            case 7: color = "#A83838";
+                break;
+        }
+        return color;
+    }
 
-        String url = "index.jsp";
-        session.invalidate();
+    public User getUserInfo(int id) {
+        User user = new User();
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class FROM users WHERE Id = ?";
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request,response);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user.setUserName(resultSet.getString(1));
+                user.setEmail(resultSet.getString(2));
+                user.setFirstName(resultSet.getString(3));
+                user.setLastName(resultSet.getString(4));
+                user.setJoinDate(resultSet.getTimestamp(5));
+                user.setLastSeen(resultSet.getTimestamp(6));
+                user.setUserClass(resultSet.getInt(7));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+                if (connection != null)
+                    connection.close();
+                if (resultSet != null)
+                    resultSet.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return user;
     }
 
     public void updateLastSeen(HttpServletRequest request) {
@@ -185,13 +244,31 @@ public class UserHelper extends DBConnection{
         }
     }
 
-    public void verifyAuthentication(HttpServletRequest request,HttpServletResponse response) {
-        if(request.getSession().getAttribute("user") == null) {
-            try {
-                response.sendRedirect("login.jsp");
-            } catch (IOException e) {
-                e.printStackTrace();
+    public static void verifyAuthentication(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+
+        if(session.getAttribute("userclass") == null) {
+            session.setAttribute("userclass", 0);
+        }
+
+        String uri = request.getRequestURI();
+        String pageName = uri.substring(uri.lastIndexOf("/")+1);
+
+        try {
+            for (String page : guestAcces) {
+                if(page.equals(pageName) && (int) session.getAttribute("userclass") > 0) {
+                    response.sendRedirect("index.jsp");
+                }
             }
+
+            for (String page : userAcces) {
+                if(page.equals(pageName) && (int) session.getAttribute("userclass") < 1) {
+                    response.sendRedirect("login.jsp");
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
