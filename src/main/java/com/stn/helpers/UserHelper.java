@@ -3,6 +3,7 @@ package com.stn.helpers;
 import com.stn.pojo.User;
 import com.stn.utils.DBConnection;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -325,10 +326,18 @@ public class UserHelper extends DBConnection{
         UserHelper userHelper = new UserHelper();
         String ip = securityHelper.getClientIpAddress(request);
         int id = -1;
+        String token = "";
 
-        String token = request.getParameter("token");
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = cookie.toString();
+                }
+            }
+        }
 
-        if( session.getAttribute("userId") != null && (int)session.getAttribute("userId") <= 0)
+        if( session.getAttribute("userId") == null || (int)session.getAttribute("userId") <= 0)
         {
             if (token != null) {
                 try {

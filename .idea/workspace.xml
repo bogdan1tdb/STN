@@ -31,11 +31,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wiki.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/wiki.jsp">
+      <file leaf-file-name="UserHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="110" column="24" lean-forward="true" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+            <state relative-caret-position="210">
+              <caret line="332" column="43" lean-forward="true" selection-start-line="332" selection-start-column="43" selection-end-line="332" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginProcess.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -88,12 +100,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/recover.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/reset.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/LogoutProcess.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/wiki.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java" />
       </list>
     </option>
   </component>
@@ -129,6 +141,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,8 +252,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,11 +440,12 @@
       <workItem from="1523443163267" duration="20000" />
       <workItem from="1523443906647" duration="150000" />
       <workItem from="1523448575645" duration="4043000" />
+      <workItem from="1523453366307" duration="557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75119000" />
+    <option name="totallyTimeSpent" value="75676000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -459,8 +472,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.47624075" visible="true" weight="0.18020834" />
-      <window_info id="Web" order="2" sideWeight="0.52375925" side_tool="true" visible="true" weight="0.18020834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4751848" visible="true" weight="0.18020834" />
+      <window_info id="Web" order="2" sideWeight="0.5248152" side_tool="true" visible="true" weight="0.18020834" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -722,9 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,23 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="27" column="17" lean-forward="true" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="328" column="53" lean-forward="true" selection-start-line="328" selection-start-column="53" selection-end-line="328" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -763,9 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -806,8 +796,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/wiki.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="110" column="24" lean-forward="true" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+        <state relative-caret-position="1870">
+          <caret line="110" column="24" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="332" column="43" lean-forward="true" selection-start-line="332" selection-start-column="43" selection-end-line="332" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
         </state>
       </provider>
     </entry>
