@@ -51,6 +51,7 @@ public class LoginProcess extends HttpServlet {
                     if(rememberMe != null) {
                         String token = securityHelper.generateRandomString(28);
                         Cookie cookie = new Cookie("token", token);
+                        cookie.setMaxAge(60 * 60 * 24 * 365 );
                         userHelper.updateLoginToken(userId,token,ip);
                         response.addCookie(cookie);
                     }

@@ -147,7 +147,7 @@ public class UserHelper extends DBConnection{
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,token);
-            preparedStatement.setString(1,ip);
+            preparedStatement.setString(2,ip);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 id = resultSet.getInt(1);
@@ -332,7 +332,7 @@ public class UserHelper extends DBConnection{
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
-                    token = cookie.toString();
+                    token = cookie.getValue();
                 }
             }
         }
