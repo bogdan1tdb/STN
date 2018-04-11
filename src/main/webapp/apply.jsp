@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
-${user.verifyAuthentication(pageContext.request,pageContext.response)}
+${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <table class="black" style="margin-top: 30pt;">
     <tr>

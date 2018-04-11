@@ -9,7 +9,7 @@
 <body>
 <jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
 
-${user.verifyAuthentication(pageContext.request,pageContext.response)}
+${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <form action="RecoverProcess" method="post">
     <table class="black" style="margin-top: 2%">

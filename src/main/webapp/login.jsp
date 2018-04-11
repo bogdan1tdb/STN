@@ -10,7 +10,7 @@
 <jsp:useBean id="user" class="com.stn.helpers.UserHelper"/>
 <jsp:useBean id="t" class="com.stn.helpers.SecurityHelper"/>
 
-${user.verifyAuthentication(pageContext.request,pageContext.response)}
+${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <form action="LoginProcess" method="post">
 <table class="black" style="margin-top: 30pt;">
@@ -26,7 +26,7 @@ ${user.verifyAuthentication(pageContext.request,pageContext.response)}
 
     <tr>
         <td></td>
-        <td class="left"><input name="remember_me" type="checkbox" value="1">Remember Me (soon)</td>
+        <td class="left"><input name="remember_me" type="checkbox" value="1">Remember Me</td>
     </tr>
 
     <tr>

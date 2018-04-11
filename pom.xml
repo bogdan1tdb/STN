@@ -4,7 +4,7 @@
   <groupId>com.baca.stn</groupId>
   <artifactId>STN</artifactId>
   <packaging>war</packaging>
-  <version>0.0.98</version>
+  <version>0.0.99</version>
   <name>STN Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>

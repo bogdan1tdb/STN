@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="structure/beans.jsp" %>
-${user.verifyAuthentication(pageContext.request,pageContext.response)}
+${user.verifyAcces(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
 
@@ -88,7 +88,7 @@ ${user.verifyAuthentication(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">Remember Me</td>
-                        <td class="row" style="color: #ffff33">WIP</td>
+                        <td class="row" style="color: #54bbbb">Beta</td>
                     </tr>
                     <tr>
                         <td class="row2">School Module</td>
@@ -110,7 +110,7 @@ ${user.verifyAuthentication(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.0.98</p>
+                <p>Site version : 0.0.99</p>
                 <br/>
             </fieldset><br/>
 

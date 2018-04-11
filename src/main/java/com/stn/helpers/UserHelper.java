@@ -137,6 +137,33 @@ public class UserHelper extends DBConnection{
         return found;
     }
 
+    public int checkLoginToken(String token, String ip) throws ClassNotFoundException, SQLException {
+        int id = -1 ;
+        query = "SELECT Id FROM users WHERE LoginToken = ? AND Ip = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,token);
+            preparedStatement.setString(1,ip);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
+        return id;
+
+    }
+
     public static String classColor(int userClass) {
         String color = "";
         switch (userClass) {
@@ -221,6 +248,28 @@ public class UserHelper extends DBConnection{
         }
     }
 
+    public void updateLoginToken(int id, String token, String ip) throws ClassNotFoundException, SQLException {
+        query = "UPDATE users SET LoginToken = ? , Ip = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, token);
+            preparedStatement.setString(2, ip);
+            preparedStatement.setInt(3, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
+    }
+
     public void updatePassword(String email, String password, byte[] salt) throws ClassNotFoundException, SQLException {
         query = "UPDATE users SET Password = ? , Salt = ? WHERE Email = ?";
 
@@ -242,7 +291,7 @@ public class UserHelper extends DBConnection{
         }
     }
 
-    public static void verifyAuthentication(HttpServletRequest request, HttpServletResponse response) {
+    public static void verifyAcces(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
         if(session.getAttribute("userclass") == null) {
@@ -270,4 +319,27 @@ public class UserHelper extends DBConnection{
         }
     }
 
+    public static void verifyAuthentication(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        SecurityHelper securityHelper = new SecurityHelper();
+        UserHelper userHelper = new UserHelper();
+        String ip = securityHelper.getClientIpAddress(request);
+        int id = -1;
+
+        String token = request.getParameter("token");
+
+        if( session.getAttribute("userId") != null && (int)session.getAttribute("userId") <= 0)
+        {
+            if (token != null) {
+                try {
+                    id = userHelper.checkLoginToken(token,ip);
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
+                if(id > 0) {
+                    session.setAttribute("userId", id);
+                }
+            }
+        }
+    }
 }
