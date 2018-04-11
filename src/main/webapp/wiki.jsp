@@ -67,11 +67,13 @@ ${user.verifyAuthentication(pageContext.request,pageContext.response)}
                 <legend><b>STN Features</b></legend>
                     <br/><br/>
                 <table class="black" border="1" align='center' style="border-collapse: collapse;">
-                    <tbody>
+                    <thead>
                     <tr>
                         <td class="row2"><b>Feature</b></td>
                         <td class="row"><b>Status</b></td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td class="row2">Login</td>
                         <td class="row" style="color: #089f00">Enabled</td>
@@ -101,6 +103,11 @@ ${user.verifyAuthentication(pageContext.request,pageContext.response)}
                         <td class="row" style="color: #ff0026">TBD</td>
                     </tr>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td class="row" colspan="2">Website stabilty : <p style="display: inline; color: #54bbbb">Moderate</p></td>
+                    </tr>
+                    </tfoot>
                 </table>
                 <br/>
                 <p>Site version : 0.0.98</p>
