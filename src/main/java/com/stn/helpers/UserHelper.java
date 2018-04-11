@@ -194,19 +194,17 @@ public class UserHelper extends DBConnection{
         return user;
     }
 
-    public void updateLastSeen(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String username = (String)session.getAttribute("user");
+    public void updateLastSeen(int id) {
 
         java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) + 3*3600*1000 );
-        query = "UPDATE users SET LastSeen = ? WHERE Username = ?";
+        query = "UPDATE users SET LastSeen = ? WHERE Id = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setTimestamp(1, date);
-            preparedStatement.setString(2, username);
+            preparedStatement.setInt(2,id);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

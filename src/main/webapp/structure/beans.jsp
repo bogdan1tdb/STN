@@ -4,5 +4,6 @@
 <jsp:useBean id="tool" class="com.stn.utils.Tools"/>
 <jsp:useBean id="userInfo" class="com.stn.pojo.User"/>
 
+${user.updateLastSeen(sessionScope.userId)}
 <c:set var="userInfo" value="${user.getUserInfo(sessionScope.userId)}"/>
 <c:set var="userclass" value="${userInfo.getUserClass()}" scope="session"  />
