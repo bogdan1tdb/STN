@@ -12,9 +12,12 @@ public class LogoutProcess extends HttpServlet {
 
         String url = "index.jsp";
         HttpSession session = request.getSession();
-        Cookie cookie = new Cookie("token", "");
-
-        cookie.setMaxAge(0);
+        for (Cookie cookie : request.getCookies()) {
+            cookie.setValue("");
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
         session.invalidate();
 
         response.sendRedirect(url);
