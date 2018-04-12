@@ -1,5 +1,6 @@
 package com.stn.utils;
 
+import java.sql.Timestamp;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,10 +15,18 @@ import java.util.Date;
 
 public class Tools {
 
-    public static String getDate() {
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        Date date = new Date();
-        return dateFormat.format(date);
+    public static Timestamp getDate() {
+        Timestamp date = new Timestamp(System.currentTimeMillis());
+        return date;
+    }
+
+    public static String formatDate(Timestamp date,int type) {
+        String s = "";
+        if(type == 1)
+            s = new SimpleDateFormat("HH:mm").format(date);
+        else if(type == 2)
+            s = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(date);
+        return s;
     }
 
     public void sendEmail(String to, String subject, String body) throws MessagingException {

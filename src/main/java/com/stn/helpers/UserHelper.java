@@ -25,6 +25,7 @@ public class UserHelper extends DBConnection{
     private static final String[] userAcces = {
             "index.jsp",
             "wiki.jsp",
+            "userdetails.jsp",
             ""};
 
     public UserHelper() {
@@ -186,9 +187,31 @@ public class UserHelper extends DBConnection{
         return color;
     }
 
+    public static String className(int userClass) {
+        String name = "";
+        switch (userClass) {
+            case 1: name = "Student";
+                break;
+            case 2: name = "Sef de Grupa";
+                break;
+            case 3: name = "VIP";
+                break;
+            case 4: name = "Guest of Honour";
+                break;
+            case 5: name = "Moderator";
+                break;
+            case 6: name = "Administrator";
+                break;
+            case 7: name = "Owner";
+                break;
+        }
+        return name;
+    }
+
     public User getUserInfo(int id) {
         User user = new User();
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class FROM users WHERE Id = ?";
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar FROM users WHERE Id = ?";
+        String avatarURL;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -197,6 +220,7 @@ public class UserHelper extends DBConnection{
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                user.setId(id);
                 user.setUserName(resultSet.getString(1));
                 user.setEmail(resultSet.getString(2));
                 user.setFirstName(resultSet.getString(3));
@@ -204,6 +228,12 @@ public class UserHelper extends DBConnection{
                 user.setJoinDate(resultSet.getTimestamp(5));
                 user.setLastSeen(resultSet.getTimestamp(6));
                 user.setUserClass(resultSet.getInt(7));
+                avatarURL = resultSet.getString(8);
+                if(avatarURL.equals("")) {
+                    user.setAvatar("img/profile.png");
+                } else {
+                    user.setAvatar(avatarURL);
+                }
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -224,7 +254,7 @@ public class UserHelper extends DBConnection{
 
     public void updateLastSeen(int id) {
 
-        java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) + 3*3600*1000 );
+        java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) );
         query = "UPDATE users SET LastSeen = ? WHERE Id = ?";
 
         try {

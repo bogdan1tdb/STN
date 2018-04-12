@@ -37,7 +37,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td>Clasa pe care o primeste un student in momentul in care se inregistreaza.</td>
                     </tr>
                     <tr>
-                        <td style="background-color: #353535"><b style="color: #b52db5">Sef de grupa</b></td>
+                        <td style="background-color: #353535"><b style="color: #b52db5">Sef de Grupa</b></td>
                         <td>Clasa rezervata sefului de grupa.Maxim 2/grupa.</td>
                     </tr>
                     <tr>
@@ -105,12 +105,12 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td class="row" colspan="2">Website stabilty : <p style="display: inline; color: #54bbbb">Moderate</p></td>
+                        <td class="row" colspan="2">Website Stabilty : <p style="display: inline; color: #54bbbb">Moderate</p></td>
                     </tr>
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.0.99</p>
+                <p>Site version : 0.1.0</p>
                 <br/>
             </fieldset><br/>
 

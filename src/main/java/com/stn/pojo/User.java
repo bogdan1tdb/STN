@@ -4,13 +4,19 @@ import java.sql.Timestamp;
 
 public class User {
 
+    private int id = -1;
     private int userClass = 0;
     private String userName = "";
     private String email = "";
     private String firstName = "";
     private String lastName = "";
-    private Timestamp joinDate= null;
-    private Timestamp lastSeen= null;
+    private Timestamp joinDate = null;
+    private Timestamp lastSeen = null;
+    private String avatar = "";
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setUserClass(int userClass) {
         this.userClass = userClass;
@@ -40,6 +46,14 @@ public class User {
         this.lastSeen = lastSeen;
     }
 
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public int getUserClass() {
         return userClass;
     }
@@ -67,4 +81,9 @@ public class User {
     public Timestamp getLastSeen() {
         return lastSeen;
     }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
 }

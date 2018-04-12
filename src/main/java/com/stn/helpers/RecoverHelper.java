@@ -28,7 +28,6 @@ public class RecoverHelper extends DBConnection {
         }
     }
 
-
     public String checkToken(String token) throws ClassNotFoundException, SQLException {
         String email = null;
 

@@ -2,7 +2,7 @@ body{
     font-family:"Tahoma", "Arial", "Helvetica", "Sans-Serif";
     color: white;
     font-size: 8pt;
-    background-color: #1d1d1d;
+    background-color: #161616;
 }
 
 input, textarea, select {
@@ -148,4 +148,17 @@ a.ui3:active {
     font-weight: bold;
     font-variant: small-caps;
     text-decoration: line-through;
+}
+
+h1 { font-size: 11pt; padding: 1px; margin: 10px 0px 0px 5px;}
+
+th {
+    background-color: #010101;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+img.profile {
+    width : 35%;
+    height: auto;
 }
