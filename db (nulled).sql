@@ -65,8 +65,8 @@ CREATE TABLE `users` (
   `JoinDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `LastSeen` datetime DEFAULT CURRENT_TIMESTAMP,
   `Class` int(2) NOT NULL DEFAULT '1',
-  `LoginToken` varchar(28),
-  `Ip` varchar(18),
+  `LoginToken` varchar(28) DEFAULT NULL,
+  `Ip` varchar(18) DEFAULT NULL,
   `Avatar` varchar(120) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
