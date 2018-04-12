@@ -18,15 +18,15 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
     </tr>
     <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">First Name:</td>
-        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="firstname" value="" size="35"></td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="firstname" value="${sessionScope.firstname}" size="35"></td>
     </tr>
     <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">Last Name:</td>
-        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="lastname" value="" size="35"></td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="lastname" value="${sessionScope.lastname}" size="35"></td>
     </tr>
     <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">User:</td>
-        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="user" value="" size="35"></td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="user" value="${sessionScope.user}" size="35"></td>
     </tr>
     <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">Password:</td>
@@ -38,7 +38,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
     </tr>
     <tr>
         <td class="right" style="padding-left: 30pt; padding-top: 8pt">Email:</td>
-        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="email" value="" size="35"></td>
+        <td style="padding-right: 30pt; padding-top: 8pt"><input type="text" name="email" value="${sessionScope.email}" size="35"></td>
     </tr>
     <tr>
         <td class="center" colspan="2" style="padding-top: 12pt">
@@ -59,6 +59,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 </form>
 
 <c:remove var="error" scope="session" />
+<c:remove var="firstname" scope="session" />
+<c:remove var="lastname" scope="session" />
+<c:remove var="user" scope="session" />
+<c:remove var="email" scope="session" />
 
 <%@ include file="structure/footer.jsp" %>
 </body>

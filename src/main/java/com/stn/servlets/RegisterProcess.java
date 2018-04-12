@@ -18,6 +18,14 @@ import java.sql.*;
 @WebServlet("/RegisterProcess")
 public class RegisterProcess extends HttpServlet {
 
+    private void setTempFields(HttpServletRequest request, String user, String firstName, String lastName, String email) {
+       HttpSession session= request.getSession();
+        session.setAttribute("user", user);
+        session.setAttribute("firstname", firstName);
+        session.setAttribute("lastname", lastName);
+        session.setAttribute("email", email);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("register.jsp");
     }
@@ -46,38 +54,47 @@ public class RegisterProcess extends HttpServlet {
         if(Validator.isEmpty(username, password1, password2, email, firstName, lastName)) {
             error = "You must fill all the requiered fields!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(username, 3, 20)) {
             error = "Username be between 3 and 20 characters!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(firstName,2,30)) {
             error = "Firstname be between 2 and 30 characters!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(lastName,2,30)) {
             error = "Lastname be between 2 and 30 characters!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(email,6,30)) {
             error = "Email be between 6 and 30 characters!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.isEmail(email)) { //verificare email daca este valid
             error = "Invalid email addres!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!password1.equals(password2)) {
             error = "The passwords are not matching!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(password1.length() < 6) {
             error = "Password must have at least 6 characters!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(terms == null || faq == null ) { // verificare daca au fost bifate casutele cu terms si faq
             error = "You must agree to the conditions!";
             url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
         } else {
             //Verificare daca username-ul sau email-ul se gaseste deja in baza de date
 
@@ -100,6 +117,7 @@ public class RegisterProcess extends HttpServlet {
                 {
                     error = "Username or email already in use!";
                     url = "register.jsp";
+                    this.setTempFields(request,username,firstName,lastName,email);
                 }
             } catch (ClassNotFoundException | SQLException | NoSuchAlgorithmException e) {
                 out.println(e);

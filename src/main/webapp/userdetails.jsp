@@ -29,7 +29,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <th colspan='2' style="text-align: left; padding: 3pt">User Information</th>
                 </tr>
                 <tr>
-                    <td class='row2' style="text-align: left; width: 90pt">Join Date</td>
+                    <td class='row2' style="text-align: left; width: 80pt">Join Date</td>
                     <td class='row' style="text-align: left">${tool.formatDate(userdetails.getJoinDate(),2)}</td>
                 </tr>
                 <tr>

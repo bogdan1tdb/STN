@@ -208,6 +208,30 @@ public class UserHelper extends DBConnection{
         return name;
     }
 
+    public void deleteToken(int id) {
+        query = "UPDATE users SET LoginToken = '' , Ip = '' WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return;
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public User getUserInfo(int id) {
         User user = new User();
         query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar FROM users WHERE Id = ?";
