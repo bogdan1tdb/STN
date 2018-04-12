@@ -67,7 +67,7 @@ CREATE TABLE `users` (
   `Class` int(2) NOT NULL DEFAULT '1',
   `LoginToken` varchar(28) DEFAULT NULL,
   `Ip` varchar(18) DEFAULT NULL,
-  `Avatar` varchar(120) NOT NULL
+  `Avatar` varchar(120) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
