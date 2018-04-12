@@ -19,11 +19,10 @@ input[type=text],input[type=password] {
     width: 40pt;
 }
 
-img.logo {
+.logo {
+    text-align: center;
+    margin: 0 auto;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
 }
 
 table.black {
