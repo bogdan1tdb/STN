@@ -54,6 +54,11 @@
           <artifactId>standard</artifactId>
           <version>1.1.2</version>
       </dependency>
+      <dependency>
+          <groupId>com.github.jsimone</groupId>
+          <artifactId>webapp-runner</artifactId>
+          <version>8.5.30.0</version>
+      </dependency>
   </dependencies>
   <build>
     <finalName>STN</finalName>

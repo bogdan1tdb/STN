@@ -9,9 +9,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Tools {
 

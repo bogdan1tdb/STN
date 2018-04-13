@@ -70,5 +70,23 @@
     <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-mapping:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: taglibs:standard:1.1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsimone:webapp-runner:8.5.30.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jdt:ecj:3.12.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jasper:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-servlet-api:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-juli:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-el-api:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-api:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-util-scan:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-util:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jasper-el:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jsp-api:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.30" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.48" level="project" />
   </component>
 </module>
