@@ -6,12 +6,17 @@
             Welcome, <a href='userdetails.jsp?id=${sessionScope.userId}' style="text-decoration: none"><b style="color: ${user.classColor(userInfo.getUserClass())}">${userInfo.getUserName()}</b></a>
         </td>
         <td class="right">
-            <p style="color: #387FA8; display : inline">Invites:</p> <a class="ui" href="index.jsp">0</a>
+            <a class="ui" href="#" style="color: #387FA8">Invite a friend</a>
         </td>
     </tr>
     <tr>
-        <td class="left"></td>
-        <td class="right"><i class="material-icons" style="font-size: 10px">schedule</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
+        <td class="left">
+            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #cc33ff">layers</i>&nbsp<a class="ui" href="#">Grupa mea</a>&nbsp&nbsp
+            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #2db300">date_range</i>&nbsp<a class="ui" href="#">Orar</a>
+        </td>
+        <td class="right">
+            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #ffa00b">mail</i>&nbsp<a class="ui" href="#">0</a> &nbsp&nbsp
+            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #b3daff">schedule</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
             <a class="ui" href="#">[Settings]</a>&nbsp&nbsp
             <a class="ui" href="LogoutProcess">[Logout]</a></td>
     </tr>
