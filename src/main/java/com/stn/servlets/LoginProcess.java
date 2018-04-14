@@ -45,8 +45,6 @@ public class LoginProcess extends HttpServlet {
             UserHelper userHelper = new UserHelper();
             try {
                 if( ( userId = userHelper.authenticateUser(username, password) ) > 0 ) {
-                    session.invalidate(); // stergem sesiunea curenta
-                    session=request.getSession(true);
                     session.setAttribute("userId", userId); // setam sesiune pe user-ul curent
                     if(rememberMe != null) {
                         String token = securityHelper.generateRandomString(28);

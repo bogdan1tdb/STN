@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td class="left"></td>
-        <td class="right"><i class="material-icons" style="font-size: 10px">schedule&nbsp</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
+        <td class="right"><i class="material-icons" style="font-size: 10px">schedule</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
             <a class="ui" href="#">[Settings]</a>&nbsp&nbsp
             <a class="ui" href="LogoutProcess">[Logout]</a></td>
     </tr>
