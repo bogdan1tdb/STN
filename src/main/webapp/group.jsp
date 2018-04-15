@@ -22,7 +22,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td colspan="6"><br/></td>
                 </tr>
                 <tr>
-                    <td class="left" colspan="6"><b>Sef de grupa</b></td>
+                    <td class="left" colspan="6"><b style="color: #b52db5">Sef de grupa</b></td>
                 </tr>
                 <tr>
                     <td colspan="6">
@@ -31,14 +31,14 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <tr>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: #b52db5">Mihai</b></a></td>
-                    <td></td>
+                    <td><a class="ui" href="#">[PM]</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="6"><br/></td>
+                    <td colspan="6"><br/><br/></td>
                 </tr>
                 <tr>
                     <td class="left" colspan="6"><b>Students</b></td>
@@ -73,7 +73,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="6"><br/><br/><br/></td>
+                    <td colspan="6"><br/><br/><br/><br/><br/></td>
                 </tr>
                 <tr>
                     <td class="center" colspan="6">
