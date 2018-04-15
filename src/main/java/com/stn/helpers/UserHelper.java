@@ -26,6 +26,7 @@ public class UserHelper extends DBConnection{
             "index.jsp",
             "wiki.jsp",
             "userdetails.jsp",
+            "group.jsp",
             ""};
 
     public UserHelper() {

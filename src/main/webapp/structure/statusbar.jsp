@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td class="left">
-            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #cc33ff">layers</i>&nbsp<a class="ui" href="#">Grupa mea</a>&nbsp&nbsp
+            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #cc33ff">layers</i>&nbsp<a class="ui" href="group.jsp">Grupa mea</a>&nbsp&nbsp
             <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #2db300">date_range</i>&nbsp<a class="ui" href="#">Orar</a>
         </td>
         <td class="right">
