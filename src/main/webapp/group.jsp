@@ -31,7 +31,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <tr>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: #b52db5">Mihai</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -50,23 +50,23 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <tr>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">tdbarashi</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">MaD</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">John_Mcgibson</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                 </tr>
                 <tr>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">Catalina</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">George</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">$WAG420_Blaz3</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                 </tr>
                 <tr>
                     <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">RandomName</b></a></td>
-                    <td><a class="ui" href="#">[PM]</a></td>
+                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
                     <td class="left" style="padding-left: 20pt"></td>
                     <td></td>
                     <td class="left" style="padding-left: 20pt"></td>
