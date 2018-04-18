@@ -54,16 +54,6 @@
           <artifactId>standard</artifactId>
           <version>1.1.2</version>
       </dependency>
-      <dependency>
-          <groupId>com.github.jsimone</groupId>
-          <artifactId>webapp-runner</artifactId>
-          <version>8.5.30.0</version>
-      </dependency>
-      <dependency>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.0</version>
-      </dependency>
   </dependencies>
   <build>
     <finalName>STN</finalName>
@@ -76,27 +66,6 @@
                   <source>8</source>
                   <target>8</target>
               </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-dependency-plugin</artifactId>
-              <version>3.1.0</version>
-              <executions>
-                  <execution>
-                      <phase>package</phase>
-                      <goals><goal>copy</goal></goals>
-                      <configuration>
-                          <artifactItems>
-                              <artifactItem>
-                                  <groupId>com.github.jsimone</groupId>
-                                  <artifactId>webapp-runner</artifactId>
-                                  <version>8.5.30.0</version>
-                                  <destFileName>webapp-runner.jar</destFileName>
-                              </artifactItem>
-                          </artifactItems>
-                      </configuration>
-                  </execution>
-              </executions>
           </plugin>
       </plugins>
   </build>
