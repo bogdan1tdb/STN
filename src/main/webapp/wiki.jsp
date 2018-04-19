@@ -92,7 +92,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">School Module</td>
-                        <td class="row" style="color: #ff0026">TBD</td>
+                        <td class="row" style="color: #ffa00b">WIP</td>
                     </tr>
                     <tr>
                         <td class="row2">Forum</td>
@@ -100,7 +100,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">Profile Settings</td>
-                        <td class="row" style="color: #ff0026">TBD</td>
+                        <td class="row" style="color: #ffa00b">WIP</td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -110,7 +110,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.1.2</p>
+                <p>Site version : 0.1.3</p>
                 <br/>
             </fieldset><br/>
 

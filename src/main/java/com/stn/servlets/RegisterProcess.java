@@ -57,22 +57,22 @@ public class RegisterProcess extends HttpServlet {
             this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(username, 3, 20)) {
-            error = "Username be between 3 and 20 characters!";
+            error = "Username must be between 3 and 20 characters!";
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(firstName,2,30)) {
-            error = "Firstname be between 2 and 30 characters!";
+            error = "Firstname must be between 2 and 30 characters!";
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(lastName,2,30)) {
-            error = "Lastname be between 2 and 30 characters!";
+            error = "Lastname must be between 2 and 30 characters!";
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }
         else if(!Validator.between(email,6,30)) {
-            error = "Email be between 6 and 30 characters!";
+            error = "Email must be between 6 and 30 characters!";
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }

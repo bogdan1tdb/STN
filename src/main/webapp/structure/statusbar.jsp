@@ -28,10 +28,12 @@
      <td class="center"><a class="ui2" href="index.jsp">Home</a>
         <a class="ui3" href="#">Files</a>
         <a class="ui3" href="#">Add</a>
-        <a class="ui3" href="#">Requests</a>
         <a class="ui3" href="#">Forums</a>
-        <a class="ui3" href="#">IRC</a>
         <a class="ui3" href="#">Top 10</a>
-        <a class="ui2" href="wiki.jsp">Wiki</a></td>
+        <a class="ui2" href="wiki.jsp">Wiki</a>
+        <c:if test="${userInfo.getUserClass() > 4}">
+            <a class="ui2" href="cpanel.jsp">Cpanel</a>
+        </c:if>
+        </td>
     </tr>
 </table>

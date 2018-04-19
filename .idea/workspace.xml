@@ -32,15 +32,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBConnection.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/DBConnection.java">
+      <file leaf-file-name="UserHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="464">
+              <caret line="376" column="90" lean-forward="true" selection-start-line="376" selection-start-column="90" selection-end-line="376" selection-end-column="90" />
               <folding>
-                <element signature="e#846#847#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationProcess.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/ApplicationProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="958">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="statusbar.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#b#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#1;n#td#1;n#tr#1;n#table#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cpanel.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/cpanel.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -63,6 +97,7 @@
       <find>verifyAuthentication</find>
       <find>sess</find>
       <find>td</find>
+      <find>bean</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -83,27 +118,32 @@
         <option value="$PROJECT_DIR$/src/main/webapp/terms.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/structure/beans.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apply.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/recover.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/reset.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/RecoverHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/pojo/User.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/userdetails.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/LogoutProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/utils/Tools.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/wiki.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/structure/meta.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/group.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/structure/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/stn/utils/DBConnection.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/beans.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/wiki.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apply.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/ApplicationHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stn/servlets/ApplicationProcess.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/cpanel.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp" />
       </list>
     </option>
   </component>
@@ -128,8 +168,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="563" />
-    <option name="y" value="209" />
+    <option name="x" value="609" />
+    <option name="y" value="191" />
     <option name="width" value="1278" />
     <option name="height" value="678" />
   </component>
@@ -138,8 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -253,6 +291,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -477,11 +517,16 @@
       <workItem from="1524045015808" duration="1096000" />
       <workItem from="1524046624977" duration="154000" />
       <workItem from="1524052461988" duration="72000" />
+      <workItem from="1524052675039" duration="1850000" />
+      <workItem from="1524058751919" duration="1227000" />
+      <workItem from="1524113493146" duration="475000" />
+      <workItem from="1524117427572" duration="197000" />
+      <workItem from="1524140756766" duration="4466000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118002000" />
+    <option name="totallyTimeSpent" value="126217000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -505,10 +550,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.32946146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947917" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.43822598" visible="true" weight="0.140625" />
-      <window_info id="Web" order="6" sideWeight="0.561774" side_tool="true" visible="true" weight="0.140625" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.43307087" visible="true" weight="0.140625" />
+      <window_info id="Web" order="6" sideWeight="0.56692916" side_tool="true" visible="true" weight="0.140625" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -526,41 +571,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/SecurityHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RecoverProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="65" lean-forward="true" selection-start-line="57" selection-start-column="65" selection-end-line="57" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -644,20 +654,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/reset.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/FormProcess.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/logout.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apply.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/pojo/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-215">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/RecoverHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -686,20 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/reset.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1405">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RecoverProcess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-266">
@@ -714,38 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="53" lean-forward="true" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/terms.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-25">
           <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/beans.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/STN.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="66" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -763,72 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/wiki.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="114" column="24" selection-start-line="114" selection-start-column="23" selection-end-line="114" selection-end-column="28" />
-          <folding>
-            <element signature="n#style#0;n#b#0;n#td#0;n#tr#1;n#table#0;n#fieldset#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/recover.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="28" column="123" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/userdetails.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="63" column="13" lean-forward="true" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LogoutProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="87" lean-forward="true" selection-start-line="18" selection-start-column="85" selection-end-line="18" selection-end-column="99" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -846,13 +738,179 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/beans.xml" />
+    <entry file="file://$PROJECT_DIR$/STN.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="39" column="78" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/recover.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/wiki.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/pojo/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/beans.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LoginProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="48" column="65" selection-start-line="48" selection-start-column="65" selection-end-line="48" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#b#0;n#td#0;n#tr#8;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/LogoutProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apply.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="43" column="132" selection-start-line="43" selection-start-column="132" selection-end-line="43" selection-end-column="132" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#9;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/utils/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#846#847#0" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/ApplicationHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/RegisterProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="123" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/servlets/ApplicationProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/reset.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/cpanel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/stn/helpers/UserHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="376" column="90" lean-forward="true" selection-start-line="376" selection-start-column="90" selection-end-line="376" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/structure/statusbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#td#1;n#tr#1;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

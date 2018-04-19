@@ -29,6 +29,9 @@ public class UserHelper extends DBConnection{
             "group.jsp",
             ""};
 
+    private static final String[] adminAcces = {
+            "cpanel.jsp"};
+
     public UserHelper() {
         super();
     }
@@ -367,6 +370,12 @@ public class UserHelper extends DBConnection{
             for (String page : userAcces) {
                 if(page.equals(pageName) && (int) session.getAttribute("userclass") < 1) {
                     response.sendRedirect("login.jsp");
+                }
+            }
+
+            for (String page : adminAcces) {
+                if(page.equals(pageName) && (int) session.getAttribute("userclass") < 5) {
+                    response.sendRedirect("index.jsp");
                 }
             }
 

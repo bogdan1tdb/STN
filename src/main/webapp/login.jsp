@@ -46,7 +46,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
     <tr>
         <td class="left"><a class="ui" href="register.jsp">Register( <b style="color: green; display: inline">OPEN</b> )</a></td>
         <td class="right">
-            <a class="ui" href="apply.jsp">Apply for membership</a>&nbsp;&nbsp;&nbsp;<a class="ui" href="recover.jsp">Recover password</a>
+            <a class="ui" href="apply.jsp">Aplica ca Sef de Grupa</a>&nbsp;&nbsp;&nbsp;<a class="ui" href="recover.jsp">Recover password</a>
         </td>
     </tr>
 </table>
