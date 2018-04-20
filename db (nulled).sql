@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2018 at 01:42 PM
+-- Generation Time: Apr 20, 2018 at 02:19 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -39,6 +39,17 @@ CREATE TABLE `applications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `facultati`
+--
+
+CREATE TABLE `facultati` (
+  `IdFacultate` int(11) NOT NULL,
+  `Nume` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_logins`
 --
 
@@ -47,6 +58,18 @@ CREATE TABLE `failed_logins` (
   `Ip` varchar(30) NOT NULL,
   `Attempts` int(2) NOT NULL,
   `ExpireDate` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grupe`
+--
+
+CREATE TABLE `grupe` (
+  `IdGrupa` int(11) NOT NULL,
+  `Nume` varchar(120) NOT NULL,
+  `IdSerie` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,6 +84,18 @@ CREATE TABLE `password_reset` (
   `Email` varchar(30) NOT NULL,
   `ExpireDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `serii`
+--
+
+CREATE TABLE `serii` (
+  `IdSerie` int(11) NOT NULL,
+  `Nume` varchar(120) NOT NULL,
+  `IdFacultate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -81,8 +116,11 @@ CREATE TABLE `users` (
   `Class` int(2) NOT NULL DEFAULT '1',
   `LoginToken` varchar(28) DEFAULT '',
   `Ip` varchar(18) DEFAULT '',
-  `Avatar` varchar(120) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `Avatar` varchar(120) DEFAULT '',
+  `IdGrupa` int(11) DEFAULT NULL,
+  `IdSerie` int(11) DEFAULT NULL,
+  `IdFacultate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -95,10 +133,23 @@ ALTER TABLE `applications`
   ADD PRIMARY KEY (`AppId`);
 
 --
+-- Indexes for table `facultati`
+--
+ALTER TABLE `facultati`
+  ADD PRIMARY KEY (`IdFacultate`);
+
+--
 -- Indexes for table `failed_logins`
 --
 ALTER TABLE `failed_logins`
   ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `grupe`
+--
+ALTER TABLE `grupe`
+  ADD PRIMARY KEY (`IdGrupa`),
+  ADD KEY `IdSerie` (`IdSerie`);
 
 --
 -- Indexes for table `password_reset`
@@ -107,10 +158,20 @@ ALTER TABLE `password_reset`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `serii`
+--
+ALTER TABLE `serii`
+  ADD PRIMARY KEY (`IdSerie`),
+  ADD KEY `IdFacultate` (`IdFacultate`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `IdGrupa` (`IdGrupa`),
+  ADD KEY `IdSerie` (`IdSerie`),
+  ADD KEY `IdFacultate` (`IdFacultate`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -122,20 +183,59 @@ ALTER TABLE `users`
 ALTER TABLE `applications`
   MODIFY `AppId` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `facultati`
+--
+ALTER TABLE `facultati`
+  MODIFY `IdFacultate` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `failed_logins`
 --
 ALTER TABLE `failed_logins`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `grupe`
+--
+ALTER TABLE `grupe`
+  MODIFY `IdGrupa` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `serii`
+--
+ALTER TABLE `serii`
+  MODIFY `IdSerie` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `grupe`
+--
+ALTER TABLE `grupe`
+  ADD CONSTRAINT `grupe_ibfk_1` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`);
+
+--
+-- Constraints for table `serii`
+--
+ALTER TABLE `serii`
+  ADD CONSTRAINT `serii_ibfk_1` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`IdGrupa`) REFERENCES `grupe` (`IdGrupa`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`),
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
