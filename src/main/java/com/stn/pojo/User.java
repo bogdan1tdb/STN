@@ -13,6 +13,7 @@ public class User {
     private Timestamp joinDate = null;
     private Timestamp lastSeen = null;
     private String avatar = "";
+    private String ip = "";
 
     public void setId(int id) {
         this.id = id;
@@ -48,6 +49,10 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public int getId() {
@@ -86,4 +91,7 @@ public class User {
         return avatar;
     }
 
+    public String getIp() {
+        return ip;
+    }
 }

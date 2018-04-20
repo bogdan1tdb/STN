@@ -46,6 +46,7 @@ public class LoginProcess extends HttpServlet {
             try {
                 if( ( userId = userHelper.authenticateUser(username, password) ) > 0 ) {
                     session.setAttribute("userId", userId); // setam sesiune pe user-ul curent
+                    userHelper.updateIp(userId,ip);
                     if(rememberMe != null) {
                         String token = securityHelper.generateRandomString(28);
                         Cookie cookie = new Cookie("token", token);

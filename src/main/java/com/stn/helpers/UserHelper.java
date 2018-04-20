@@ -237,7 +237,7 @@ public class UserHelper extends DBConnection{
 
     public User getUserInfo(int id) {
         User user = new User();
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar FROM users WHERE Id = ?";
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip FROM users WHERE Id = ?";
         String avatarURL;
 
         try {
@@ -261,6 +261,7 @@ public class UserHelper extends DBConnection{
                 } else {
                     user.setAvatar(avatarURL);
                 }
+                user.setIp(resultSet.getString(9));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -277,6 +278,27 @@ public class UserHelper extends DBConnection{
             }
         }
         return user;
+    }
+
+    public void updateIp(int id, String ip) throws ClassNotFoundException, SQLException {
+        query = "UPDATE users SET Ip = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, ip);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
     }
 
     public void updateLastSeen(int id) {

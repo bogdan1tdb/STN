@@ -44,6 +44,12 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td class='row2' style="text-align: left">User Class</td>
                     <td class='row' style="text-align: left; color: ${user.classColor(userdetails.getUserClass())}">${user.className(userdetails.getUserClass())}</td>
                 </tr>
+                <c:if test="${userInfo.getUserClass() > 4}">
+                    <tr>
+                        <td class='row2' style="text-align: left">Ip</td>
+                        <td class='row' style="text-align: left;">${userdetails.getIp()}</td>
+                    </tr>
+                </c:if>
                 <tr>
                     <td class='row2' style="text-align: left">Facultate</td>
                     <td class='row' style="text-align: left">Not set</td>

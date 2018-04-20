@@ -1,4 +1,3 @@
-<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <meta charset="utf-8">
 <meta name="description" content="WIP">
