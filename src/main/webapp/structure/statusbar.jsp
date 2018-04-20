@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <table class="black" style="margin-top: 5pt; width: 570pt">
     <tr>
         <td class="left">
-            Welcome, <a href='userdetails.jsp?id=${sessionScope.userId}' style="text-decoration: none"><b style="color: ${user.classColor(userInfo.getUserClass())}">${userInfo.getUserName()}</b></a>
+            Welcome, <a href='userdetails.jsp?id=${sessionScope.userId}' style="text-decoration: none"><b style="color: ${user.classColor(userInfo.getUserClass())}">${e:forHtml(userInfo.getUserName())}</b></a>
         </td>
         <td class="right">
             <a class="ui" href="#" style="color: #387FA8">Invite a friend</a>

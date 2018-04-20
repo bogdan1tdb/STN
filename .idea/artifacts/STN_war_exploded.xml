@@ -51,6 +51,8 @@
           <element id="library" level="project" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" />
           <element id="library" level="project" name="Maven: org.apache.maven.shared:maven-mapping:3.0.0" />
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
+          <element id="library" level="project" name="Maven: org.owasp.encoder:encoder-jsp:1.2.1" />
+          <element id="library" level="project" name="Maven: org.owasp.encoder:encoder:1.2.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

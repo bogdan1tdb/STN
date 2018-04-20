@@ -15,15 +15,19 @@ public class LogoutProcess extends HttpServlet {
         UserHelper userHelper = new UserHelper();
 
         String url = "index.jsp";
-        HttpSession session = request.getSession();
-        for (Cookie cookie : request.getCookies()) {
-            cookie.setValue("");
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
-        }
 
-        userHelper.deleteToken((int)session.getAttribute("userId"));
-        session.invalidate();
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userId") != null)
+        {
+            for (Cookie cookie : request.getCookies()) {
+                cookie.setValue("");
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+
+            userHelper.deleteToken((int)session.getAttribute("userId"));
+            session.invalidate();
+        }
 
         response.sendRedirect(url);
 

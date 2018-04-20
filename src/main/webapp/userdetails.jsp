@@ -20,7 +20,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <table class="black" style="margin-top: 8pt; width: 570pt">
     <tr>
-        <td class="center"><h1 style="color: ${user.classColor(userdetails.getUserClass())} ">${userdetails.getUserName()}</h1></td>
+        <td class="center"><h1 style="color: ${user.classColor(userdetails.getUserClass())} ">${e:forHtml(userdetails.getUserName())}</h1></td>
     </tr>
     <tr>
         <td class="center">

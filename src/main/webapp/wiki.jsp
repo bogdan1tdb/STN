@@ -88,7 +88,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">Remember Me</td>
-                        <td class="row" style="color: #54bbbb">Beta</td>
+                        <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
                         <td class="row2">School Module</td>
@@ -105,12 +105,12 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td class="row" colspan="2">Website Stabilty : <p style="display: inline; color: #54bbbb">Moderate</p></td>
+                        <td class="row" colspan="2">Website Stabilty : <p style="display: inline; color: #089f00">Good</p></td>
                     </tr>
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.1.3</p>
+                <p>Site version : 0.1.4</p>
                 <br/>
             </fieldset><br/>
 

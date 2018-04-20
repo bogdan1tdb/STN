@@ -31,7 +31,7 @@ public class DBConnection {
     }
 
     public String getHost() {
-        return "jdbc:mysql://"+dbHost+":"+dbPort+"/"+dbName;
+        return "jdbc:mysql://"+dbHost+":"+dbPort+"/"+dbName+"?useSSL=false";
     }
 
     public String getUser() {

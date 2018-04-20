@@ -223,7 +223,6 @@ public class UserHelper extends DBConnection{
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            return;
         } finally {
             try {
                 if (preparedStatement != null)
@@ -281,7 +280,6 @@ public class UserHelper extends DBConnection{
     }
 
     public void updateLastSeen(int id) {
-
         java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) );
         query = "UPDATE users SET LastSeen = ? WHERE Id = ?";
 
@@ -294,7 +292,6 @@ public class UserHelper extends DBConnection{
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            return;
         } finally {
             try {
                 if (preparedStatement != null)
