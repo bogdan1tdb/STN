@@ -38,7 +38,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Avatar</td>
-                    <td class='row' style="text-align: left"><img src="${userdetails.getAvatar()}" class="profile"></td>
+                    <td class='row' style="text-align: left"><img src="${e:forHtmlAttribute(userdetails.getAvatar())}" class="profile"></td>
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">User Class</td>

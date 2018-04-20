@@ -11,7 +11,6 @@
 ${user.verifyAcces(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
-
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

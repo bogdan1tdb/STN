@@ -41,7 +41,7 @@ public class RecoverProcess extends HttpServlet {
         String ip;
         String resetUrl;
 
-        if(email.isEmpty() ) {
+        if(Validator.isEmpty(email) ) {
             error = "Please insert an email address!";
         } else if(!Validator.isEmail(email)){
             error = "Invalid email addres!";

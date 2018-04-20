@@ -66,8 +66,18 @@ public class RegisterProcess extends HttpServlet {
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }
+        else if(!Validator.isName(firstName)) {
+            error = "Invalid Firstname!";
+            url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
+        }
         else if(!Validator.between(lastName,2,30)) {
             error = "Lastname must be between 2 and 30 characters!";
+            url = "register.jsp";
+            this.setTempFields(request,username,firstName,lastName,email);
+        }
+        else if(!Validator.isName(lastName)) {
+            error = "Invalid Lastname!";
             url = "register.jsp";
             this.setTempFields(request,username,firstName,lastName,email);
         }
