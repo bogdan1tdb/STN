@@ -14,6 +14,9 @@ public class User {
     private Timestamp lastSeen = null;
     private String avatar = "";
     private String ip = "";
+    private String grupa="";
+    private String serie="";
+    private String facultate="";
 
     public void setId(int id) {
         this.id = id;
@@ -55,6 +58,18 @@ public class User {
         this.ip = ip;
     }
 
+    public void setGrupa(String grupa) {
+        this.grupa = grupa;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
+    public void setFacultate(String facultate) {
+        this.facultate = facultate;
+    }
+
     public int getId() {
         return id;
     }
@@ -93,5 +108,17 @@ public class User {
 
     public String getIp() {
         return ip;
+    }
+
+    public String getGrupa() {
+        return grupa;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public String getFacultate() {
+        return facultate;
     }
 }

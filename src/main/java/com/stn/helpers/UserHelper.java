@@ -29,8 +29,11 @@ public class UserHelper extends DBConnection{
             "group.jsp",
             ""};
 
-    private static final String[] adminAcces = {
+    private static final String[] modAcces = {
             "cpanel.jsp"};
+
+    private static final String[] adminAcces = {
+            "applications.jsp"};
 
     public UserHelper() {
         super();
@@ -65,6 +68,7 @@ public class UserHelper extends DBConnection{
         byte[] dbSalt; //salt pentru parola
         String hashedPassword = ""; // parola pe care o introducem si pe care o vom cripta
         int id = -1 ;
+
         query = "SELECT Id, Password, Salt FROM users WHERE Username = ?";
 
         try {
@@ -96,6 +100,7 @@ public class UserHelper extends DBConnection{
 
     public boolean checkAvailability(String username, String email) throws ClassNotFoundException, SQLException {
         Boolean available = true;
+
         query = "SELECT 1 FROM users WHERE Username = ? OR Email = ?";
 
         try {
@@ -121,6 +126,7 @@ public class UserHelper extends DBConnection{
 
     public boolean checkEmail(String email) throws ClassNotFoundException, SQLException {
         Boolean found = false;
+
         query = "SELECT 1 FROM users WHERE Email = ?";
 
         try {
@@ -145,6 +151,7 @@ public class UserHelper extends DBConnection{
 
     public int checkLoginToken(String token, String ip) throws ClassNotFoundException, SQLException {
         int id = -1 ;
+
         query = "SELECT Id FROM users WHERE LoginToken = ? AND Ip = ?";
 
         try {
@@ -237,8 +244,15 @@ public class UserHelper extends DBConnection{
 
     public User getUserInfo(int id) {
         User user = new User();
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip FROM users WHERE Id = ?";
         String avatarURL;
+        String grupa;
+        String serie;
+        String facultate;
+
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume " +
+                "FROM users u LEFT JOIN grupe g ON u.IdGrupa = g.IdGrupa LEFT JOIN serii s ON u.IdSerie = s.IdSerie " +
+                "LEFT JOIN facultati f ON u.IdFacultate = f.IdFacultate " +
+                "WHERE Id = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -262,6 +276,18 @@ public class UserHelper extends DBConnection{
                     user.setAvatar(avatarURL);
                 }
                 user.setIp(resultSet.getString(9));
+                grupa = resultSet.getString(10);
+                serie = resultSet.getString(11);
+                facultate = resultSet.getString(12);
+                if(grupa != null && serie != null && facultate != null) {
+                    user.setGrupa(grupa);
+                    user.setSerie(serie);
+                    user.setFacultate(facultate);
+                } else {
+                    user.setGrupa("Not set");
+                    user.setSerie("Not set");
+                    user.setFacultate("Not set");
+                }
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -303,6 +329,7 @@ public class UserHelper extends DBConnection{
 
     public void updateLastSeen(int id) {
         java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) );
+
         query = "UPDATE users SET LastSeen = ? WHERE Id = ?";
 
         try {
@@ -392,9 +419,15 @@ public class UserHelper extends DBConnection{
                 }
             }
 
-            for (String page : adminAcces) {
+            for (String page : modAcces) {
                 if(page.equals(pageName) && (int) session.getAttribute("userclass") < 5) {
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("/index.jsp");
+                }
+            }
+
+            for (String page : adminAcces) {
+                if(page.equals(pageName) && (int) session.getAttribute("userclass") < 6) {
+                    response.sendRedirect("/index.jsp");
                 }
             }
 

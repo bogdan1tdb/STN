@@ -52,15 +52,15 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </c:if>
                 <tr>
                     <td class='row2' style="text-align: left">Facultate</td>
-                    <td class='row' style="text-align: left">Not set</td>
+                    <td class='row' style="text-align: left">${e:forHtml(userdetails.getFacultate())}</td>
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Serie</td>
-                    <td class='row' style="text-align: left">Not set</td>
+                    <td class='row' style="text-align: left">${e:forHtml(userdetails.getSerie())}</td>
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Grupa</td>
-                    <td class='row' style="text-align: left">Not set</td>
+                    <td class='row' style="text-align: left">${e:forHtml(userdetails.getGrupa())}</td>
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Forums Posts</td>

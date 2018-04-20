@@ -71,9 +71,10 @@ public class SecurityHelper extends DBConnection{
     }
 
     public int getAttempts(HttpServletRequest request) {
-        query = "SELECT Attempts,ExpireDate FROM failed_logins WHERE Ip = ?";
         String ip = getClientIpAddress(request);
         int attempts;
+
+        query = "SELECT Attempts,ExpireDate FROM failed_logins WHERE Ip = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -115,8 +116,9 @@ public class SecurityHelper extends DBConnection{
     }
 
     public void updateAttempts(String ip) throws SQLException, ClassNotFoundException {
-        query  = "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=?;";
         int affected;
+
+        query  = "UPDATE failed_logins SET Attempts = Attempts + 1 WHERE Ip=?;";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");

@@ -8,9 +8,10 @@ import java.sql.SQLException;
 public class RecoverHelper extends DBConnection {
 
     public void insertToken(String email, String token) throws ClassNotFoundException, SQLException {
-        query = "INSERT INTO password_reset(Token, Email, ExpireDate) VALUES (?,?,?)";
         long day = 24 * 60 * 60 * 1000;
         java.sql.Timestamp expDate = new java.sql.Timestamp(new java.util.Date().getTime() + ( 3 * day) );
+
+        query = "INSERT INTO password_reset(Token, Email, ExpireDate) VALUES (?,?,?)";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");

@@ -11,6 +11,65 @@
 ${user.verifyAcces(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
+<table class="black" style="margin-top: 8pt; width: 570pt">
+    <tr>
+        <td><br/>
+
+            <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
+                <legend><b>Moderator Panel</b></legend>
+                <br/><br/>
+                <table class="black" border="1" align='center' style="border-collapse: collapse;">
+                    <thead>
+                    <tr>
+                        <td class="row"><b>Command</b></td>
+                        <td class="row" style="text-align: center"><b>Description</b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[User List]</a> </td>
+                        <td class="row">Lista de utilizatori.</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </fieldset><br/>
+
+            <c:if test="${userInfo.getUserClass() > 5}">
+
+            <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
+                <legend><b>Administrator Panel</b></legend>
+                <br/><br/>
+                <table class="black" border="1" align='center' style="border-collapse: collapse;">
+                    <thead>
+                    <tr>
+                        <td class="row"><b>Command</b></td>
+                        <td class="row" style="text-align: center"><b>Description</b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="row"><a class="ui" href="panel/applications.jsp" style="color: #b3daff">[Aplicatii]</a> </td>
+                        <td class="row">Aplicatiile trimise de catre utilizatori.</td>
+                    </tr>
+                    <tr>
+                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[DB Cleanup]</a> </td>
+                        <td class="row">Curata baza de date de campurile vechi de la parole resetate/log-uri etc.</td>
+                    </tr>
+                    <tr>
+                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[User List]</a> </td>
+                        <td class="row">Lista de utilizatori.</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </fieldset><br/>
+
+            </c:if>
+
+        </td>
+    </tr>
+</table>
 
 <%@ include file="structure/footer.jsp" %>
 </body>
