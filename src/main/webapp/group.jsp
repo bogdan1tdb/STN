@@ -11,77 +11,92 @@
 ${user.verifyAcces(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
+<jsp:useBean id="facultate" class="com.stn.helpers.FacultateHelper"/>
+<c:set var="useri" value='${user.getUsers()}'/>
+
+<c:if test="${userInfo.getIdGrupa() == 0}">
+
 <table class="black" style="margin-top: 8pt; width: 570pt">
     <tr>
-        <td class="center"><h1>Grupa 1337</h1></td>
+        <td class="center">Momentan nu faci parte din nici o grupa!</td>
+    </tr>
+</table>
+
+</c:if>
+
+<c:if test="${userInfo.getIdGrupa() != 0}">
+
+<table class="black" style="margin-top: 8pt; width: 570pt">
+    <tr>
+        <td class="center"><h1>Grupa ${userInfo.getGrupa()}</h1></td>
     </tr>
     <tr>
         <td class="center">
             <table class="black" border="0" style="background-color: #2c2c2c; width: 94%">
                 <tr>
-                    <td colspan="6"><br/></td>
+                    <td colspan="3"><br/></td>
                 </tr>
                 <tr>
-                    <td class="left" colspan="6"><b style="color: #b52db5">Sef de grupa</b></td>
+                    <td class="left" colspan="3"><b style="color: #b52db5">Sef de grupa</b></td>
                 </tr>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="3">
                         <hr color="#131313" size="1">
                     </td>
                 </tr>
                 <tr>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: #b52db5">Mihai</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <c:set var="i" value='0'/>
+                    <c:forEach items="${useri}" var="sef">
+                        <c:if test="${sef.getUserClass() == 2 && sef.getIdGrupa() == userInfo.getIdGrupa()}">
+                        <td class="left" style="width: 33%; padding-left: 15pt">
+                            <a href="userdetails.jsp?id=${sef.getId()}" style="text-decoration: none"><b style="color: ${user.classColor(sef.getUserClass())}">${sef.getUserName()}</b></a>
+                            <a class="ui" href="#" style="color: #b3daff; padding-left: 20pt">[PM]</a>
+                        </td>
+                            <c:set var="i" value='${i+1}'/>
+                        </c:if>
+                    </c:forEach>
+
+                </tr>
+
+                <tr>
+                    <td colspan="3"><br/><br/></td>
                 </tr>
                 <tr>
-                    <td colspan="6"><br/><br/></td>
+                    <td class="left" colspan="3"><b>Students</b></td>
                 </tr>
                 <tr>
-                    <td class="left" colspan="6"><b>Students</b></td>
-                </tr>
-                <tr>
-                    <td colspan="6">
+                    <td colspan="3">
                         <hr color="#131313" size="1">
                     </td>
                 </tr>
+
+                <c:set var="i" value='0'/>
+                <c:forEach items="${useri}" var="sef">
+                    <c:if test="${ (sef.getUserClass() > 2 || sef.getUserClass() < 2 ) && sef.getIdGrupa() == userInfo.getIdGrupa()}">
+                        <c:if test="${i == 0}">
+                            <tr>
+                        </c:if>
+                        <td class="left" style="width: 33%; padding-left: 15pt">
+                            <a href="userdetails.jsp?id=${sef.getId()}" style="text-decoration: none"><b style="color: ${user.classColor(sef.getUserClass())}">${sef.getUserName()}</b></a>
+                            <a class="ui" href="#" style="color: #b3daff; padding-left: 20pt">[PM]</a>
+                        </td>
+                        <c:set var="i" value='${i+1}'/>
+                        <c:if test="${i == 3}">
+                            </tr>
+                        </c:if>
+                    </c:if>
+                </c:forEach>
+
                 <tr>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">tdbarashi</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">MaD</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">John_Mcgibson</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
+                    <td colspan="3"><br/><br/><br/><br/><br/></td>
                 </tr>
                 <tr>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">Catalina</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">George</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">$WAG420_Blaz3</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                </tr>
-                <tr>
-                    <td class="left" style="padding-left: 20pt"><a href="#" style="text-decoration: none"><b style="color: white">RandomName</b></a></td>
-                    <td><a class="ui" href="#" style="color: #b3daff">[PM]</a></td>
-                    <td class="left" style="padding-left: 20pt"></td>
-                    <td></td>
-                    <td class="left" style="padding-left: 20pt"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="6"><br/><br/><br/><br/><br/></td>
-                </tr>
-                <tr>
-                    <td class="center" colspan="6">
-                        Codul Grupei:<br/> <input type="text" name="group_code" value="9fMBsCxeX05NOkyY4fAqfC2Xtv0x6YuIP7" size="35">
+                    <td class="center" colspan="3">
+                        Codul Grupei:<br/> <input type="text" name="group_code" value="${facultate.getTokenGrupa(userInfo.getIdGrupa())}" size="35">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6"><br/><br/></td>
+                    <td colspan="3"><br/><br/></td>
                 </tr>
             </table>
         </td>
@@ -90,6 +105,8 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td><br/><br/></td>
     </tr>
 </table>
+
+</c:if>
 
 <%@ include file="structure/footer.jsp" %>
 </body>

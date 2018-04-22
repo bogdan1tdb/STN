@@ -50,7 +50,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td class="center" colspan="2"><b style="color: red; display: inline">${sessionScope.error}</b></td>
     </tr>
     <tr>
-        <td colspan="2" class="center" style="padding-top: 20pt"><input name="Register" type="submit" value="Register">
+        <td colspan="2" class="center" style="padding-top: 20pt">
+            <input type="hidden" name="invitecode" value="${param.invite}">
+            <input name="Register" type="submit" value="Register">
+        </td>
     </tr>
     <tr>
         <td colspan="2" height="24"></td>

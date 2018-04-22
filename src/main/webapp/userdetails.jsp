@@ -20,7 +20,13 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <table class="black" style="margin-top: 8pt; width: 570pt">
     <tr>
-        <td class="center"><h1 style="color: ${user.classColor(userdetails.getUserClass())} ">${e:forHtml(userdetails.getUserName())}</h1></td>
+        <td class="center"><h1 style="color: ${user.classColor(userdetails.getUserClass())} ">${e:forHtml(userdetails.getUserName())}
+
+        <c:if test="${userdetails.getUserClass() == 0}">
+            <img src="img/disabled.png" alt="Disabled" style="display: inline-block; vertical-align: bottom; padding-left: 3pt">
+        </c:if>
+        </h1>
+        </td>
     </tr>
     <tr>
         <td class="center">
@@ -69,6 +75,49 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             </table>
         </td>
     </tr>
+
+    <c:if test="${userInfo.getUserClass() > 4}">
+
+    <tr>
+        <td>
+            <form name="search" action="ProfileProcess" method="post">
+            <table class="black" border="1" style="margin-top: 15pt; border-collapse: collapse;">
+                <tr>
+                    <td class='row2' style="text-align: center;">Change Userclass</td>
+                    <td class='row' style="text-align: center">
+                        <select name="userclass">
+                            <option disabled selected value="-1">--</option>
+                            <option value="0">Disabled</option>
+                            <option value="1">Student</option>
+                            <option value="2">Sef de Grupa</option>
+                            <option value="3">VIP</option>
+                            <option value="4">Guest of Honour</option>
+                       <c:if test="${userInfo.getUserClass() > 5}">
+                            <option value="5">Moderator</option>
+                       </c:if>
+                       <c:if test="${userInfo.getUserClass() > 6}">
+                            <option value="6">Administrator</option>
+                            <option value="7">Owner</option>
+                       </c:if>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row" style="text-align: center" colspan="2">
+                        <input type="hidden" name="userid" value="${param.id}">
+                        <br/>
+                        <input name="save_changes" type="submit" value="Save Changes">
+                        <br/><br/>${sessionScope.error2}
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </td>
+    </tr>
+
+        <c:remove var="error2" scope="session" />
+    </c:if>
+
     <tr>
         <td colspan="2" style="height: 30pt"></td>
     </tr>

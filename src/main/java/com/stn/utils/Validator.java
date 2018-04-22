@@ -4,6 +4,7 @@ import javax.mail.internet.InternetAddress;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.regex.Matcher;
 
 public class Validator {
 
@@ -17,7 +18,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean isEmpty (String ... args) {
+    public static boolean isEmpty(String ... args) {
         for (String arg : args) {
             if(arg.isEmpty() || arg.trim().length() == 0)
                 return true;
@@ -37,23 +38,11 @@ public class Validator {
     }
 
     public static boolean isURL(String url) {
-        URL u = null;
-
-        try {
-            u = new URL(url);
-        } catch (MalformedURLException e) {
-            return false;
-        }
-
-        try {
-            u.toURI();
-        } catch (URISyntaxException e) {
-            return false;
-        }
-        return true;
+        Matcher m;
+        return url.matches("^(https?:\\/\\/)?(www\\.)?([\\w]+\\.)+[\u200C\u200B\\w]*.{2,128}\\/?$");
     }
 
-    public static boolean between (String word, int min, int max) {
+    public static boolean between(String word, int min, int max) {
         if(word.length() < min || word.length() > max) {
             return false;
         } else {

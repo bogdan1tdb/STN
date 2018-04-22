@@ -24,6 +24,8 @@ public class Tools {
             s = new SimpleDateFormat("HH:mm").format(date);
         else if(type == 2)
             s = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(date);
+        else if(type == 3)
+            s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
         return s;
     }
 

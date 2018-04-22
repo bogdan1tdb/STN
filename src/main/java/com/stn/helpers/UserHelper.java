@@ -1,5 +1,6 @@
 package com.stn.helpers;
 
+import com.stn.pojo.Aplicatie;
 import com.stn.pojo.User;
 import com.stn.utils.DBConnection;
 
@@ -11,6 +12,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserHelper extends DBConnection{
 
@@ -33,14 +37,19 @@ public class UserHelper extends DBConnection{
             "cpanel.jsp"};
 
     private static final String[] adminAcces = {
-            "applications.jsp"};
+            "applications.jsp",
+            "editfacultati.jsp"};
 
     public UserHelper() {
         super();
     }
 
-    public void addUser(String username, String password, byte[] salt, String email, String firstName, String lastName) throws ClassNotFoundException, SQLException {
-        query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
+    public void addUser(String username, String password, byte[] salt, String email, String firstName, String lastName, int idGrupa, int idSerie, int idFacultate, int userClass) throws ClassNotFoundException, SQLException {
+        if(idGrupa != 0) {
+            query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName, IdGrupa, IdSerie, IdFacultate, Class) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        } else {
+            query = "INSERT INTO users(Username, Password, Salt, Email, FirstName, LastName) VALUES (?,?,?,?,?,?)";
+        }
 
         try {
         Class.forName("com.mysql.jdbc.Driver");
@@ -52,6 +61,12 @@ public class UserHelper extends DBConnection{
         preparedStatement.setString(4, email);
         preparedStatement.setString(5, firstName);
         preparedStatement.setString(6, lastName);
+        if(idGrupa != 0) {
+            preparedStatement.setInt(7,idGrupa);
+            preparedStatement.setInt(8,idSerie);
+            preparedStatement.setInt(9,idFacultate);
+            preparedStatement.setInt(10,userClass);
+        }
         preparedStatement.executeUpdate();
         } finally {
             if (preparedStatement != null)
@@ -69,7 +84,7 @@ public class UserHelper extends DBConnection{
         String hashedPassword = ""; // parola pe care o introducem si pe care o vom cripta
         int id = -1 ;
 
-        query = "SELECT Id, Password, Salt FROM users WHERE Username = ?";
+        query = "SELECT Id, Password, Salt, Class FROM users WHERE Username = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -82,7 +97,9 @@ public class UserHelper extends DBConnection{
                 dbSalt = resultSet.getBytes(3); // salt-ul din baza de date
                 securityHelper.setSalt(dbSalt);
                 hashedPassword = securityHelper.getHash(password); // criptam parola pe care am introdus-o
-                if (hashedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
+                if(resultSet.getInt(4) == 0 ){
+                    id = 0;
+                } else if (hashedPassword.equals(dbPassword)) { // verificam daca cele 2 hash-uri sunt egale
                     id = resultSet.getInt(1);
                 }
             }
@@ -180,6 +197,8 @@ public class UserHelper extends DBConnection{
     public static String classColor(int userClass) {
         String color = "";
         switch (userClass) {
+            case 0: color = "white";
+                break;
             case 1: color = "white";
                 break;
             case 2: color = "#b52db5";
@@ -201,6 +220,8 @@ public class UserHelper extends DBConnection{
     public static String className(int userClass) {
         String name = "";
         switch (userClass) {
+            case 0: name = "Disabled";
+                break;
             case 1: name = "Student";
                 break;
             case 2: name = "Sef de Grupa";
@@ -249,7 +270,7 @@ public class UserHelper extends DBConnection{
         String serie;
         String facultate;
 
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume " +
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume, u.IdGrupa, u.IdSerie, u.IdFacultate " +
                 "FROM users u LEFT JOIN grupe g ON u.IdGrupa = g.IdGrupa LEFT JOIN serii s ON u.IdSerie = s.IdSerie " +
                 "LEFT JOIN facultati f ON u.IdFacultate = f.IdFacultate " +
                 "WHERE Id = ?";
@@ -283,6 +304,9 @@ public class UserHelper extends DBConnection{
                     user.setGrupa(grupa);
                     user.setSerie(serie);
                     user.setFacultate(facultate);
+                    user.setIdGrupa(resultSet.getInt(13));
+                    user.setIdSerie(resultSet.getInt(14));
+                    user.setIdFacultate(resultSet.getInt(15));
                 } else {
                     user.setGrupa("Not set");
                     user.setSerie("Not set");
@@ -303,6 +327,36 @@ public class UserHelper extends DBConnection{
                 ex.printStackTrace();
             }
         }
+        return user;
+    }
+
+    public List<User> getUsers() throws ClassNotFoundException, SQLException {
+        List<User> user = new ArrayList<User>();
+
+        query = "SELECT * FROM users";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                User usert = new User();
+                usert.setId(resultSet.getInt(1));
+                usert.setUserName(resultSet.getString(2));
+                usert.setUserClass(resultSet.getInt(10));
+                usert.setIdGrupa(resultSet.getInt(14));
+                usert.setIdSerie(resultSet.getInt(15));
+                usert.setIdFacultate(resultSet.getInt(16));
+                user.add(usert);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
         return user;
     }
 
@@ -396,6 +450,26 @@ public class UserHelper extends DBConnection{
         }
     }
 
+    public void updateProfile(int id, int userClass) throws ClassNotFoundException, SQLException {
+        query = "UPDATE users SET Class = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userClass);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+    }
+
     public static void verifyAcces(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
@@ -453,7 +527,7 @@ public class UserHelper extends DBConnection{
             }
         }
 
-        if( session.getAttribute("userId") == null || (int)session.getAttribute("userId") <= 0)
+        if( session.getAttribute("userId") == null || (int)session.getAttribute("userId") < 0)
         {
             if (token != null) {
                 try {

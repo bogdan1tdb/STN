@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2018 at 02:19 PM
+-- Generation Time: Apr 22, 2018 at 04:11 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -33,7 +33,9 @@ CREATE TABLE `applications` (
   `Serie` varchar(120) NOT NULL,
   `Grupa` varchar(120) NOT NULL,
   `Email` varchar(120) NOT NULL,
-  `Document` varchar(120) NOT NULL
+  `Document` varchar(120) NOT NULL,
+  `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Type` int(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,7 +71,25 @@ CREATE TABLE `failed_logins` (
 CREATE TABLE `grupe` (
   `IdGrupa` int(11) NOT NULL,
   `Nume` varchar(120) NOT NULL,
-  `IdSerie` int(11) DEFAULT NULL
+  `IdSerie` int(11) DEFAULT NULL,
+  `Token` varchar(120) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invites`
+--
+
+CREATE TABLE `invites` (
+  `IdInvitatie` int(11) NOT NULL,
+  `Token` varchar(40) NOT NULL,
+  `Email` varchar(120) NOT NULL,
+  `IdGrupa` int(11) DEFAULT NULL,
+  `IdSerie` int(11) DEFAULT NULL,
+  `IdFacultate` int(11) DEFAULT NULL,
+  `Class` int(11) NOT NULL,
+  `ExpDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -152,6 +172,15 @@ ALTER TABLE `grupe`
   ADD KEY `IdSerie` (`IdSerie`);
 
 --
+-- Indexes for table `invites`
+--
+ALTER TABLE `invites`
+  ADD PRIMARY KEY (`IdInvitatie`),
+  ADD KEY `IdGrupa` (`IdGrupa`),
+  ADD KEY `IdSerie` (`IdSerie`),
+  ADD KEY `IdFacultate` (`IdFacultate`);
+
+--
 -- Indexes for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -198,6 +227,11 @@ ALTER TABLE `failed_logins`
 ALTER TABLE `grupe`
   MODIFY `IdGrupa` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `invites`
+--
+ALTER TABLE `invites`
+  MODIFY `IdInvitatie` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -221,6 +255,14 @@ ALTER TABLE `users`
 --
 ALTER TABLE `grupe`
   ADD CONSTRAINT `grupe_ibfk_1` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`);
+
+--
+-- Constraints for table `invites`
+--
+ALTER TABLE `invites`
+  ADD CONSTRAINT `invites_ibfk_1` FOREIGN KEY (`IdGrupa`) REFERENCES `grupe` (`IdGrupa`),
+  ADD CONSTRAINT `invites_ibfk_2` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`),
+  ADD CONSTRAINT `invites_ibfk_3` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`);
 
 --
 -- Constraints for table `serii`

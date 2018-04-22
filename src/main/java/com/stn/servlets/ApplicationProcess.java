@@ -58,7 +58,6 @@ public class ApplicationProcess extends HttpServlet {
         }
         else if(!Validator.isName(firstName)) {
             error = "Invalid Firstname!";
-            url = "register.jsp";
             this.setTempFields(request,firstName,lastName,email,facultate,serie,grupa,document);
         }
         else if(!Validator.between(lastName,2,30)) {
@@ -67,7 +66,6 @@ public class ApplicationProcess extends HttpServlet {
         }
         else if(!Validator.isName(lastName)) {
             error = "Invalid Lastname!";
-            url = "register.jsp";
             this.setTempFields(request,firstName,lastName,email,facultate,serie,grupa,document);
         }
         else if(!Validator.between(facultate, 3, 120)) {
@@ -83,10 +81,10 @@ public class ApplicationProcess extends HttpServlet {
             this.setTempFields(request,firstName,lastName,email,facultate,serie,grupa,document);
         }
         else if(!Validator.between(document,6,120)) {
-            error = "Grupa trebuie sa contina intre 6 si 120 de caractere!";
+            error = "Documentul trebuie sa contina intre 6 si 120 de caractere!";
             this.setTempFields(request,firstName,lastName,email,facultate,serie,grupa,document);
         }
-        else if(Validator.isURL(document)) {
+        else if(!Validator.isURL(document)) {
             error = "Invalid document url!";
             this.setTempFields(request,firstName,lastName,email,facultate,serie,grupa,document);
         }

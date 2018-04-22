@@ -17,10 +17,9 @@
             <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #ffa00b">mail</i>&nbsp<a class="ui" href="#">0</a> &nbsp&nbsp
             <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #b3daff">schedule</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
             <a class="ui" href="#">[Settings]</a>&nbsp&nbsp
-            <a class="ui" href="LogoutProcess">[Logout]</a></td>
+            <a class="ui" href="/LogoutProcess">[Logout]</a></td>
     </tr>
 </table>
-
 
 <table class="menu">
     <tr>

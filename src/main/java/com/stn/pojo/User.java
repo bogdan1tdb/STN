@@ -17,6 +17,9 @@ public class User {
     private String grupa="";
     private String serie="";
     private String facultate="";
+    private int idGrupa = 0;
+    private int idSerie = 0;
+    private int idFacultate = 0;
 
     public void setId(int id) {
         this.id = id;
@@ -70,6 +73,18 @@ public class User {
         this.facultate = facultate;
     }
 
+    public void setIdGrupa(int idGrupa) {
+        this.idGrupa = idGrupa;
+    }
+
+    public void setIdSerie(int idSerie) {
+        this.idSerie = idSerie;
+    }
+
+    public void setIdFacultate(int idFacultate) {
+        this.idFacultate = idFacultate;
+    }
+
     public int getId() {
         return id;
     }
@@ -120,5 +135,17 @@ public class User {
 
     public String getFacultate() {
         return facultate;
+    }
+
+    public int getIdGrupa() {
+        return idGrupa;
+    }
+
+    public int getIdSerie() {
+        return idSerie;
+    }
+
+    public int getIdFacultate() {
+        return idFacultate;
     }
 }

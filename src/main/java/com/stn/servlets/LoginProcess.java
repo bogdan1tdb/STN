@@ -55,7 +55,11 @@ public class LoginProcess extends HttpServlet {
                         response.addCookie(cookie);
                     }
                 } else {
-                    error = "Invalid username or password!";
+                    if(userId < 0) {
+                        error = "Invalid username or password!";
+                    } else {
+                        error = "Account disabled";
+                    }
                     url = "login.jsp";
                     securityHelper.updateAttempts(ip);
                 }

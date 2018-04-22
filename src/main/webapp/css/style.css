@@ -161,3 +161,43 @@ img.profile {
     max-width : 35%;
     height: auto;
 }
+
+a.accept:link {
+    color: #7f7f7f;
+    text-decoration: none;
+}
+
+a.accept:visited {
+    color: #7f7f7f;
+    text-decoration: none;
+}
+
+a.accept:hover {
+    color: #52c631;
+    text-decoration: none;
+}
+
+a.accept:active {
+    color: #7f7f7f;
+    text-decoration: none;
+}
+
+a.decline:link {
+    color: #7f7f7f;
+    text-decoration: none;
+}
+
+a.decline:visited {
+    color: #7f7f7f;
+    text-decoration: none;
+}
+
+a.decline:hover {
+    color: red;
+    text-decoration: none;
+}
+
+a.decline:active {
+    color: #7f7f7f;
+    text-decoration: none;
+}

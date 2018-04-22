@@ -27,7 +27,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[User List]</a> </td>
+                        <td class="row"><a class="ui" href="#" style="color: #b3daff; text-decoration: line-through;">[User List]</a> </td>
                         <td class="row">Lista de utilizatori.</td>
                     </tr>
                     </tbody>
@@ -53,12 +53,12 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td class="row">Aplicatiile trimise de catre utilizatori.</td>
                     </tr>
                     <tr>
-                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[DB Cleanup]</a> </td>
+                        <td class="row"><a class="ui" href="#" style="color: #b3daff; text-decoration: line-through;">[DB Cleanup]</a> </td>
                         <td class="row">Curata baza de date de campurile vechi de la parole resetate/log-uri etc.</td>
                     </tr>
                     <tr>
-                        <td class="row"><a class="ui" href="#" style="color: #b3daff">[User List]</a> </td>
-                        <td class="row">Lista de utilizatori.</td>
+                        <td class="row"><a class="ui" href="panel/editfacultati.jsp" style="color: #b3daff">[Edit Facultati]</a> </td>
+                        <td class="row">Adauga o grupa,serie sau facultate.</td>
                     </tr>
                     </tbody>
                 </table>

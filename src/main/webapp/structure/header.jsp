@@ -6,5 +6,6 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="icon" type="image/png" href="/img/favicon.ico">
 <div class="logo">
-    <a href="index.jsp"><img src="/img/logo.png" alt="Logo"></a>
+    <a href="/index.jsp"><img src="/img/logo.png" alt="Logo"></a>
 </div>
+<script src="/js/functions.js"></script>
