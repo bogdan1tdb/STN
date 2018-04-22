@@ -5,7 +5,7 @@
             Welcome, <a href='/userdetails.jsp?id=${sessionScope.userId}' style="text-decoration: none"><b style="color: ${user.classColor(userInfo.getUserClass())}">${e:forHtml(userInfo.getUserName())}</b></a>
         </td>
         <td class="right">
-            <a class="ui" href="#" style="color: #387FA8">Invite a friend</a>
+            <a class="ui" href="/invite.jsp" style="color: #387FA8">Invite a friend</a>
         </td>
     </tr>
     <tr>

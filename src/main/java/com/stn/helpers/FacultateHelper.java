@@ -222,4 +222,28 @@ public class FacultateHelper extends DBConnection {
         return token;
     }
 
+    public int checkToken(String token) throws SQLException, ClassNotFoundException {
+        int id = -1;
+
+        query = "SELECT IdGrupa FROM grupe WHERE token = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,token);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                id = resultSet.getInt(1);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
+        return id;
+    }
+
 }

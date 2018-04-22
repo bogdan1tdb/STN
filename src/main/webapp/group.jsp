@@ -18,7 +18,22 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
 <table class="black" style="margin-top: 8pt; width: 570pt">
     <tr>
-        <td class="center">Momentan nu faci parte din nici o grupa!</td>
+        <td class="center">
+
+            <table class="black" style="margin-top: 8pt; width: 50%">
+            <tr>
+                <td class="center" style="padding: 5pt">
+                    Momentan nu faci parte din nici o grupa!<br/>Daca ai un cod primit de la seful de grupa il poti introduce mai jos!<br/><br/>
+                    <form action="JoinGrupaProcess"  method="post">
+                        <input type="text" name="gtoken" value="" size="40"><br/>
+                            ${sessionScope.result}<br/><br/>
+                        <input type="submit" value="Join Group">
+                    </form>
+                </td>
+            </tr>
+            </table>
+            <br/><br/>
+        </td>
     </tr>
 </table>
 
@@ -108,6 +123,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
 </c:if>
 
+<c:remove var="result" scope="session" />
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

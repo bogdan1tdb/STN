@@ -31,6 +31,7 @@ public class UserHelper extends DBConnection{
             "wiki.jsp",
             "userdetails.jsp",
             "group.jsp",
+            "invite.jsp",
             ""};
 
     private static final String[] modAcces = {
@@ -468,6 +469,53 @@ public class UserHelper extends DBConnection{
             if (resultSet != null)
                 resultSet.close();
         }
+    }
+
+    public void updateFacultate(int id, int idGrupa) throws SQLException, ClassNotFoundException {
+        query = "SELECT s.IdSerie,s.IdFacultate FROM grupe g JOIN serii s ON g.IdSerie = s.IdSerie WHERE IdGrupa = ?";
+
+        int idSerie = -1;
+        int idFacultate = -1;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idGrupa);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                idSerie = resultSet.getInt(1);
+                idFacultate = resultSet.getInt(2);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
+        query = "UPDATE users SET IdGrupa = ? , IdSerie = ?, IdFacultate = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idGrupa);
+            preparedStatement.setInt(2, idSerie);
+            preparedStatement.setInt(3, idFacultate);
+            preparedStatement.setInt(4, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
     }
 
     public static void verifyAcces(HttpServletRequest request, HttpServletResponse response) {

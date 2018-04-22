@@ -54,7 +54,10 @@ public class AdminAppProcess extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String email = request.getParameter("email");
-        int idAplicatie = Integer.parseInt(request.getParameter("idaplicatie"));
+        int idAplicatie = -1;
+        if ((int) session.getAttribute("userclass") > 5) {
+            idAplicatie = Integer.parseInt(request.getParameter("idaplicatie"));
+        }
         int idGrupa = Integer.parseInt(request.getParameter("idgrupa"));
         int idSerie = Integer.parseInt(request.getParameter("idserie"));
         int idFacultate = Integer.parseInt(request.getParameter("idfacultate"));
@@ -62,6 +65,13 @@ public class AdminAppProcess extends HttpServlet {
         ApplicationHelper applicationHelper = new ApplicationHelper();
         SecurityHelper securityHelper = new SecurityHelper();
         Tools tools = new Tools();
+
+        if((int) session.getAttribute("userclass") == 2 && !Validator.isEmail(email)) {
+            String result = "<b style='color: red; display: inline'>Invalid email addres!</b>";
+            url = "invite.jsp";
+            session.setAttribute("result",result);
+            response.sendRedirect(url);
+        }
 
         String token = securityHelper.generateRandomString(38);
 
@@ -78,12 +88,13 @@ public class AdminAppProcess extends HttpServlet {
             out.println(e);
             return;
         }
-
-        try {
-            applicationHelper.uptateApplicationStatus(idAplicatie,3);
-        } catch (ClassNotFoundException | SQLException e) {
-            out.println(e);
-            return ;
+        if ((int) session.getAttribute("userclass") > 5) {
+            try {
+                applicationHelper.uptateApplicationStatus(idAplicatie, 3);
+            } catch (ClassNotFoundException | SQLException e) {
+                out.println(e);
+                return;
+            }
         }
 
         String link  = request.getScheme() + "://" + request.getServerName() + request.getContextPath() + "/register.jsp?invite=" + token;
@@ -97,7 +108,14 @@ public class AdminAppProcess extends HttpServlet {
             return;
         }
 
-        response.sendRedirect(url);
+        if ((int) session.getAttribute("userclass") > 5) {
+            response.sendRedirect(url);
+        } else if((int) session.getAttribute("userclass") == 2) {
+            String result = "<b style='color: green; display: inline'>Invitatia a fost trimisa!</b>";
+            url = "invite.jsp";
+            session.setAttribute("result",result);
+            response.sendRedirect(url);
+        }
 
     }
 
