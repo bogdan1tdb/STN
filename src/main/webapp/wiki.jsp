@@ -17,7 +17,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Reguli generale</b></legend><br/>
+                <legend><b style="color: white">Reguli generale</b></legend><br/>
                 <ul>
                     <li>Respecta toti studentii si userii acestei comunitati.</li>
                     <li>Site-ul este destintat studentilor,va rugam sa nu va faceti cont daca momentan nu sunteti in postura de student.</li>
@@ -29,7 +29,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             </fieldset><br/><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Informatii utilizator</b></legend><br/>
+                <legend><b style="color: white">Informatii utilizator</b></legend><br/>
                 <b>Care sunt clasele de utilizatori?</b><br/><br/>
                 <table style="border-spacing: 2pt">
                     <tr>
@@ -64,7 +64,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             </fieldset><br/><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>STN Features</b></legend>
+                <legend><b style="color: white">STN Features</b></legend>
                     <br/><br/>
                 <table class="black" border="1" align='center' style="border-collapse: collapse;">
                     <thead>
@@ -110,7 +110,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.1.74</p>
+                <p>Site version : 0.1.75</p>
                 <br/>
             </fieldset><br/>
 

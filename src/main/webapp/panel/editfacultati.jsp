@@ -20,7 +20,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Facultate</b></legend>
+                <legend><b style="color: white">Facultate</b></legend>
                 <br/>
 
                 <table style="width: 95%; margin-right: auto ; margin-left: auto ;">
@@ -53,7 +53,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             </fieldset><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Serie</b></legend>
+                <legend><b style="color: white">Serie</b></legend>
                 <br/>
 
                 <table style="width: 95%; margin-right: auto ; margin-left: auto ;">
@@ -88,7 +88,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             </fieldset><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Grupa</b></legend>
+                <legend><b style="color: white">Grupa</b></legend>
                 <br/>
 
                 <table style="width: 95%; margin-right: auto ; margin-left: auto ;">

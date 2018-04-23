@@ -16,7 +16,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td><br/>
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Moderator Panel</b></legend>
+                <legend><b style="color: white">Moderator Panel</b></legend>
                 <br/><br/>
                 <table class="black" border="1" align='center' style="border-collapse: collapse;">
                     <thead>
@@ -38,7 +38,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             <c:if test="${userInfo.getUserClass() > 5}">
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
-                <legend><b>Administrator Panel</b></legend>
+                <legend><b style="color: white">Administrator Panel</b></legend>
                 <br/><br/>
                 <table class="black" border="1" align='center' style="border-collapse: collapse;">
                     <thead>

@@ -564,7 +564,7 @@ public class UserHelper extends DBConnection{
         UserHelper userHelper = new UserHelper();
         String ip = securityHelper.getClientIpAddress(request);
         int id = -1;
-        String token = "";
+        String token = null;
 
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

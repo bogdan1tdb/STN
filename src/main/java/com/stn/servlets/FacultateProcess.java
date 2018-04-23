@@ -67,7 +67,7 @@ public class FacultateProcess extends HttpServlet {
             try {
                 facultati = facultateHelper.findFacultate(facultate);
 
-                result = "<table class='black' border='1' align='center' style='border-collapse: collapse; width : 60%; padding-top : 10pt'>";
+                result = "<table class='black' align='center' style='border-collapse: collapse; width : 60%; padding-top : 10pt'>";
                 result = result + "<tr><td class='row' style='padding: 2pt; width : 8%; text-align: center'><b>Id</b></td><td class='row' style='padding: 2pt; text-align: center'><b>Nume</b></td></tr>";
                 if(facultati.size() > 0) {
                     for (Facultate fac : facultati) {
