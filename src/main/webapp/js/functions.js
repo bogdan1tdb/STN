@@ -2,8 +2,13 @@ var facultati = [];
 var serii = [];
 var grupe = [];
 
-var email;
-var idAplicatie;
+var email = "";
+var idAplicatie = "";
+var fName  = "";
+
+function setidAplicatie(id) {
+    idAplicatie = id;
+}
 
 function addFacultate(idFacultate,Nume) {
     var facultate = {idfacultate : idFacultate, nume: Nume};
@@ -226,7 +231,7 @@ function addTabelGrupa(sel) {
 
 }
 
-function addTempApp(Id,mail,idApp) {
+function addTempApp(Id,mail,idApp,formName) {
     var element = document.getElementById("temp");
     if(element != null) {
         element.outerHTML = "";
@@ -254,7 +259,7 @@ function addTempApp(Id,mail,idApp) {
 
     node.parentNode.insertBefore(row, node.nextSibling);
 
-    addTempFacInfo();
+    addTempFacInfo(formName);
 
 }
 
@@ -287,17 +292,21 @@ function addTempAppInfo(Id,Facultate,Serie,Grupa,Email,Act) {
 
 }
 
-function addTempFacInfo() {
+
+function addTempFacInfo(formName) {
+
     var node = document.getElementById("temp2");
 
     var form = document.createElement("form");
     form.setAttribute('method',"post");
-    form.setAttribute('action',"../AdminAppProcess");
+    form.setAttribute('action',formName);
     form.setAttribute('id',"temp_form");
+
+    fName = formName;
 
     node.appendChild(form);
 
-    node = document.getElementById("temp_form");
+    var node = document.getElementById("temp_form");
 
     var select = document.createElement("SELECT");
     select.setAttribute("id", "sfacultate");
@@ -420,7 +429,10 @@ function addTempButton() {
     var inp = document.createElement("INPUT");
     inp.setAttribute("type", "submit");
     inp.setAttribute("name","add");
-    inp.setAttribute("value","Send Invite");
+    if(fName.localeCompare("../UpdateFacProcess") == 0)
+        inp.setAttribute("value","Update");
+    else
+        inp.setAttribute("value","Send Invite");
     inp.setAttribute("id","appadd");
     inp.style.marginLeft = "5pt";
 

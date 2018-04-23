@@ -77,11 +77,46 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
     </tr>
 
     <c:if test="${userInfo.getUserClass() > 4}">
+        <jsp:useBean id="facultate" class="com.stn.helpers.FacultateHelper"/>
+        <c:set var="facultati" value='${facultate.getFacultati()}'/>
+        <c:set var="serii" value='${facultate.getSerii()}'/>
+        <c:set var="grupe" value='${facultate.getGrupe()}'/>
+
+        <script>
+            setidAplicatie(${param.id});
+        </script>
+
+        <c:forEach items="${facultati}" var="facultate">
+            <script>
+                addFacultate(${facultate.getIdFacultate()},'${facultate.getNume()}');
+            </script>
+        </c:forEach>
+
+        <c:forEach items="${serii}" var="serie">
+            <script>
+                addSerie(${serie.getIdSerie()},'${serie.getNume()}',${serie.getIdFacultate()});
+            </script>
+        </c:forEach>
+
+        <c:forEach items="${grupe}" var="grupa">
+            <script>
+                addGrupa(${grupa.getIdGrupa()},'${grupa.getNume()}',${grupa.getIdSerie()});
+            </script>
+        </c:forEach>
+
 
     <tr>
         <td>
-            <form name="search" action="ProfileProcess" method="post">
             <table class="black" border="1" style="margin-top: 15pt; border-collapse: collapse;">
+                <tr>
+                    <td class='row2' style="text-align: center;">Setari Facultate</td>
+                    <td class="" id="temp2">
+                        <script>
+                            addTempFacInfo('../UpdateFacProcess');
+                        </script>
+                    </td>
+                </tr>
+                <form name="search" action="ProfileProcess" method="post">
                 <tr>
                     <td class='row2' style="text-align: center;">Change Userclass</td>
                     <td class='row' style="text-align: center">
@@ -110,8 +145,9 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <br/><br/>${sessionScope.error2}
                     </td>
                 </tr>
+                </form>
+
             </table>
-            </form>
         </td>
     </tr>
 

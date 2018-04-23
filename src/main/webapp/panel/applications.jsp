@@ -69,7 +69,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td class='row' style="text-align: left">${tool.formatDate(app.getDate(),3)}</td>
                         <td class='row' style="text-align: center">
                             <a class="decline" href="../AdminAppProcess?id=${app.getAppId()}" title="Decline"><i class="material-icons" style="font-size: 12pt; vertical-align: bottom;">clear</i></a>
-                            <a class="accept" href="#" onclick="return addTempApp(${app.getAppId()},'${app.getEmail()}',${app.getAppId()});" title="Accept"><i class="material-icons" style="font-size: 12pt; vertical-align: bottom;">done</i></a>
+                            <a class="accept" href="#" onclick="return addTempApp(${app.getAppId()},'${app.getEmail()}',${app.getAppId()},'../AdminAppProcess');" title="Accept"><i class="material-icons" style="font-size: 12pt; vertical-align: bottom;">done</i></a>
                         </td>
                     </tr>
                     </c:if>

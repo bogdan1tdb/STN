@@ -110,8 +110,19 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         Codul Grupei:<br/> <input type="text" name="group_code" value="${facultate.getTokenGrupa(userInfo.getIdGrupa())}" size="35">
                     </td>
                 </tr>
+
                 <tr>
-                    <td colspan="3"><br/><br/></td>
+                    <td class="center" colspan="3">
+                        <br/>
+                        <form action="LeaveGrupaProcess" method="post">
+                            <input type="submit" value="Pareseste grupa">
+                        </form>
+                        <br/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><br/></td>
                 </tr>
             </table>
         </td>

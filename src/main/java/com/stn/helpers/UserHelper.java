@@ -264,6 +264,26 @@ public class UserHelper extends DBConnection{
         }
     }
 
+    public void deleteGrupa(int id) throws ClassNotFoundException, SQLException {
+        query = "UPDATE users SET IdGrupa = ? , IdSerie = ? , IdFacultate = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setNull(1,java.sql.Types.INTEGER);
+            preparedStatement.setNull(2,java.sql.Types.INTEGER);
+            preparedStatement.setNull(3,java.sql.Types.INTEGER);
+            preparedStatement.setInt(4,id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+    }
+
     public User getUserInfo(int id) {
         User user = new User();
         String avatarURL;
@@ -495,6 +515,30 @@ public class UserHelper extends DBConnection{
             if (resultSet != null)
                 resultSet.close();
         }
+
+        query = "UPDATE users SET IdGrupa = ? , IdSerie = ?, IdFacultate = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idGrupa);
+            preparedStatement.setInt(2, idSerie);
+            preparedStatement.setInt(3, idFacultate);
+            preparedStatement.setInt(4, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
+    }
+
+    public void updateFacultateAdmin(int id, int idGrupa, int idSerie, int idFacultate) throws SQLException, ClassNotFoundException {
 
         query = "UPDATE users SET IdGrupa = ? , IdSerie = ?, IdFacultate = ? WHERE Id = ?";
 
