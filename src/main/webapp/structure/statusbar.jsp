@@ -11,27 +11,26 @@
     <tr>
         <td class="left">
             <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #cc33ff">layers</i>&nbsp<a class="ui" href="/group.jsp">Grupa mea</a>&nbsp&nbsp
-            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #2db300">date_range</i>&nbsp<a class="ui" href="#">Orar</a>
+            <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #2db300">date_range</i>&nbsp<a class="ui" href="/orar.jsp">Orar</a>
         </td>
         <td class="right">
             <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #ffa00b">mail</i>&nbsp<a class="ui" href="#">0</a> &nbsp&nbsp
-            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #b3daff">schedule</i> ${tool.formatDate(tool.getDate(),1)} &nbsp&nbsp
-            <a class="ui" href="#">[Settings]</a>&nbsp&nbsp
+            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #b3daff">schedule</i> <div id="time" style="display: inline"></div> &nbsp&nbsp
+            <a class="ui" href="/edit_profile.jsp">[Settings]</a>&nbsp&nbsp
             <a class="ui" href="/LogoutProcess">[Logout]</a></td>
     </tr>
 </table>
 
 <table class="menu">
     <tr>
-     <td class="center"><a class="ui2" href="/index.jsp">Home</a>
-        <a class="ui3" href="#">Files</a>
-        <a class="ui3" href="#">Add</a>
-        <a class="ui3" href="#">Forums</a>
-        <a class="ui3" href="#">Top 10</a>
-        <a class="ui2" href="/wiki.jsp">Wiki</a>
+     <td class="menubar"><a class="ui2" href="/index.jsp">Home</a></td>
+        <td class="menubar"> <a class="ui3" href="#">Files</a></td>
+        <td class="menubar"><a class="ui3" href="#">Add</a></td>
+        <td class="menubar"><a class="ui3" href="#">Forums</a></td>
+        <td class="menubar"><a class="ui3" href="#">Top 10</a></td>
+        <td class="menubar"><a class="ui2" href="/wiki.jsp">Wiki</a></td>
         <c:if test="${userInfo.getUserClass() > 4}">
-            <a class="ui2" href="/cpanel.jsp">Cpanel</a>
+        <td class="menubar"><a class="ui2" href="/cpanel.jsp">Cpanel</a></td>
         </c:if>
-        </td>
     </tr>
 </table>

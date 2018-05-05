@@ -6,6 +6,23 @@ var email = "";
 var idAplicatie = "";
 var fName  = "";
 
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    m = checkTime(m);
+    if(document.getElementById('time') != null) {
+        document.getElementById('time').innerHTML =
+            h + ":" + m;
+        var t = setTimeout(startTime, 500);
+    }
+}
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};
+    return i;
+}
+
 function setidAplicatie(id) {
     idAplicatie = id;
 }
@@ -523,4 +540,191 @@ function cleanTemp() {
         delete element;
     }
 
+}
+
+function addNewsForm(idSerie) {
+    var node = document.getElementById('news');
+    var br = document.createElement("br");
+
+    element = document.getElementById("newsrow");
+    if(element != null) {
+        element.outerHTML = "";
+        delete element;
+    } else {
+
+        var form = document.createElement("form");
+        form.setAttribute('method',"post");
+        form.setAttribute('action',"/AddNewsProcess");
+        form.setAttribute('id',"temp_form");
+
+        var trow = document.createElement("tr");
+        trow.setAttribute('id',"newsrow")
+        var tdata = document.createElement("td");
+        tdata.style.backgroundColor = "#2c2c2c";
+        tdata.style.padding = "8pt";
+        tdata.style.textAlign = "center";
+
+        var divtitle = document.createElement("div");
+
+        var label = document.createElement("p");
+        label.innerHTML = "Title: ";
+        label.style.display = "inline";
+        label.style.marginLeft = "5pt";
+
+        var title = document.createElement("INPUT");
+        title.setAttribute("type", "text");
+        title.setAttribute("name","news_title");
+        title.size = "60";
+
+        divtitle.appendChild(label);
+        divtitle.appendChild(title);
+        form.appendChild(divtitle);
+
+        var inpserie = document.createElement("INPUT");
+        inpserie.setAttribute("type", "hidden");
+        inpserie.setAttribute("name","news_serie");
+        inpserie.setAttribute("value",idSerie);
+
+        form.appendChild(inpserie);
+
+        var text = document.createElement("textarea");
+        text.rows = "12";
+        text.cols = "100";
+        text.style.marginTop = "5pt";
+        text.setAttribute("name","news_body");
+
+        form.appendChild(text);
+        form.appendChild(br);
+
+        var inp = document.createElement("INPUT");
+        inp.setAttribute("type", "submit");
+        inp.setAttribute("name","add");
+        inp.setAttribute("value","Add News");
+        inp.style.marginTop = "5pt";
+
+        form.appendChild(inp);
+
+        tdata.appendChild(form);
+        trow.appendChild(tdata);
+
+        node.parentNode.insertBefore(trow, node.nextSibling);
+
+    }
+}
+
+function editNews(type,id) {
+
+    var element = document.getElementById("temp_form_edit");
+
+    var form = document.createElement("form");
+    form.setAttribute('method',"post");
+    form.setAttribute('action',"/EditNewsProcess");
+    form.setAttribute('id',"temp_form_edit");
+
+    if(type==1) {
+        form.style.display = "inline";
+        var td = document.getElementById("title_"+id);
+        var td_title = document.getElementById("title_name_"+id);
+        var a_title = document.getElementById("news_edit_"+id);
+
+        if(td_title!= null) {
+            var title = td_title.textContent;
+
+            td_title.outerHTML = "";
+            delete td_title;
+            a_title.outerHTML = "";
+            delete a_title;
+
+
+            var input = document.createElement("INPUT");
+            input.setAttribute("type", "text");
+            input.setAttribute("name","news_title_temp");
+            input.setAttribute("id","news_title_temp");
+            input.setAttribute("value",title);
+            input.size = "40";
+
+            var inpserie = document.createElement("INPUT");
+            inpserie.setAttribute("type", "hidden");
+            inpserie.setAttribute("name","news_id_temp");
+            inpserie.setAttribute("id","news_id_temp");
+            inpserie.setAttribute("value",id);
+
+            var inptype = document.createElement("INPUT");
+            inptype.setAttribute("type", "hidden");
+            inptype.setAttribute("name","news_type");
+            inptype.setAttribute("id","news_type");
+            inptype.setAttribute("value",1);
+
+            form.appendChild(input);
+            form.appendChild(inpserie);
+            form.appendChild(inptype);
+
+            var inp = document.createElement("INPUT");
+            inp.setAttribute("type", "submit");
+            inp.setAttribute("name","edit");
+            inp.setAttribute("value","Save");
+            inp.style.marginLeft = "5pt";
+            inp.style.padding = "0pt";
+
+            form.appendChild(inp);
+
+            td.appendChild(form);
+
+        }
+    } else if(type == 2) {
+        var td = document.getElementById("body_"+id);
+        var a_body = document.getElementById("news_edit_body_"+id);
+        var text = document.getElementById("news_body_"+id)
+
+        if(td!= null) {
+            a_body.outerHTML = "";
+            delete a_body;
+
+            td.innerHTML = "";
+
+            var input = document.createElement("textarea");
+            input.setAttribute("name","news_body_temp");
+            input.setAttribute("id","news_body_temp");
+            input.innerHTML = text.value;
+            input.rows = "15";
+            input.cols = "125";
+
+            var inpserie = document.createElement("INPUT");
+            inpserie.setAttribute("type", "hidden");
+            inpserie.setAttribute("name","news_id_temp");
+            inpserie.setAttribute("id","news_id_temp");
+            inpserie.setAttribute("value",id);
+
+            var inptype = document.createElement("INPUT");
+            inptype.setAttribute("type", "hidden");
+            inptype.setAttribute("name","news_type");
+            inptype.setAttribute("id","news_type");
+            inptype.setAttribute("value",2);
+
+            form.appendChild(input);
+            form.appendChild(inpserie);
+            form.appendChild(inptype);
+
+            var inp = document.createElement("INPUT");
+            inp.setAttribute("type", "submit");
+            inp.setAttribute("name","edit");
+            inp.setAttribute("value","Save");
+            inp.style.marginTop = "7pt";
+
+            var center = document.createElement("div");
+            center.style.textAlign = "center";
+            center.appendChild(inp);
+
+            form.appendChild(center);
+
+            td.appendChild(form);
+
+        }
+    }
+
+}
+
+function deleteNews(id) {
+    if(confirm("Sunteti sigur ca doriti sa stergeti anuntul?") == true)
+    window.location.href = '/EditNewsProcess?id='+id;
 }

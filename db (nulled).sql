@@ -3,11 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2018 at 04:11 PM
--- Server version: 5.7.21-0ubuntu0.16.04.1
+-- Generation Time: May 05, 2018 at 01:57 PM
+-- Server version: 5.7.22-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -95,6 +96,56 @@ CREATE TABLE `invites` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `news_serie`
+--
+
+CREATE TABLE `news_serie` (
+  `IdNews` int(11) NOT NULL,
+  `Title` varchar(60) NOT NULL,
+  `Body` text NOT NULL,
+  `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IdUser` int(11) NOT NULL,
+  `IdSerie` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notes`
+--
+
+CREATE TABLE `notes` (
+  `Id` int(10) NOT NULL,
+  `IdOra` int(11) NOT NULL,
+  `IdStudent` int(10) NOT NULL,
+  `Teme` text NOT NULL,
+  `Examen` text NOT NULL,
+  `Nota` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ore`
+--
+
+CREATE TABLE `ore` (
+  `Id` int(11) NOT NULL,
+  `IdGrupa` int(10) NOT NULL,
+  `Nume` varchar(50) NOT NULL DEFAULT '',
+  `Durata` varchar(15) NOT NULL DEFAULT '',
+  `TipActivitate` varchar(10) NOT NULL DEFAULT '',
+  `Semigrupa` int(2) DEFAULT NULL,
+  `Sala` varchar(10) NOT NULL DEFAULT '',
+  `NumeProfesor` varchar(50) NOT NULL DEFAULT '',
+  `Zi` varchar(10) NOT NULL DEFAULT '',
+  `Grupa` int(5) NOT NULL,
+  `Saptamana` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_reset`
 --
 
@@ -103,7 +154,7 @@ CREATE TABLE `password_reset` (
   `Token` varchar(60) NOT NULL,
   `Email` varchar(30) NOT NULL,
   `ExpireDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -139,7 +190,8 @@ CREATE TABLE `users` (
   `Avatar` varchar(120) DEFAULT '',
   `IdGrupa` int(11) DEFAULT NULL,
   `IdSerie` int(11) DEFAULT NULL,
-  `IdFacultate` int(11) DEFAULT NULL
+  `IdFacultate` int(11) DEFAULT NULL,
+  `Gender` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -179,6 +231,30 @@ ALTER TABLE `invites`
   ADD KEY `IdGrupa` (`IdGrupa`),
   ADD KEY `IdSerie` (`IdSerie`),
   ADD KEY `IdFacultate` (`IdFacultate`);
+
+--
+-- Indexes for table `news_serie`
+--
+ALTER TABLE `news_serie`
+  ADD PRIMARY KEY (`IdNews`),
+  ADD KEY `IdUser` (`IdUser`),
+  ADD KEY `IdSerie` (`IdSerie`),
+  ADD KEY `IdUser_2` (`IdUser`);
+
+--
+-- Indexes for table `notes`
+--
+ALTER TABLE `notes`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `Id_ora` (`IdOra`),
+  ADD KEY `IdStudent` (`IdStudent`);
+
+--
+-- Indexes for table `ore`
+--
+ALTER TABLE `ore`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `Id` (`IdGrupa`);
 
 --
 -- Indexes for table `password_reset`
@@ -232,6 +308,21 @@ ALTER TABLE `grupe`
 ALTER TABLE `invites`
   MODIFY `IdInvitatie` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `news_serie`
+--
+ALTER TABLE `news_serie`
+  MODIFY `IdNews` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `notes`
+--
+ALTER TABLE `notes`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ore`
+--
+ALTER TABLE `ore`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -263,6 +354,26 @@ ALTER TABLE `invites`
   ADD CONSTRAINT `invites_ibfk_1` FOREIGN KEY (`IdGrupa`) REFERENCES `grupe` (`IdGrupa`),
   ADD CONSTRAINT `invites_ibfk_2` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`),
   ADD CONSTRAINT `invites_ibfk_3` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`);
+
+--
+-- Constraints for table `news_serie`
+--
+ALTER TABLE `news_serie`
+  ADD CONSTRAINT `news_serie_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`Id`),
+  ADD CONSTRAINT `news_serie_ibfk_2` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`);
+
+--
+-- Constraints for table `notes`
+--
+ALTER TABLE `notes`
+  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`IdOra`) REFERENCES `ore` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`IdStudent`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ore`
+--
+ALTER TABLE `ore`
+  ADD CONSTRAINT `ore_ibfk_1` FOREIGN KEY (`IdGrupa`) REFERENCES `grupe` (`IdGrupa`);
 
 --
 -- Constraints for table `serii`

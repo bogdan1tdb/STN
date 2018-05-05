@@ -40,6 +40,12 @@ table.menu {
     margin-left: auto ;
 }
 
+td.menubar {
+    text-align: left;
+    padding-left: 5pt;
+    padding-right: 5pt;
+}
+
 td {
     padding-left : 3pt;
     padding-right : 3pt;
@@ -60,6 +66,14 @@ td.row {
 td.row2 {
     padding: 4pt;
     background-color: #2c2c2c;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #62635f;
+}
+
+td.row3 {
+    padding: 4pt;
+    background-color: #353535;
     border-style: solid;
     border-width: 1px;
     border-color: #62635f;
@@ -156,11 +170,15 @@ a.ui3:active {
 }
 
 h1 { font-size: 11pt; padding: 1px; margin: 10px 0px 0px 5px;}
+h2 { font-size: 10pt; padding: 1px; margin: 8px 0px 0px 5px;}
 
 th {
     background-color: #010101;
     font-weight: bold;
     font-variant: small-caps;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #62635f;
 }
 
 img.profile {
@@ -206,4 +224,43 @@ a.decline:hover {
 a.decline:active {
     color: #7f7f7f;
     text-decoration: none;
+}
+
+/* Orar */
+
+a.buton{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color:#62635f;
+}
+
+textarea{
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+}
+
+tfoot{
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#info_div{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    margin: 3pt;
+    float: left;
+}
+
+#info{
+    float:right;
 }

@@ -20,6 +20,9 @@ public class User {
     private int idGrupa = 0;
     private int idSerie = 0;
     private int idFacultate = 0;
+    private int gender = 0;
+    private byte[] salt;
+    private String password;
 
     public void setId(int id) {
         this.id = id;
@@ -85,6 +88,18 @@ public class User {
         this.idFacultate = idFacultate;
     }
 
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
@@ -147,5 +162,17 @@ public class User {
 
     public int getIdFacultate() {
         return idFacultate;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

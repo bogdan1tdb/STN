@@ -93,7 +93,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         </c:if>
                         <td class="left" style="width: 33%; padding-left: 15pt">
                             <a href="userdetails.jsp?id=${sef.getId()}" style="text-decoration: none"><b style="color: ${user.classColor(sef.getUserClass())}">${sef.getUserName()}</b></a>
-                            <a class="ui" href="#" style="color: #b3daff; padding-left: 20pt">[PM]</a>
+                            <c:if test="${sef.getUserClass() == 0}">
+                                <img src="img/disabled_small.png" alt="Disabled" style="display: inline-block; vertical-align: bottom; padding-left: 1pt" title="Disabled">
+                            </c:if>
+                            <a class="ui" href="#" style="color: #b3daff; margin-left: 20pt">[PM]</a>
                         </td>
                         <c:set var="i" value='${i+1}'/>
                         <c:if test="${i == 3}">

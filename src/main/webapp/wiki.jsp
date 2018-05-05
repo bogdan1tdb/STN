@@ -30,6 +30,9 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
             <fieldset style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: left; border: solid 1px #62635f'>
                 <legend><b style="color: white">Informatii utilizator</b></legend><br/>
+                <b>Cum pot sa schimb fontul,sa adaug emotes etc.?</b><br/><br/>
+                Accesati <a class="ui" href="/bbcode_legend.jsp" style="color: #99ccff">acest</a> link pentru a vedea lista intreaga de optiuni.<br/><br/><br/>
+
                 <b>Care sunt clasele de utilizatori?</b><br/><br/>
                 <table style="border-spacing: 2pt">
                     <tr>
@@ -87,12 +90,12 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
-                        <td class="row2">Remember Me</td>
+                        <td class="row2">Invite System</td>
                         <td class="row" style="color: #089f00">Enabled</td>
                     </tr>
                     <tr>
                         <td class="row2">School Module</td>
-                        <td class="row" style="color: #ffa00b">WIP</td>
+                        <td class="row" style="color: #54bbbb">Beta</td>
                     </tr>
                     <tr>
                         <td class="row2">Forum</td>
@@ -100,7 +103,11 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">Profile Settings</td>
-                        <td class="row" style="color: #ffa00b">WIP</td>
+                        <td class="row" style="color: #089f00">Enabled</td>
+                    </tr>
+                    <tr>
+                        <td class="row2">News</td>
+                        <td class="row" style="color: #54bbbb">Beta</td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -110,7 +117,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.1.77</p>
+                <p>Site version : 0.1.93</p>
                 <br/>
             </fieldset><br/>
 

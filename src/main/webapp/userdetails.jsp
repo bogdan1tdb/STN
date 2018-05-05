@@ -23,7 +23,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td class="center"><h1 style="color: ${user.classColor(userdetails.getUserClass())} ">${e:forHtml(userdetails.getUserName())}
 
         <c:if test="${userdetails.getUserClass() == 0}">
-            <img src="img/disabled.png" alt="Disabled" style="display: inline-block; vertical-align: bottom; padding-left: 3pt">
+            <img src="img/disabled.png" alt="Disabled" style="display: inline-block; vertical-align: bottom; padding-left: 3pt" title="Disabled">
         </c:if>
         </h1>
         </td>
@@ -49,6 +49,13 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <tr>
                     <td class='row2' style="text-align: left">User Class</td>
                     <td class='row' style="text-align: left; color: ${user.classColor(userdetails.getUserClass())}">${user.className(userdetails.getUserClass())}</td>
+                </tr>
+                <tr>
+                    <td class='row2' style="text-align: left">Gender</td>
+                    <td class='row' style="text-align: left;">
+                         <p style="display: inline; vertical-align: middle">${user.genderName(userdetails.getGender())}</p>
+                            ${user.genderImage(userdetails.getGender())}
+                    </td>
                 </tr>
                 <c:if test="${userInfo.getUserClass() > 4}">
                     <tr>

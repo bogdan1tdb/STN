@@ -32,6 +32,9 @@ public class UserHelper extends DBConnection{
             "userdetails.jsp",
             "group.jsp",
             "invite.jsp",
+            "edit_profile.jsp",
+            "news_archive.jsp",
+            "bbcode_legend.jsp",
             ""};
 
     private static final String[] modAcces = {
@@ -241,8 +244,34 @@ public class UserHelper extends DBConnection{
         return name;
     }
 
+    public static String genderName(int gender) {
+        String name = "";
+        switch (gender) {
+            case 0: name = "Unknown";
+                break;
+            case 1: name = "Male";
+                break;
+            case 2: name = "Female";
+                break;
+        }
+        return name;
+    }
+
+    public static String genderImage(int gender) {
+        String url = "";
+        switch (gender) {
+            case 0: url = "";
+                break;
+            case 1: url = "<img src='/img/male.png' title='Male' style='vertical-align: middle'>";
+                break;
+            case 2: url = "<img src='/img/female.png' title='Female' style='vertical-align: middle'>";
+                break;
+        }
+        return url;
+    }
+
     public void deleteToken(int id) {
-        query = "UPDATE users SET LoginToken = '' , Ip = '' WHERE Id = ?";
+        query = "UPDATE users SET LoginToken = '' WHERE Id = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -291,7 +320,7 @@ public class UserHelper extends DBConnection{
         String serie;
         String facultate;
 
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume, u.IdGrupa, u.IdSerie, u.IdFacultate " +
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume, u.IdGrupa, u.IdSerie, u.IdFacultate, Gender " +
                 "FROM users u LEFT JOIN grupe g ON u.IdGrupa = g.IdGrupa LEFT JOIN serii s ON u.IdSerie = s.IdSerie " +
                 "LEFT JOIN facultati f ON u.IdFacultate = f.IdFacultate " +
                 "WHERE Id = ?";
@@ -333,6 +362,7 @@ public class UserHelper extends DBConnection{
                     user.setSerie("Not set");
                     user.setFacultate("Not set");
                 }
+                user.setGender(resultSet.getInt(16));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -351,6 +381,30 @@ public class UserHelper extends DBConnection{
         return user;
     }
 
+    public User getPassword(int id) throws SQLException, ClassNotFoundException {
+        User u = new User();
+        query = "SELECT Password,Salt FROM users WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                u.setPassword(resultSet.getString(1));
+                u.setSalt(resultSet.getBytes(2));
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
+        return u;
+    }
+
     public List<User> getUsers() throws ClassNotFoundException, SQLException {
         List<User> user = new ArrayList<User>();
 
@@ -365,6 +419,7 @@ public class UserHelper extends DBConnection{
                 User usert = new User();
                 usert.setId(resultSet.getInt(1));
                 usert.setUserName(resultSet.getString(2));
+                usert.setLastSeen(resultSet.getTimestamp(9));
                 usert.setUserClass(resultSet.getInt(10));
                 usert.setIdGrupa(resultSet.getInt(14));
                 usert.setIdSerie(resultSet.getInt(15));
@@ -480,6 +535,31 @@ public class UserHelper extends DBConnection{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, userClass);
             preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+    }
+
+    public void updateUser(int id, int gender, String username, String firstName, String lastName, String email, String avatar) throws SQLException, ClassNotFoundException{
+        query = "UPDATE users SET FirstName = ?, LastName = ?, Email = ?, Avatar = ?, Gender = ?, Username = ? WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, avatar);
+            preparedStatement.setInt(5, gender);
+            preparedStatement.setString(6, username);
+            preparedStatement.setInt(7, id);
             preparedStatement.executeUpdate();
         } finally {
             if (preparedStatement != null)
