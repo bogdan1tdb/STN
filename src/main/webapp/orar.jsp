@@ -41,7 +41,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}"
-                                               class="ui"> ${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                               class="ui"> ${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
 
@@ -58,7 +58,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}
 "
-                                               class="ui">${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                               class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>
@@ -72,7 +72,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}">
-                                                class="ui">${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                                class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>
@@ -86,7 +86,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}"
-                                               class="ui">${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                               class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>
@@ -113,7 +113,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}"
-                                               class="ui">${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                               class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>
@@ -126,7 +126,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}" class="ui"
-                                               class="ui">${ore.getName()}</a><a href="delete_ora.jsp?id=${ore.getId()}" class="buton">Delete!</a></td>
+                                               class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>

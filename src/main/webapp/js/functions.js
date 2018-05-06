@@ -728,3 +728,8 @@ function deleteNews(id) {
     if(confirm("Sunteti sigur ca doriti sa stergeti anuntul?") == true)
     window.location.href = '/EditNewsProcess?id='+id;
 }
+
+function deleteOra(id) {
+    if(confirm("Sunteti sigur ca doriti sa stergeti ora?") == true)
+        window.location.href = '/DeleteOraProcess?id_ora='+id;
+}
