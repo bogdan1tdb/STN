@@ -226,6 +226,10 @@ a.decline:active {
     text-decoration: none;
 }
 
+.smile {
+    vertical-align: bottom;
+}
+
 /* Orar */
 
 a.buton{

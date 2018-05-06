@@ -35,9 +35,13 @@ public class NewsHelper extends DBConnection {
         List<News> news = new ArrayList<News>();
 
         if(limit == -1) {
-            query = "SELECT * FROM news_serie WHERE idSerie = ? ORDER BY IdNews DESC";
+            query = "SELECT IdNews,Title,Body,Date,n.IdUser,n.IdSerie,Username,Class,LastEdit FROM news_serie n " +
+                    "JOIN users u ON u.Id = n.IdUser " +
+                    "WHERE n.idSerie = ? ORDER BY IdNews DESC";
         } else {
-            query = "SELECT * FROM news_serie WHERE idSerie = ? ORDER BY IdNews DESC LIMIT ?;";
+            query = "SELECT IdNews,Title,Body,Date,n.IdUser,n.IdSerie,Username,Class,LastEdit FROM news_serie n " +
+                    "JOIN users u ON u.Id = n.IdUser " +
+                    "WHERE n.idSerie = ? ORDER BY IdNews DESC LIMIT ?";
         }
 
         try {
@@ -57,6 +61,9 @@ public class NewsHelper extends DBConnection {
                 newstemp.setDate(resultSet.getTimestamp(4));
                 newstemp.setIdUser(resultSet.getInt(5));
                 newstemp.setIdSerie(resultSet.getInt(6));
+                newstemp.setUsername(resultSet.getString(7));
+                newstemp.setUserClass(resultSet.getInt(8));
+                newstemp.setLastEdit(resultSet.getTimestamp(9));
                 news.add(newstemp);
             }
         } finally {
@@ -87,14 +94,16 @@ public class NewsHelper extends DBConnection {
     }
 
     public void updateBody(int idNews, String body) throws SQLException, ClassNotFoundException {
-        query = "UPDATE news_serie SET Body = ? WHERE IdNews = ?";
+        java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) );
+        query = "UPDATE news_serie SET Body = ? , LastEdit = ? WHERE IdNews = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, body);
-            preparedStatement.setInt(2, idNews);
+            preparedStatement.setTimestamp(2,date);
+            preparedStatement.setInt(3, idNews);
             preparedStatement.executeUpdate();
         } finally {
             if (preparedStatement != null)
@@ -105,14 +114,16 @@ public class NewsHelper extends DBConnection {
     }
 
     public void updateTitle(int idNews, String title) throws SQLException, ClassNotFoundException {
-        query = "UPDATE news_serie SET Title = ? WHERE IdNews = ?";
+        java.sql.Timestamp date = new java.sql.Timestamp( (new java.util.Date().getTime()) );
+        query = "UPDATE news_serie SET Title = ? , LastEdit = ? WHERE IdNews = ?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, title);
-            preparedStatement.setInt(2, idNews);
+            preparedStatement.setTimestamp(2,date);
+            preparedStatement.setInt(3, idNews);
             preparedStatement.executeUpdate();
         } finally {
             if (preparedStatement != null)

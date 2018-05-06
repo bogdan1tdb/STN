@@ -1,5 +1,6 @@
 package com.stn.pojo;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class News {
@@ -10,6 +11,9 @@ public class News {
     Timestamp date;
     int idUser;
     int idSerie;
+    int userClass;
+    String username;
+    Timestamp lastEdit;
 
     public void setIdNews(int idNews) {
         this.idNews = idNews;
@@ -35,6 +39,18 @@ public class News {
         this.idSerie = idSerie;
     }
 
+    public void setUserClass(int userClass) {
+        this.userClass = userClass;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setLastEdit(Timestamp lastEdit) {
+        this.lastEdit = lastEdit;
+    }
+
     public int getIdNews() {
         return idNews;
     }
@@ -57,5 +73,17 @@ public class News {
 
     public int getIdSerie() {
         return idSerie;
+    }
+
+    public int getUserClass() {
+        return userClass;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Timestamp getLastEdit() {
+        return lastEdit;
     }
 }

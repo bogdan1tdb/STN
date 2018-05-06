@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 05, 2018 at 01:57 PM
+-- Generation Time: May 06, 2018 at 11:34 AM
 -- Server version: 5.7.22-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -105,7 +105,8 @@ CREATE TABLE `news_serie` (
   `Body` text NOT NULL,
   `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `IdUser` int(11) NOT NULL,
-  `IdSerie` int(11) NOT NULL
+  `IdSerie` int(11) NOT NULL,
+  `LastEdit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

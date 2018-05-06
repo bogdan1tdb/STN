@@ -37,6 +37,7 @@ public class AddNewsProcess extends HttpServlet {
 
         if (Validator.isEmpty(title,body)) {
             error = "<br/><b style='color: #db5555; padding-top: 5pt'>You must fill all the requiered fields!</b>";
+            url = "/index.jsp#newsform";
         } else {
             try {
                 newsHelper.addNews(title,body,idUser,idSerie);

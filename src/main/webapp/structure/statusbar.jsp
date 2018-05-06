@@ -14,7 +14,7 @@
             <i class="material-icons" style="font-size: 10pt; vertical-align: bottom; color: #2db300">date_range</i>&nbsp<a class="ui" href="/orar.jsp">Orar</a>
         </td>
         <td class="right">
-            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #ffa00b">mail</i>&nbsp<a class="ui" href="#">0</a> &nbsp&nbsp
+            <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #ffa00b">mail</i>&nbsp<a class="ui" href="javascript:void(0);">0</a> &nbsp&nbsp
             <i class="material-icons" style="font-size: 9pt; vertical-align: bottom; color: #b3daff">schedule</i> <div id="time" style="display: inline"></div> &nbsp&nbsp
             <a class="ui" href="/edit_profile.jsp">[Settings]</a>&nbsp&nbsp
             <a class="ui" href="/LogoutProcess">[Logout]</a></td>
@@ -24,10 +24,10 @@
 <table class="menu">
     <tr>
      <td class="menubar"><a class="ui2" href="/index.jsp">Home</a></td>
-        <td class="menubar"> <a class="ui3" href="#">Files</a></td>
-        <td class="menubar"><a class="ui3" href="#">Add</a></td>
-        <td class="menubar"><a class="ui3" href="#">Forums</a></td>
-        <td class="menubar"><a class="ui3" href="#">Top 10</a></td>
+        <td class="menubar"> <a class="ui3" href="javascript:void(0);">Files</a></td>
+        <td class="menubar"><a class="ui3" href="javascript:void(0);">Add</a></td>
+        <td class="menubar"><a class="ui3" href="javascript:void(0);">Forums</a></td>
+        <td class="menubar"><a class="ui3" href="javascript:void(0);">Top 10</a></td>
         <td class="menubar"><a class="ui2" href="/wiki.jsp">Wiki</a></td>
         <c:if test="${userInfo.getUserClass() > 4}">
         <td class="menubar"><a class="ui2" href="/cpanel.jsp">Cpanel</a></td>
