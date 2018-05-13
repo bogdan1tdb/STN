@@ -92,9 +92,15 @@ ${stats.setStats(facultati,serii,grupe,useri)}
                                 <c:if test="${tool.userIsOnline(u.getLastSeen()) == true}">
                                     <c:if test="${cnt != 0}">
                                         ,&nbsp;<a href="/userdetails.jsp?id=${u.getId()}" style="color: ${user.classColor(u.getUserClass())};text-decoration: none">${u.getUserName()}</a>
+                                        <c:if test="${u.getDonor() == 1}">
+                                            <img src="img/star.gif" alt="Donor" style="display: inline; vertical-align: bottom" title="Donor">
+                                        </c:if>
                                     </c:if>
                                     <c:if test="${cnt == 0}">
                                         <a href="/userdetails.jsp?id=${u.getId()}" style="color: ${user.classColor(u.getUserClass())};text-decoration: none">${u.getUserName()}</a>
+                                        <c:if test="${u.getDonor() == 1}">
+                                            <img src="img/star.gif" alt="Donor" style="display: inline; vertical-align: bottom" title="Donor">
+                                        </c:if>
                                     </c:if>
                                     <c:set var="cnt" value='${1}'/>
                                 </c:if>
