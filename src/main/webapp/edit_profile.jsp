@@ -11,6 +11,9 @@
 ${user.verifyAcces(pageContext.request,pageContext.response)}
 <%@ include file="structure/statusbar.jsp" %>
 
+<jsp:useBean id="country" class="com.stn.helpers.CountryHelper"/>
+<c:set var="countries" value='${country.getCountries()}'/>
+
 <table class="black" style="margin-top: 8pt; width: 570pt">
 
     <tr>
@@ -39,6 +42,22 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <tr>
                         <td class='row2' style="text-align: left;">Last Name</td>
                         <td class='row3' style="text-align: left"><input style="height: 9pt" type="text" name="lastname" value="${userInfo.getLastName()}" size="35"></td>
+                    </tr>
+                    <tr>
+                        <td class='row2' style="text-align: left;">Country</td>
+                        <td class='row3' style="text-align: left">
+                            <select name='country'>
+
+                                 <option
+                                 <c:if test="${userInfo.getCountryId() == 0}">selected</c:if>
+                                         value="0">--</option>
+                             <c:forEach items="${countries}" var="c">
+                                 <option value="${c.getCountryId()}"
+                                         <c:if test="${userInfo.getCountryId() == c.getCountryId()}">selected</c:if>
+                                 >${c.getCountryName()}</option>
+                             </c:forEach>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td class='row2' style="text-align: left;">Gender</td>
@@ -73,6 +92,24 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td class='row2' style="text-align: left;">Avatar</td>
                         <td class='row3' style="text-align: left"><input style="height: 9pt" type="text" name="avatar" value="${userInfo.getAvatar()}" size="35"></td>
                     </tr>
+
+                    <tr>
+                        <td class='row2' style="text-align: left;">Name Anonymity</td>
+                        <td class='row3' style="text-align: left;">
+                            <input type="radio" name="anonymity" value="0" style="vertical-align: middle;"
+                            <c:if test="${userInfo.getAnonymity() == 0}">
+                                   checked
+                            </c:if> >
+                            <label style="vertical-align: middle;">No</label>
+
+                            <input type="radio" name="anonymity" value="1" style="vertical-align: middle;"
+                            <c:if test="${userInfo.getAnonymity() == 1}">
+                                   checked
+                            </c:if> >
+                            <label style="vertical-align: middle;">Yes</label>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td colspan="2" class="center" style="padding-top: 7pt; padding-bottom: 7pt; background-color: #2c2c2c"><input name="save_changes" type="submit" value="Save changes">${sessionScope.error}
                     </tr>

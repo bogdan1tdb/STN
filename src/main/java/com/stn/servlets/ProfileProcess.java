@@ -35,6 +35,8 @@ public class ProfileProcess extends HttpServlet {
             userClass = -1;
         }
 
+        int donor = Integer.parseInt(request.getParameter("donor"));
+
         UserHelper userHelper = new UserHelper();
 
         if((int) userClass < 0) {
@@ -42,7 +44,7 @@ public class ProfileProcess extends HttpServlet {
         } else {
 
             try {
-                userHelper.updateProfile(userId,userClass);
+                userHelper.updateProfile(userId,userClass,donor);
             } catch (ClassNotFoundException | SQLException e) {
                 out.println(e);
                 return;

@@ -71,7 +71,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                     <c:if test="${ore.getZi()=='3.Miercuri'}">
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
-                                            <a href="ora1.jsp?id=${ore.getId()}">
+                                            <a href="ora1.jsp?id=${ore.getId()}"
                                                 class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
@@ -100,7 +100,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                                         <td class="${ore.getZi()}"
                                             title="${ore.getDurata()},${ore.getSala()},${ore.getSgr()},${ore.getSapt()}">
                                             <a href="ora1.jsp?id=${ore.getId()}"
-                                               class="ui">${ore.getName()}</a></td>
+                                               class="ui">${ore.getName()}</a><a href="javascript:void(0);" onclick="return deleteOra(${ore.getId()})" class="buton">Delete!</a></td>
 
                                     </c:if>
                                 </c:forEach>

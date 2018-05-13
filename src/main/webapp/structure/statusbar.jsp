@@ -3,6 +3,7 @@
     <tr>
         <td class="left">
             Welcome, <a href='/userdetails.jsp?id=${sessionScope.userId}' style="text-decoration: none"><b style="color: ${user.classColor(userInfo.getUserClass())}">${e:forHtml(userInfo.getUserName())}</b></a>
+            <c:if test="${userInfo.getDonor() == 1}"><img src="img/star.gif" alt="Donor" style="vertical-align: top; padding-top: 1pt" title="Donor"></c:if>
         </td>
         <td class="right">
             <a class="ui" href="/invite.jsp" style="color: #387FA8">Invite a friend</a>
@@ -27,7 +28,7 @@
         <td class="menubar"> <a class="ui3" href="javascript:void(0);">Files</a></td>
         <td class="menubar"><a class="ui3" href="javascript:void(0);">Add</a></td>
         <td class="menubar"><a class="ui3" href="javascript:void(0);">Forums</a></td>
-        <td class="menubar"><a class="ui3" href="javascript:void(0);">Top 10</a></td>
+        <td class="menubar"><a class="ui2" href="/donate.jsp">Donate</a></td>
         <td class="menubar"><a class="ui2" href="/wiki.jsp">Wiki</a></td>
         <c:if test="${userInfo.getUserClass() > 4}">
         <td class="menubar"><a class="ui2" href="/cpanel.jsp">Cpanel</a></td>

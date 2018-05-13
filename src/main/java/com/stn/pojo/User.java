@@ -23,6 +23,11 @@ public class User {
     private int gender = 0;
     private byte[] salt;
     private String password;
+    private int countryId;
+    private String countryName;
+    private String countryImage;
+    private int anonymity;
+    private int donor;
 
     public void setId(int id) {
         this.id = id;
@@ -100,6 +105,26 @@ public class User {
         this.password = password;
     }
 
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public void setCountryImage(String countryImage) {
+        this.countryImage = countryImage;
+    }
+
+    public void setAnonymity(int anonymity) {
+        this.anonymity = anonymity;
+    }
+
+    public void setDonor(int donor) {
+        this.donor = donor;
+    }
+
     public int getId() {
         return id;
     }
@@ -166,6 +191,26 @@ public class User {
 
     public int getGender() {
         return gender;
+    }
+
+    public int getCountryId() {
+        return countryId;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public String getCountryImage() {
+        return countryImage;
+    }
+
+    public int getAnonymity() {
+        return anonymity;
+    }
+
+    public int getDonor() {
+        return donor;
     }
 
     public byte[] getSalt() {

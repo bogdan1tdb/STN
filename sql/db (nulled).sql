@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2018 at 11:34 AM
+-- Generation Time: May 13, 2018 at 12:23 PM
 -- Server version: 5.7.22-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -37,6 +37,18 @@ CREATE TABLE `applications` (
   `Document` varchar(120) NOT NULL,
   `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Type` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `CountryId` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -192,7 +204,10 @@ CREATE TABLE `users` (
   `IdGrupa` int(11) DEFAULT NULL,
   `IdSerie` int(11) DEFAULT NULL,
   `IdFacultate` int(11) DEFAULT NULL,
-  `Gender` int(1) NOT NULL DEFAULT '0'
+  `Gender` int(1) NOT NULL DEFAULT '0',
+  `CountryId` int(11) DEFAULT NULL,
+  `Anonymity` int(1) NOT NULL DEFAULT '0',
+  `Donor` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -204,6 +219,12 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `applications`
   ADD PRIMARY KEY (`AppId`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`CountryId`);
 
 --
 -- Indexes for table `facultati`
@@ -277,7 +298,8 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IdGrupa` (`IdGrupa`),
   ADD KEY `IdSerie` (`IdSerie`),
-  ADD KEY `IdFacultate` (`IdFacultate`);
+  ADD KEY `IdFacultate` (`IdFacultate`),
+  ADD KEY `CountryId` (`CountryId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -288,6 +310,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `applications`
   MODIFY `AppId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `CountryId` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `facultati`
 --
@@ -388,7 +415,8 @@ ALTER TABLE `serii`
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`IdGrupa`) REFERENCES `grupe` (`IdGrupa`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`IdSerie`) REFERENCES `serii` (`IdSerie`),
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`);
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`IdFacultate`) REFERENCES `facultati` (`IdFacultate`),
+  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`CountryId`) REFERENCES `countries` (`CountryId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

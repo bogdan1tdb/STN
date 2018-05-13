@@ -12,6 +12,7 @@ public class Stats {
     private int latestUserId;
     private String latestUserUsername;
     private int latestUserUserClass;
+    private int latestUserDonor;
 
     private int students = 0;
     private int sefDeGrupa = 0;
@@ -48,6 +49,7 @@ public class Stats {
             latestUserId = u.getId();
             latestUserUsername = u.getUserName();
             latestUserUserClass = u.getUserClass();
+            latestUserDonor = u.getDonor();
 
         }
     }
@@ -107,5 +109,9 @@ public class Stats {
 
     public int getOwners() {
         return owners;
+    }
+
+    public int getLatestUserDonor() {
+        return latestUserDonor;
     }
 }

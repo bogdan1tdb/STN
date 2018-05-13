@@ -25,6 +25,9 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <c:if test="${userdetails.getUserClass() == 0}">
             <img src="img/disabled.png" alt="Disabled" style="display: inline-block; vertical-align: bottom; padding-left: 3pt" title="Disabled">
         </c:if>
+            <c:if test="${userdetails.getDonor() == 1}">
+                <img src="img/starbig.png" alt="Donor" style="display: inline-block; vertical-align: bottom; padding-left: 3pt" title="Donor">
+            </c:if>
         </h1>
         </td>
     </tr>
@@ -49,6 +52,25 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <tr>
                     <td class='row2' style="text-align: left">User Class</td>
                     <td class='row' style="text-align: left; color: ${user.classColor(userdetails.getUserClass())}">${user.className(userdetails.getUserClass())}</td>
+                </tr>
+
+                <c:if test="${userInfo.getUserClass() > 4 || userdetails.getAnonymity() == 0 || userdetails.getId() == userInfo.getId()}">
+                    <tr>
+                        <td class='row2' style="text-align: left">Name</td>
+                        <td class='row' style="text-align: left;">${userdetails.getLastName()}&nbsp;${userdetails.getFirstName()}</td>
+                    </tr>
+                </c:if>
+
+                <tr>
+                    <td class='row2' style="text-align: left">Country</td>
+                    <td class='row' style="text-align: left;}">
+                         <c:if test="${userdetails.getCountryId() > 0}">
+                             <img src="img/flag/${userdetails.getCountryImage()}" class="smile" title="${userdetails.getCountryName()}">
+                         </c:if>
+                         <c:if test="${userdetails.getCountryId() == 0}">
+                             ${userdetails.getCountryName()}
+                         </c:if>
+                    </td>
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Gender</td>
@@ -83,7 +105,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         </td>
     </tr>
 
-    <c:if test="${userInfo.getUserClass() > 4}">
+    <c:if test="${userInfo.getUserClass() > 4 && userInfo.getUserClass() >= userdetails.getUserClass()}">
         <jsp:useBean id="facultate" class="com.stn.helpers.FacultateHelper"/>
         <c:set var="facultati" value='${facultate.getFacultati()}'/>
         <c:set var="serii" value='${facultate.getSerii()}'/>
@@ -128,22 +150,71 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td class='row2' style="text-align: center;">Change Userclass</td>
                     <td class='row' style="text-align: center">
                         <select name="userclass">
-                            <option disabled selected value="-1">--</option>
-                            <option value="0">Disabled</option>
-                            <option value="1">Student</option>
-                            <option value="2">Sef de Grupa</option>
-                            <option value="3">VIP</option>
-                            <option value="4">Guest of Honour</option>
+                            <option value="0"
+                                    <c:if test="${userdetails.getUserClass() == 0}">
+                                        selected
+                                    </c:if>
+                            >Disabled</option>
+                            <option value="1"
+                                    <c:if test="${userdetails.getUserClass() == 1}">
+                                        selected
+                                    </c:if>
+                            >Student</option>
+                            <option value="2"
+                                    <c:if test="${userdetails.getUserClass() == 2}">
+                                        selected
+                                    </c:if>
+                            >Sef de Grupa</option>
+                            <option value="3"
+                                    <c:if test="${userdetails.getUserClass() == 3}">
+                                        selected
+                                    </c:if>
+                            >VIP</option>
+                            <option value="4"
+                                    <c:if test="${userdetails.getUserClass() == 4}">
+                                        selected
+                                    </c:if>
+                            >Guest of Honour</option>
                        <c:if test="${userInfo.getUserClass() > 5}">
-                            <option value="5">Moderator</option>
+                            <option value="5"
+                                    <c:if test="${userdetails.getUserClass() == 5}">
+                                        selected
+                                    </c:if>
+                            >Moderator</option>
                        </c:if>
                        <c:if test="${userInfo.getUserClass() > 6}">
-                            <option value="6">Administrator</option>
-                            <option value="7">Owner</option>
+                            <option value="6"
+                                    <c:if test="${userdetails.getUserClass() == 6}">
+                                        cselected
+                                    </c:if>
+                            >Administrator</option>
+                            <option value="7"
+                                    <c:if test="${userdetails.getUserClass() == 7}">
+                                        selected
+                                    </c:if>
+                            >Owner</option>
                        </c:if>
                         </select>
                     </td>
                 </tr>
+
+                    <tr>
+                        <td class='row2' style="text-align: center;">Donor</td>
+                        <td class='row' style="text-align: center;">
+                            <input type="radio" name="donor" value="0" style="vertical-align: middle;"
+                            <c:if test="${userdetails.getDonor() == 0}">
+                                   checked
+                            </c:if> >
+                            <label style="vertical-align: middle;">No</label>
+
+                            <input type="radio" name="donor" value="1" style="vertical-align: middle;"
+                            <c:if test="${userdetails.getDonor() == 1}">
+                                   checked
+                            </c:if> >
+                            <label style="vertical-align: middle;">Yes</label>
+                        </td>
+                    </tr>
+
                 <tr>
                     <td class="row" style="text-align: center" colspan="2">
                         <input type="hidden" name="userid" value="${param.id}">

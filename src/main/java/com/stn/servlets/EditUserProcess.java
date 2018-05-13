@@ -38,6 +38,8 @@ public class EditUserProcess extends HttpServlet {
         String email = request.getParameter("email");
         String avatar = request.getParameter("avatar");
         String url = "/edit_profile.jsp";
+        int countryId= Integer.parseInt(request.getParameter("country"));
+        int anonymity = Integer.parseInt(request.getParameter("anonymity"));
 
         if (Validator.isEmpty(username, email, firstName, lastName)) {
             error = "You must fill all the requiered fields!";
@@ -57,7 +59,7 @@ public class EditUserProcess extends HttpServlet {
             error = "Invalid avatar!";
         } else {
             try {
-                userHelper.updateUser(id, gender, username, firstName, lastName, email, avatar);
+                userHelper.updateUser(id, gender, username, firstName, lastName, email, avatar, countryId, anonymity);
                 error = "Profile updated!";
             } catch (ClassNotFoundException | SQLException e) {
                 out.println(e);

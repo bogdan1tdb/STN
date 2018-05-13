@@ -210,9 +210,8 @@ public class OrarHelper extends DBConnection {
         }
     }
 
-    public Notes getSchool(Integer id_ora,Integer id_student) throws SQLException, ClassNotFoundException {
+    public Notes getSchool(int id_ora,int id_student) throws SQLException, ClassNotFoundException {
         Notes notes = new Notes();
-
         query = "Select * from notes where IdOra=? and IdStudent=?";
 
         try {
