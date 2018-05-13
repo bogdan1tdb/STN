@@ -22,8 +22,8 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td class="center">
                         <img src="img/charity.png" style="width: 60%; height: auto">
                         <p style="font-size: 15pt; color: #99ccff">Doneaza si sustine educatia!</p>
-                        <p>Iti multim pentru interestul pe care il acoredezi site-ului,insa scopul nostru este acela de a oferi o platforma gratuita pentru a ajuta studentii sa isi desfasoare activitaiile
-                        intr-un mod cat mai intuitit.Din pacate exista copii care nu au acces la aceste resurse,viitorul acestora depinzand de spatiile de lucru/materialele/etc. puse la dispozitie.</p>
+                        <p>Iti multim pentru interesul pe care il acorzi site-ului,insa scopul nostru este acela de a oferi o platforma gratuita pentru a ajuta studentii sa isi desfasoare activitaiile scolare
+                        intr-un mod cat mai intuitiv.Din pacate exista copii care nu au acces la aceste resurse,viitorul acestora depinzand de spatiile de lucru/materialele/etc. puse la dispozitie.</p>
                         <p>Daca sunteti interesati de acest subiect si doriti sa ajutati,puteti sa accesati link-urile de mai jos pentru a face o donatie.Consideram ca donatia ar trebui facuta fara a primi
                         nimic inapoi,insa in mod simbolic veti primi pe site o steluta (<img src="img/star.gif" alt="Donor" style="display: inline; vertical-align: bottom" title="Donor">) care va fi afista langa numele dvs.</p>
                         <p>Daca ati facut o donatie,puteti sa ne trimiteti mail pe adresa <a class='ui' href='mailto:schoolingtheinternet@gmail.com' style='color: #66ba5b'>schoolingtheinternet@gmail.com</a>

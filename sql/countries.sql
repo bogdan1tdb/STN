@@ -8,7 +8,7 @@
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET time_zone = "+03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -128,6 +128,7 @@ INSERT INTO `countries` (`CountryId`, `Name`, `Image`) VALUES
 (99, 'Egypt', 'egypt.gif'),
 (100, 'Bulgaria', 'bulgaria.gif'),
 (101, 'Isla de Muerte', 'jollyroger.gif');
+(102, 'Antarctica', 'antarctica.gif');
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -137,7 +138,7 @@ INSERT INTO `countries` (`CountryId`, `Name`, `Image`) VALUES
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `CountryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `CountryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
