@@ -55,7 +55,7 @@ public class DeleteOraProcess extends HttpServlet {
                         if(ora.getSgr()!=0)
                             body=body+" al semigrupei "+ora.getSgr();
                         body=body+" cu durata " + ora.getDurata() + " al grupei tale a fost stearsa de seful grupei, aici sunt informatiile salvate pentru acea materie<br/>"+"Teme<br/>"+n.getTema()+"<br/>"+"Examen<br/>"+n.getExamen()+"<br/>"+"Note:"+n.getNota()+"<br/><br/>Best of luck,<br/> SchoolingTheInternet Team";
-                        String subject = "Stergerea orei" + ora.getName();
+                        String subject = "Stergerea orei " + ora.getName();
                         sendSchool.sendEmail(userInfo.getEmail(),subject,body);
                     }
                 } catch (ClassNotFoundException | SQLException | MessagingException  e) {
